@@ -3,10 +3,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Time_Managmeent_System.Pages.LoginType.Admin"
              Title="Admin">
-    <VerticalStackLayout>
+
+    <VerticalStackLayout
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Spacing="20"
+        Padding="30">
+
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
+            Text="Admin Login"
+            FontSize="30"
             HorizontalOptions="Center" />
+
+        <Entry 
+            Placeholder="Username"
+            WidthRequest="250" />
+
+        <Entry
+            Placeholder="Password"
+            IsPassword="True"
+            WidthRequest="250" />
+        <Button
+            Text="Login"
+            WidthRequest="250"
+            Clicked="OnLoginClicked" />
+
     </VerticalStackLayout>
 </ContentPage>
