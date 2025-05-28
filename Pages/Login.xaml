@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Time_Managmeent_System.Pages.NewPage1"
-             Title="NewPage1">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+              x:Class="Time_Managmeent_System.Pages.LoginPage"
+             Title="Login">
+
+    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+        <Label Text="Select Login Type" FontSize="24" HorizontalOptions="Center" />
+
+        <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />
+        <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
+        <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />
     </VerticalStackLayout>
 </ContentPage>
