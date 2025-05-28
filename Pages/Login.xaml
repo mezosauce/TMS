@@ -4,12 +4,25 @@
              
              x:Class="Time_Managmeent_System.Pages.LoginPage"
              Title="Login">
-
+    <ScrollView>
     <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
-        <Label Text="Select Login Type" FontSize="24" HorizontalOptions="Center" />
+        <Label
+            Text="Welcome to Hour Base!"
+            FontSize="30"
+            HorizontalOptions="Center"
+            />
+        <Image Source="dotnet_bot.png" 
+               HorizontalOptions="Center" 
+               VerticalOptions="Start" 
+               HeightRequest="200"
+               />
+        <Label Text="Select Login Type" 
+               FontSize="24" 
+               HorizontalOptions="Center" />
 
         <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />
         <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
         <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />
     </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
