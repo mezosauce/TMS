@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Time_Managmeent_System.MainPage">
+
+    <Grid
+        RowDefinitions="100, Auto, *" 
+        ColumnDefinitions=".75*, .25*">
+        
+        <Image Grid.ColumnSpan="2"
+               Source="clock.png."
+               BackgroundColor="Orange"
+               />
+
+
+        <Label Text="Welcome to Hour Base!"
+               FontSize="24"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               Grid.ColumnSpan="2" />
+        
+        <Button Text="Start Timer"
+                Command="{Binding StartTimerCommand}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="1" Grid.Column="0" />
+        <Button Text="View Reports"
+                Command="{Binding ViewReportsCommand}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Grid.Row="1" Grid.Column="1" />
+
+    </Grid>
+</ContentPage>
