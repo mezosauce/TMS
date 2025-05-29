@@ -4,28 +4,28 @@
              x:Class="Time_Managmeent_System.Pages.LoginType.Employee"
              Title="Employee">
     <VerticalStackLayout
-    VerticalOptions="Center"
-    HorizontalOptions="Center"
-    Spacing="20"
-    Padding="30">
+        VerticalOptions="Center"
+        HorizontalOptions="Center"
+        Spacing="20"
+        Padding="30">
 
         <Label 
-        Text="Employee Login"
-        FontSize="30"
-        HorizontalOptions="Center" />
+            Text="Employee Login"
+            FontSize="30"
+            HorizontalOptions="Center" />
 
         <Entry 
-        Placeholder="Username"
-        WidthRequest="250" />
+            Placeholder="Username"
+            WidthRequest="250" />
 
         <Entry
-        Placeholder="Password"
-        IsPassword="True"
-        WidthRequest="250" />
+            Placeholder="Password"
+            IsPassword="True"
+            WidthRequest="250" />
         <Button
-        Text="Login"
-        WidthRequest="250"
-        Clicked="OnLoginClicked" />
+            Text="Login"
+            WidthRequest="250"
+            Clicked="OnLoginClicked" />
 
     </VerticalStackLayout>
 </ContentPage>
