@@ -10,11 +10,20 @@
         Padding="30">
 
 		<Label
-            Text="Employee Login"
+            Text="Please Enter your Credentials"
             FontSize="30"
             HorizontalOptions="Center" />
+        <Entry
+            Placeholder="Refrence Number"
+            WidthRequest="250" />
+        <Entry
+            Placeholder="First Name"
+            />
+        <Entry
+            Placeholder="Last Name"
+            />
 
-		<Entry
+        <Entry
             Placeholder="Username"
             WidthRequest="250" />
 
@@ -23,7 +32,7 @@
             IsPassword="True"
             WidthRequest="250" />
 		<Button
-            Text="Login"
+            Text="Register"
             WidthRequest="250"
             Clicked="OnLoginClicked" />
 
