@@ -26,9 +26,10 @@ namespace Time_Managmeent_System.Pages
             // Navigate to Admin login or main page
             await Navigation.PushAsync(new LoginType.Admin());
         }
-        private async void OnGuestLoginClicked(object sender, EventArgs e)
+        private async void OnRegisterClicked(object sender, EventArgs e)
         {
             // Navigate to Guest login or main page
             await Navigation.PushAsync(new LoginType.Guest());
         }
+    }
 }
