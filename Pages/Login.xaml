@@ -11,13 +11,13 @@
             FontSize="30"
             HorizontalOptions="Center"
             />
-        <Label Text="&#xf017;" 
+            <Label Text="&#xf017;" 
 			   FontFamily="FontAwesome" 
 			   FontSize="50" 
 			   HorizontalOptions="Center"
 			   />
 
-		<Label Text="Select Login Type" 
+            <Label Text="Select Login Type" 
                FontSize="24" 
                HorizontalOptions="Center" />
 
