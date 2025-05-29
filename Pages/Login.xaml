@@ -24,6 +24,7 @@
         <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
         <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />
         <Button Text="Register" Clicked="OnRegisterClicked" />
+        
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
