@@ -1,2 +1,1 @@
-env:
-  AZURE_SQL_CONNECTION_STRING: ${{ secrets.AZURE_SQL_CONNECTION_STRING }}
+Server=tcp:hourbase.database.windows.net,1433;Initial Catalog=TMS-DB;Persist Security Info=False;User ID=CloudSAbf2e27a9;Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
