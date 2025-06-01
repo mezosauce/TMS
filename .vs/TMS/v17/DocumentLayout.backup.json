@@ -1,0 +1,329 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\dashboard\\employeedash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\dashboard\\employeedash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\dashboard\\employeedash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\dashboard\\employeedash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\logintype\\admin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\logintype\\admin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\logintype\\employee.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\logintype\\employee.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\dashboard\\admindash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\dashboard\\admindash.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\logintype\\employee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\logintype\\employee.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\logintype\\admin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\logintype\\admin.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\login.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\dashboard\\admindash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\dashboard\\admindash.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\login.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\resources\\fonts\\font awesome 6 free-regular-400.otf||{25834150-CD7E-11D0-92DF-00A0C9138C45}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:resources\\fonts\\font awesome 6 free-regular-400.otf||{25834150-CD7E-11D0-92DF-00A0C9138C45}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\logintype\\guest.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\logintype\\guest.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\logintype\\manager.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\logintype\\manager.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|c:\\users\\mezoa\\documents\\github\\tms\\pages\\login.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{2EDF9023-1B18-6428-3076-FF2C50F72B94}|Time Managmeent System.csproj|solutionrelative:pages\\login.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Admin.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Admin.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\LoginType\\Admin.xaml.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Admin.xaml.cs",
+              "RelativeToolTip": "Pages\\LoginType\\Admin.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T22:07:55.804Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "EmployeeDash.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\EmployeeDash.xaml",
+              "RelativeDocumentMoniker": "Pages\\Dashboard\\EmployeeDash.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\EmployeeDash.xaml",
+              "RelativeToolTip": "Pages\\Dashboard\\EmployeeDash.xaml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T17:25:56.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "EmployeeDash.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\EmployeeDash.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\Dashboard\\EmployeeDash.xaml.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\EmployeeDash.xaml.cs",
+              "RelativeToolTip": "Pages\\Dashboard\\EmployeeDash.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAIwBUAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T17:28:36.972Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Employee.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Employee.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\LoginType\\Employee.xaml.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Employee.xaml.cs",
+              "RelativeToolTip": "Pages\\LoginType\\Employee.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T17:26:05.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AdminDash.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\AdminDash.xaml",
+              "RelativeDocumentMoniker": "Pages\\Dashboard\\AdminDash.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\AdminDash.xaml",
+              "RelativeToolTip": "Pages\\Dashboard\\AdminDash.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-06-01T17:17:37.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\MainPage.xaml.cs",
+              "RelativeToolTip": "Pages\\MainPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T22:35:56.323Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Employee.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Employee.xaml",
+              "RelativeDocumentMoniker": "Pages\\LoginType\\Employee.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Employee.xaml",
+              "RelativeToolTip": "Pages\\LoginType\\Employee.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-28T21:39:49.616Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAQwBUAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-29T17:16:36.889Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Login.xaml",
+              "RelativeDocumentMoniker": "Pages\\Login.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Login.xaml",
+              "RelativeToolTip": "Pages\\Login.xaml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-29T17:09:50.529Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Admin.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Admin.xaml",
+              "RelativeDocumentMoniker": "Pages\\LoginType\\Admin.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Admin.xaml",
+              "RelativeToolTip": "Pages\\LoginType\\Admin.xaml",
+              "ViewState": "AgIAABMAAAAAAAAAAAAAABwAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-28T21:39:20.959Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "AdminDash.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\AdminDash.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\Dashboard\\AdminDash.xaml.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Dashboard\\AdminDash.xaml.cs",
+              "RelativeToolTip": "Pages\\Dashboard\\AdminDash.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-01T17:18:16.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Login.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\Login.xaml.cs",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Login.xaml.cs",
+              "RelativeToolTip": "Pages\\Login.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T21:36:56.608Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Font Awesome 6 Free-Regular-400.otf",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Resources\\Fonts\\Font Awesome 6 Free-Regular-400.otf",
+              "RelativeDocumentMoniker": "Resources\\Fonts\\Font Awesome 6 Free-Regular-400.otf",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Resources\\Fonts\\Font Awesome 6 Free-Regular-400.otf",
+              "RelativeToolTip": "Resources\\Fonts\\Font Awesome 6 Free-Regular-400.otf",
+              "Icon": "00000000-0000-0000-0000-000000000000.000000|iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAL4SURBVEhL7VXPaxNBFP5mNmmsKVZsA6lVClVsixUEtb3YtGAvxULp2Uv/AI8tVgP\u002BHb37D7RnRRAKCh5qf5BorBCR/qLSWpO4O2n3PQ87M9lNFvHizQcvM29e5vu\u002B93ZmF/iXxsxicnJyaHh4eNBxnOb0X5kQAlJK6Xne6draWmF1dXWbmRv5hYWFp4uLT54xBAQAMANCgAE0fm0WzAwhBHQKzCwAiGq16heLxcLS0tLcysrKR8uQz\u002BefK6VIKY\u002BUUuR5HnlKkae8YN7kSinylIqMSilyXZeKxSJtbW0dzszMDAkRCJKWiUWgHrqKRpURY2aAORiDFQCAlBLJZBJ9fX1d8/PzL6anp0cQJmCwxWQEALEeZmYd6SUhBAqFApLJ5O25ubml2dnZK04ulxvP5XITRlGgMJ5IL4bUa/CgG\u002Bjs7EQ2m0V3d7fo6enJHh8ft0to0DCInVNMBU0eMR0nEgmk02kQcdYSmJGI7GaKAQz/12DaHBrtSjgJOI4kacGILDgRwddx2H3fD\u002BZ\u002BY425ISggCXompIAQglpaZPykUm9Z\u002B5PbqkwZupKWFjERXOVj/bOLSlVFKmBTqVbdLC6ANqMmMElTvk\u002BE8k4d66UqNrerLW1qblkgKq6igEICsOqYGT8qZ/hUPsZG6Sferp\u002BgUjuNqG8GIqLIcTZVGWvcZJ3YOaih/7KEf\u002Bbj5bsjfNv7FQtKRHafITYYYZOZTIbMpvqpj/JuDen2FB7cu4Dyfh0rbw50O/RzMFUgShQWYEjR3KLd73XsHVZR3jlBOqXQfzWFV5sK\u002B0euPY7mbkRudFR0xGSlUrHB8utDPLzfhbs3uzB2J4OpsUvwUyksvz8BQipb5n9gkK7rSiLGxpca9ms\u002BzkQbHEdCSoneTBtuXW/HQb0NXw/dyEO276tQz4O2NGJmfUwB4FrvOSw\u002B6kVHe0J/YBgjg2nkZy/i8fh5dHUk7NYwaLAQnYdDMTo6OnFjYGDKfgviAJrMfEziLJwrlUofIsn/Fme/AcOAL5689\u002BjKAAAAAElFTkSuQmCC",
+              "WhenOpened": "2025-05-29T20:27:10.492Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Guest.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Guest.xaml",
+              "RelativeDocumentMoniker": "Pages\\LoginType\\Guest.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Guest.xaml",
+              "RelativeToolTip": "Pages\\LoginType\\Guest.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-29T04:43:20.787Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\MainPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\MainPage.xaml",
+              "RelativeToolTip": "Pages\\MainPage.xaml",
+              "ViewState": "AgIAABAAAAAAAAAAAAAqwB8AAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-29T04:18:58.165Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Manager.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Manager.xaml",
+              "RelativeDocumentMoniker": "Pages\\LoginType\\Manager.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\LoginType\\Manager.xaml",
+              "RelativeToolTip": "Pages\\LoginType\\Manager.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-28T21:39:34.703Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Login.xaml",
+              "DocumentMoniker": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Login.xaml",
+              "RelativeDocumentMoniker": "Pages\\Login.xaml",
+              "ToolTip": "C:\\Users\\mezoa\\Documents\\GitHub\\TMS\\Pages\\Login.xaml",
+              "RelativeToolTip": "Pages\\Login.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-28T20:50:42.091Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
