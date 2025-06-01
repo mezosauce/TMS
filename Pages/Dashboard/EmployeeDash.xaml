@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Time_Managmeent_System.Pages.Dashboard.EmployeeDash"
+             Title="EmployeeDash">
+    <VerticalStackLayout>
+        <Label 
+            Text="Employee Dashboard"
+            FontSize="30" 
+            Margin="25, 10"
+            HorizontalOptions="Start" 
+            VerticalOptions="Start" />
+        <Label
+            Text="Welcome Back, [Employee Name]!"
+            FontSize="20"
+            Margin="25, 10"
+            HorizontalOptions="Start" 
+            VerticalOptions="Start" />
+
+        <Grid
+            />
+        <!--Clock in/out button should be a toggle type of button that alternates-->
+        <Button
+            x:Name="ClockButton"
+            Text="Clock In"
+            WidthRequest="250"
+            Clicked="OnClockClicked" />
+        <!--View Hours Functionality-->
+        <Button
+            Text="View Hours"
+            WidthRequest="250"
+            
+            />
+        <!--Request Call Off-->
+        <Button
+            Text="Call Off"
+            WidthRequest="250"
+            
+            />
+        <!--Offer Shift-->
+        <Button
+            Text="Offer Shift"
+            WidthRequest="250"
+            
+            />
+
+        </Grid>
+        <!---->
+    </VerticalStackLayout>
+</ContentPage>
