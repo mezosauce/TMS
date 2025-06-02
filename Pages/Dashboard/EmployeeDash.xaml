@@ -17,9 +17,9 @@
             HorizontalOptions="Start" 
             VerticalOptions="Start" />
 
-        <Grid
-            />
+        <HorizontalStackLayout>
         <!--Clock in/out button should be a toggle type of button that alternates-->
+        
         <Button
             x:Name="ClockButton"
             Text="Clock In"
@@ -31,20 +31,22 @@
             WidthRequest="250"
             
             />
-        <!--Request Call Off-->
-        <Button
+        </HorizontalStackLayout>
+        <HorizontalStackLayout>
+            <!--Request Call Off-->
+            <Button
             Text="Call Off"
             WidthRequest="250"
             
             />
-        <!--Offer Shift-->
-        <Button
+            <!--Offer Shift-->
+            <Button
             Text="Offer Shift"
             WidthRequest="250"
             
             />
+        </HorizontalStackLayout>
 
-        </Grid>
         <!---->
     </VerticalStackLayout>
 </ContentPage>
