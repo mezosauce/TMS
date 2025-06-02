@@ -88,7 +88,7 @@ public partial class EmployeeDash : ContentPage
             var easternTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, easternZone);
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                EasternTimeLabel.Text = $"Eastern Time: {easternTime:hh:mm:ss tt}";
+                EasternTimeLabel.Text = $" {easternTime:hh:mm:ss tt}";
             });
         };
         _timer.Start();
