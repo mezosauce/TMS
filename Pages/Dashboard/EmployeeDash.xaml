@@ -17,8 +17,29 @@
             HorizontalOptions="Start" 
             VerticalOptions="Start" />
 
+        <Label
+            x:Name="LocationLabel"
+            Text="Location: Unknown"
+            FontSize="16"
+            Margin="25, 10"
+            HorizontalOptions="Start" />
+
+        <Label
+            x:Name="EasternTimeLabel"
+            Text="--:--:--"
+            FontSize="38"
+            Margin="25, 10"
+            HorizontalOptions="Center" />
+
+        <Button
+            x:Name="TrackLocationButton"
+            Text="Start Tracking"
+            Clicked="OnTrackLocationClicked"
+            WidthRequest="250"
+            Margin="40" />
+
         <HorizontalStackLayout
-            Margin="20"
+            HorizontalOptions="Center"
             >
         <!--Clock in/out button should be a toggle type of button that alternates-->
         
@@ -26,25 +47,32 @@
             x:Name="ClockButton"
             Text="Clock In"
             WidthRequest="250"
-            Clicked="OnClockClicked" />
+            Clicked="OnClockClicked"
+            Margin="40"
+            />
         <!--View Hours Functionality-->
         <Button
             Text="View Hours"
             WidthRequest="250"
-            
+            Margin="40"
             />
         </HorizontalStackLayout>
-        <HorizontalStackLayout>
+        <HorizontalStackLayout
+            HorizontalOptions="Center"
+            
+            >
             <!--Request Call Off-->
             <Button
             Text="Call Off"
             WidthRequest="250"
+            Margin="40"
             
             />
             <!--Offer Shift-->
             <Button
             Text="Offer Shift"
             WidthRequest="250"
+            Margin="40"
             
             />
         </HorizontalStackLayout>
