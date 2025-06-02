@@ -4,15 +4,89 @@
              x:Class="Time_Managmeent_System.Pages.Dashboard.AdminDash"
              Title="AdminDash">
     <ScrollView>
-    <VerticalStackLayout>
-            <Label 
-            Text="Admin Dashboard"
-            FontSize="30" 
-            Margin="25, 10"
-            HorizontalOptions="Start" 
-            VerticalOptions="Start" />
-            
-            
-    </VerticalStackLayout>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Side Panel -->
+            <VerticalStackLayout Grid.Column="0"
+                         BackgroundColor="lightgray"
+                         Padding="10,150,10,10"
+                         Spacing="20">
+
+            <Button
+                Text="View Hours"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                />
+            <Button
+                Text="Call Off"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                />
+            <Button
+                Text="Offer Shift"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                />
+            <Button
+                x:Name="TrackLocationButton"
+                Text="Start Tracking"
+                Clicked="OnTrackLocationClicked"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                />
+            </VerticalStackLayout>
+
+            <!-- Main Content -->
+            <VerticalStackLayout Grid.Column="1"
+                         Padding="20"
+                         Spacing="15">
+
+                <HorizontalStackLayout>
+                    <VerticalStackLayout>
+                        <Label
+                    Text="Welcome Back, [Employee Name]!"
+                    FontSize="20"
+                    Margin="0,0,0,10"
+                    HorizontalOptions="Start" 
+                    VerticalOptions="Start" />
+                        <Label
+                    x:Name="LocationLabel"
+                    Text="Location: Unknown"
+                    FontSize="16"
+                    Margin="0,0,0,10"
+                    HorizontalOptions="Start" />
+                    </VerticalStackLayout>
+                    <Label
+                x:Name="EasternTimeLabel"
+                Text="--:--:--"
+                FontSize="38"
+                Margin="120,0,0,0"
+                HorizontalOptions="Center" />
+                </HorizontalStackLayout>
+
+                <!-- Shift and Clock In on left side -->
+                <HorizontalStackLayout HorizontalOptions="Start">
+                    <VerticalStackLayout>
+                        <Label
+                Text="Shift:"
+                FontSize="16"
+                Margin="0,0,10,0"
+                VerticalOptions="Center" />
+                        <Button
+                x:Name="ClockButton"
+                Text="Clock In"
+                WidthRequest="180"
+                Clicked="OnClockClicked"
+                Margin="0,20,0,0"
+                VerticalOptions="Center"/>
+                    </VerticalStackLayout>
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+        </Grid>
     </ScrollView>
 </ContentPage>
