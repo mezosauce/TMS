@@ -17,7 +17,9 @@
             HorizontalOptions="Start" 
             VerticalOptions="Start" />
 
-        <HorizontalStackLayout>
+        <HorizontalStackLayout
+            Margin="20"
+            >
         <!--Clock in/out button should be a toggle type of button that alternates-->
         
         <Button
