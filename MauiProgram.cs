@@ -13,21 +13,21 @@ namespace Time_Managmeent_System
                 .ConfigureFonts(fonts =>
                 {
 #if WINDOWS
-                fonts.AddFont("fa-solid-900.otf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.otf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.otf", "FontAwesomeRegular");
+                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
+                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
+                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
 #elif MACCATALYST
-                fonts.AddFont("fa-solid-900.otf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.otf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.otf", "FontAwesomeRegular");
+                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
+                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
+                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
 #elif IOS
-                fonts.AddFont("fa-solid-900.otf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.otf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.otf", "FontAwesomeRegular");
+                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
+                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
+                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
 #elif ANDROID
-                fonts.AddFont("fa-solid-900.otf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.otf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.otf", "FontAwesomeRegular");
+                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
+                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
+                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
 #endif
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");

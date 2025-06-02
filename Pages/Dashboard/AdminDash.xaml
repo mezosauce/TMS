@@ -48,7 +48,7 @@
                 <HorizontalStackLayout>
                     <VerticalStackLayout>
                         <Label
-                    Text="Welcome Back, [Employee Name]!"
+                    Text="Admin LOGIN"
                     FontSize="20"
                     Margin="0,0,0,10"
                     HorizontalOptions="Start" 
@@ -68,23 +68,7 @@
                 HorizontalOptions="Center" />
                 </HorizontalStackLayout>
 
-                <!-- Shift and Clock In on left side -->
-                <HorizontalStackLayout HorizontalOptions="Start">
-                    <VerticalStackLayout>
-                        <Label
-                Text="Shift:"
-                FontSize="16"
-                Margin="0,0,10,0"
-                VerticalOptions="Center" />
-                        <Button
-                x:Name="ClockButton"
-                Text="Clock In"
-                WidthRequest="180"
-                Clicked="OnClockClicked"
-                Margin="0,20,0,0"
-                VerticalOptions="Center"/>
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
+                
             </VerticalStackLayout>
 
         </Grid>

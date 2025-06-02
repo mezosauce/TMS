@@ -12,6 +12,6 @@ public partial class Manager : ContentPage
         // Implement your login logic here
         // For example, validate credentials and navigate to the admin dashboard
         await DisplayAlert("Login", "Manager login successful!", "OK");
-        await Navigation.PushAsync(new MainPage()); // Navigate to the main page after login
+        await Navigation.PushAsync(new Dashboard.ManagerDash()); // Navigate to the main page after login
     }
 }

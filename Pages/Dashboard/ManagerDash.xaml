@@ -28,12 +28,7 @@
             Text="Offer Shift"
             WidthRequest="180"
             Margin="0,0,0,10"/>
-                <Button
-            x:Name="TrackLocationButton"
-            Text="Start Tracking"
-            Clicked="OnTrackLocationClicked"
-            WidthRequest="180"
-            Margin="0,0,0,10"/>
+                
             </VerticalStackLayout>
 
             <!-- Main Content -->
