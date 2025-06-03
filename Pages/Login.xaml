@@ -7,6 +7,17 @@
              Title="Login">
     <ScrollView>
     <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+        <Button 
+            Style="{x:StaticResource FaBrandIconStyle}"
+            Text="{x:Static models:SymbolCode.Moon}"
+            FontFamily="FaSolid"
+            FontSize="50"
+            TextColor="White"
+            BackgroundColor="Transparent"
+            Clicked="OnToggleDarkModeClicked"
+            HorizontalOptions="End"
+        
+        />
         <Label
             Text="Welcome to Hour Base!"
             FontSize="30"

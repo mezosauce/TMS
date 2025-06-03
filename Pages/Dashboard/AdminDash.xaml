@@ -14,10 +14,29 @@
             <!-- Side Panel -->
             <VerticalStackLayout Grid.Column="0"
                          BackgroundColor="lightgray"
-                         Padding="10,150,10,10"
+                         Padding="10,0,10,10"
                          Spacing="20">
 
-            <Button
+                <VerticalStackLayout
+                    Padding="10, 50, 10, 60"
+                    >
+                <Label
+                Style="{x:StaticResource FaBrandIconStyle}"
+                Text="{x:Static models:SymbolCode.User}"
+                FontFamily="FaSolid"
+                FontSize="40"
+                HorizontalOptions="Center" 
+                VerticalOptions="Start"
+                
+                    />
+                
+                <Label
+                    Text="[Admin Name]"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    />
+                </VerticalStackLayout>
+                <Button
                 Text="View Hours"
                 WidthRequest="180"
                 Margin="0,0,0,10"
@@ -48,12 +67,7 @@
 
                 <HorizontalStackLayout>
                     <VerticalStackLayout>
-                        <Label
-                    Text="Admin LOGIN"
-                    FontSize="20"
-                    Margin="0,0,0,10"
-                    HorizontalOptions="Start" 
-                    VerticalOptions="Start" />
+                        
                         <Label
                     x:Name="LocationLabel"
                     Text="Location: Unknown"

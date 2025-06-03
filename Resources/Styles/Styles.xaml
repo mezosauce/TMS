@@ -28,7 +28,7 @@
     <Style TargetType="Label" x:Key="FaBrandIconStyle">
         <Setter Property="FontFamily" Value="FaBrands" />
         <Setter Property="FontFamily" Value="FaRegular"/>
-
+        <Setter Property="FontFamily" Value="FaSolid"/>
     </Style>
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
