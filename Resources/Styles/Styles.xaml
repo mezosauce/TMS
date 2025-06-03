@@ -23,6 +23,13 @@
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray950}, Dark={StaticResource Gray200}}" />
     </Style>
 
+
+
+    <Style TargetType="Label" x:Key="FaBrandIconStyle">
+        <Setter Property="FontFamily" Value="FaBrands" />
+        <Setter Property="FontFamily" Value="FaRegular"/>
+
+    </Style>
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource PrimaryDarkText}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource PrimaryDark}}" />

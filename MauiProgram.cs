@@ -12,25 +12,10 @@ namespace Time_Managmeent_System
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
-#if WINDOWS
-                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
-#elif MACCATALYST
-                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
-#elif IOS
-                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
-#elif ANDROID
-                fonts.AddFont("fa-solid-900.ttf", "FontAwesome");
-                fonts.AddFont("fa-brands-400.ttf", "FontAwesomeBrands");
-                fonts.AddFont("fa-regular-400.ttf", "FontAwesomeRegular");
-#endif
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
+                    fonts.AddFont("fa-brands-400.ttf", "FaBrands");
+                    fonts.AddFont("fa-regular-400.ttf", "FaRegular");
                 });
 
 #if DEBUG
