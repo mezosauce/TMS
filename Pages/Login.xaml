@@ -6,12 +6,13 @@
              x:Class="Time_Managmeent_System.Pages.LoginPage"
              Title="Login">
     <ScrollView>
-    <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="Center">
+    <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">
+        
         <Button 
             Style="{x:StaticResource FaBrandIconStyle}"
             Text="{x:Static models:SymbolCode.Moon}"
             FontFamily="FaSolid"
-            FontSize="50"
+            FontSize="20"
             TextColor="White"
             BackgroundColor="Transparent"
             Clicked="OnToggleDarkModeClicked"
