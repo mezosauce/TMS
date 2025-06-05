@@ -3,14 +3,15 @@ namespace Time_Managmeent_System.SUPABASE;
 
 public class UserData : ContentPage
 {
-	[Table("Employee")]
+	//[Table("Employee")]
 	class UserDataTable : BaseModel
 	{
 
-        [PrimaryKey("id")]
+      //  [PrimaryKey("id")]
         public int Id { get; set; }
 
     }
+		
         public UserData()
 	{
 		Content = new VerticalStackLayout
