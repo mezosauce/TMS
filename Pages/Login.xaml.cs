@@ -23,6 +23,8 @@ namespace Time_Managmeent_System.Pages
             _supabase = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
             _ = _supabase.InitializeAsync();
             _ = LoadUsersAsync();
+
+            Users.Add(new Employee { Username = "test", Position = "Tester", First = "Test", Last = "User" });
         }
 
         public ObservableCollection<Employee> Users { get; set; } = new();
@@ -52,16 +54,21 @@ namespace Time_Managmeent_System.Pages
 
         private async Task LoadUsersAsync()
         {
-            var result = await _supabase.From<Employee>().Get();
-
-            System.Diagnostics.Debug.WriteLine($"Result: {result}");
-            System.Diagnostics.Debug.WriteLine($"Models: {result.Models}");
-            
-
-            if (result.Models is IEnumerable<Employee> users)
+            try
             {
-                foreach (var user in users)
-                    Users.Add(user);
+                var result = await _supabase.From<Employee>().Get();
+                System.Diagnostics.Debug.WriteLine($"Result: {result}");
+                System.Diagnostics.Debug.WriteLine($"Models: {result.Models}");
+
+                if (result.Models is IEnumerable<Employee> users)
+                {
+                    foreach (var user in users)
+                        Users.Add(user);
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error loading users: {ex}");
             }
         }
 
