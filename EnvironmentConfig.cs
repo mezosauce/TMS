@@ -8,7 +8,7 @@ public static class EnvironmentConfig
     {
         _config = new ConfigurationBuilder()
             .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
-            .Build();
+            .Build();    
     }
 
     public static string SUPABASE_URL => _config["Supabase:Url"];

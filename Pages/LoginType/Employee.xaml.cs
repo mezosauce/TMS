@@ -13,8 +13,8 @@ public partial class Employee : ContentPage
 	{
 		InitializeComponent();
 
-        var SUPABASE_URL = Environment.GetEnvironmentVariable("SUPABASE_URL");
-        var SUPABASE_KEY = Environment.GetEnvironmentVariable("SUPABASE_KEY");
+        var SUPABASE_URL = EnvironmentConfig.SUPABASE_URL;
+        var SUPABASE_KEY = EnvironmentConfig.SUPABASE_KEY;
 
         var supabaseClient = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
         _ = supabaseClient.InitializeAsync();

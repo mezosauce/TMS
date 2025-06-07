@@ -61,6 +61,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <AndroidResource Remove="SUPABASE\**" />
+	  <Compile Remove="SUPABASE\**" />
+	  <EmbeddedResource Remove="SUPABASE\**" />
+	  <MauiCss Remove="SUPABASE\**" />
+	  <MauiXaml Remove="SUPABASE\**" />
+	  <None Remove="SUPABASE\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.5">
 		  <PrivateAssets>all</PrivateAssets>
 		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -74,11 +83,6 @@
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.70" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
 		<PackageReference Include="Supabase" Version="1.1.1" />
-		<PackageReference Include="supabase-csharp" Version="0.16.2" />
-		<PackageReference Include="Supabase.Core" Version="1.0.0" />
-		<PackageReference Include="Supabase.Functions" Version="2.1.0" />
-		<PackageReference Include="Supabase.Postgrest" Version="4.1.0" />
-		<PackageReference Include="Supabase.Realtime" Version="7.2.0" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -118,7 +122,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="SUPABASE\" />
+	  <None Update="appsettings.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
 	</ItemGroup>
 
 </Project>

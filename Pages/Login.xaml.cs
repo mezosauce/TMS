@@ -17,8 +17,8 @@ namespace Time_Managmeent_System.Pages
         {
             InitializeComponent();
 
-            var SUPABASE_URL = Environment.GetEnvironmentVariable("SUPABASE_URL");
-            var SUPABASE_KEY = Environment.GetEnvironmentVariable("SUPABASE_KEY");
+            var SUPABASE_URL = EnvironmentConfig.SUPABASE_URL;
+            var SUPABASE_KEY = EnvironmentConfig.SUPABASE_KEY;
 
             var supabaseClient = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
             _ = supabaseClient.InitializeAsync();
@@ -109,10 +109,5 @@ namespace Time_Managmeent_System.Pages
             }
         }
     }
-    // Update the EnvironmentConfig class to use properties instead of constants
-    public static class EnvironmentConfig
-    {
-        public static string SUPABASE_URL => Environment.GetEnvironmentVariable("SUPABASE_URL");
-        public static string SUPABASE_KEY => Environment.GetEnvironmentVariable("SUPABASE_KEY");
-    }
+ 
 }
