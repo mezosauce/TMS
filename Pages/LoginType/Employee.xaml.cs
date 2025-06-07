@@ -1,42 +1,32 @@
 namespace Time_Managmeent_System.Pages.LoginType;
-using Supabase;
 using Microsoft.Maui.Storage;
+using Supabase;
 using Supabase.Gotrue;
+using Time_Managmeent_System;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+using System.Collections.ObjectModel;
 
 public partial class Employee : ContentPage
 {
 	public Employee()
 	{
 		InitializeComponent();
-	}
+
+        var SUPABASE_URL = Environment.GetEnvironmentVariable("SUPABASE_URL");
+        var SUPABASE_KEY = Environment.GetEnvironmentVariable("SUPABASE_KEY");
+
+        var supabaseClient = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
+        _ = supabaseClient.InitializeAsync();
+    }
+
+
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
         // validate credentials and navigate to the admin dashboard
         // login logic has not been tested yet
         // hold email and password
-        string email = EmailEntry.Text;
-        string passsword = PasswordEntry.Text;
-
-        try
-        {
-            var session = await _supabase.Auth.SignIn(email: email, passsword: passsword);
-
-            // store tokens
-            await SecureStorage.SetAsync("access_token", session.AccessToken);
-            await SecureStorage.SetAsync("refresh_token", session.RefreshToken);
-
-            await DisplayAlert("Login", "Employee login successful!", "OK");
-            // navigate to the main page after login
-            await Navigation.PushAsync(new Dashboard.EmployeeDash());
-
-        }
-        catch (Exception ex)
-        {
-            {
-                await DisplayAlert("Login unsuccessful :(", ex.Message, "OK");
-            }
-
-        }
+        await DisplayAlert("Login", "Employee login successful!", "OK");
     }
 }

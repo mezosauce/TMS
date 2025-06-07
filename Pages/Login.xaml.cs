@@ -2,8 +2,7 @@ using Microsoft.Maui.Controls;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using System.Collections.ObjectModel;
-using Time_Managmeent_System.Pages.LoginType;
-using Time_Managmeent_System.SUPABASE;
+using Time_Managmeent_System;
 using static System.Net.WebRequestMethods;
 
 
@@ -35,20 +34,31 @@ namespace Time_Managmeent_System.Pages
             _ = LoadUsersAsync();
         }
 
+
+        public class Employee : BaseModel
+        {
+            [PrimaryKey("id", false)]
+            public int Id { get; set; }
+
+            [Column("Username")]
+            public string Username { get; set; }
+
+            [Column("Password")]
+            public string Password { get; set; }
+
+            [Column("Position")]
+            public string Position { get; set; }
+
+            [Column("First")]
+            public string First { get; set; }
+
+            [Column("Last")]
+            public string Last { get; set; }
+        }
+
         private async Task LoadUsersAsync()
         {
-            var result = await _supabase
-                .From<Employee>()
-                .Select(x => new
-                {
-                    Id = x.Id,
-                    Username = x.Username,
-                    Password = x.Password,
-                    Position = x.Position,
-                    First = x.First,
-                    Last = x.Last
-                })
-                .Get();
+            var result = await _supabase.From<Employee>().Get();
 
             if (result.Models is IEnumerable<Employee> users)
             {
