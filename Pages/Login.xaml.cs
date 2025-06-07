@@ -37,7 +37,7 @@ namespace Time_Managmeent_System.Pages
         public class Employee : BaseModel
         {
 
-            [PrimaryKey("id", true)]
+            [PrimaryKey("id", false)]
             public  int Id { get; set; }
             [Column("Username")]
             public  string Username { get; set; }
