@@ -6,41 +6,54 @@
              x:Class="Time_Managmeent_System.Pages.LoginPage"
              Title="Login">
     <ScrollView>
-    <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">
-        
-        <Button 
-            Style="{x:StaticResource FaBrandIconStyle}"
-            Text="{x:Static models:SymbolCode.Moon}"
-            FontFamily="FaSolid"
-            FontSize="20"
-            TextColor="White"
-            BackgroundColor="Transparent"
-            Clicked="OnToggleDarkModeClicked"
-            HorizontalOptions="End"
-        
-        />
-        <Label
-            Text="Welcome to Hour Base!"
-            FontSize="30"
-            HorizontalOptions="Center"
-            />
+        <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">
             
+            <Button 
+                Style="{x:StaticResource FaBrandIconStyle}"
+                Text="{x:Static models:SymbolCode.Moon}"
+                FontFamily="FaSolid"
+                FontSize="20"
+                TextColor="White"
+                BackgroundColor="Transparent"
+                Clicked="OnToggleDarkModeClicked"
+                HorizontalOptions="End"
+            />
             <Label
-               Style="{x:StaticResource FaBrandIconStyle}"
-               Text="{x:Static models:SymbolCode.Clock}" 
-               FontFamily="FaRegular" 
-               FontSize="150" 
-               HorizontalOptions="Center"
-             />
+                Text="Welcome to Hour Base!"
+                FontSize="30"
+                HorizontalOptions="Center"
+            />
+                
+            <Label
+                Style="{x:StaticResource FaBrandIconStyle}"
+                Text="{x:Static models:SymbolCode.Clock}" 
+                FontFamily="FaRegular" 
+                FontSize="150" 
+                HorizontalOptions="Center"
+            />
             <Label Text="Select Login Type" 
-               FontSize="24" 
-               HorizontalOptions="Center" />
+                FontSize="24" 
+                HorizontalOptions="Center" />
 
-        <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />
-        <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
-        <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />
-        <Button Text="Register" Clicked="OnRegisterClicked" />
-        
+            <!-- Ensure CollectionView has a fixed HeightRequest or set VerticalOptions to FillAndExpand -->
+            <CollectionView ItemsSource="{Binding Users}" HeightRequest="200" VerticalOptions="FillAndExpand">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout Padding="10">
+                            <Label Text="{Binding Username}" FontSize="16" />
+                            <Label Text="{Binding Position}" FontSize="14" />
+                            <Label Text="{Binding First}" FontSize="14" />
+                            <Label Text="{Binding Last}" FontSize="14" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />
+            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
+            <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />
+            <Button Text="Register" Clicked="OnRegisterClicked" />
+            
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
