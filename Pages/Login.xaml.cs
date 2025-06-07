@@ -21,35 +21,34 @@ namespace Time_Managmeent_System.Pages
             var SUPABASE_KEY = EnvironmentConfig.SUPABASE_KEY;
 
             _supabase = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
-            _ = _supabase.InitializeAsync();
-            _ = LoadUsersAsync();
+            InitializeAndLoad();
+        }
 
-            Users.Add(new Employee { Username = "test", Position = "Tester", First = "Test", Last = "User" });
+        private async void InitializeAndLoad()
+        {
+            await _supabase.InitializeAsync();
+            await LoadUsersAsync();
         }
 
         public ObservableCollection<Employee> Users { get; set; } = new();
 
+
+        [Table("Employee")]
         public class Employee : BaseModel
         {
-            [PrimaryKey("id", false)]
-            public int Id { get; set; }
 
-
-
+            [PrimaryKey("id", true)]
+            public  int Id { get; set; }
             [Column("Username")]
-            public string Username { get; set; }
-
+            public  string Username { get; set; }
             [Column("Password")]
-            public string Password { get; set; }
-
+            public  string Password { get; set; }
             [Column("Position")]
-            public string Position { get; set; }
-
+            public  string Position { get; set; }
             [Column("First")]
-            public string First { get; set; }
-
+            public  string First { get; set; }
             [Column("Last")]
-            public string Last { get; set; }
+            public  string Last { get; set; }
         }
 
         private async Task LoadUsersAsync()
