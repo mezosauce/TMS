@@ -5,40 +5,34 @@ using System.Collections.ObjectModel;
 using Time_Managmeent_System;
 using static System.Net.WebRequestMethods;
 
-
-
-
 namespace Time_Managmeent_System.Pages
 {
 
     public partial class LoginPage : ContentPage
     {
+        private readonly Supabase.Client _supabase;
+
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = this;
 
             var SUPABASE_URL = EnvironmentConfig.SUPABASE_URL;
             var SUPABASE_KEY = EnvironmentConfig.SUPABASE_KEY;
 
-            var supabaseClient = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
-            _ = supabaseClient.InitializeAsync();
-        }
-
-        public ObservableCollection<Employee> Users { get; set; } = new();
-
-        private readonly Supabase.Client _supabase;
-
-        public LoginPage(Supabase.Client supabase)
-        {
-            _supabase = supabase;
+            _supabase = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
+            _ = _supabase.InitializeAsync();
             _ = LoadUsersAsync();
         }
 
+        public ObservableCollection<Employee> Users { get; set; } = new();
 
         public class Employee : BaseModel
         {
             [PrimaryKey("id", false)]
             public int Id { get; set; }
+
+
 
             [Column("Username")]
             public string Username { get; set; }
@@ -59,6 +53,10 @@ namespace Time_Managmeent_System.Pages
         private async Task LoadUsersAsync()
         {
             var result = await _supabase.From<Employee>().Get();
+
+            System.Diagnostics.Debug.WriteLine($"Result: {result}");
+            System.Diagnostics.Debug.WriteLine($"Models: {result.Models}");
+            
 
             if (result.Models is IEnumerable<Employee> users)
             {
@@ -109,5 +107,4 @@ namespace Time_Managmeent_System.Pages
             }
         }
     }
- 
 }
