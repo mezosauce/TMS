@@ -4,7 +4,6 @@ using Supabase.Postgrest.Models;
 using System.Collections.ObjectModel;
 using Time_Managmeent_System;
 using static System.Net.WebRequestMethods;
-using Supabase;
 
 namespace Time_Managmeent_System.Pages
 {
@@ -16,9 +15,20 @@ namespace Time_Managmeent_System.Pages
         public LoginPage()
         {
             InitializeComponent();
-           
+            BindingContext = this;
+
+            var SUPABASE_URL = EnvironmentConfig.SUPABASE_URL;
+            var SUPABASE_KEY = EnvironmentConfig.SUPABASE_KEY;
+
+            _supabase = new Supabase.Client(SUPABASE_URL, SUPABASE_KEY);
+            InitializeAndLoad();
         }
 
+        private async void InitializeAndLoad()
+        {
+            await _supabase.InitializeAsync();
+            await LoadUsersAsync();
+        }
 
         public ObservableCollection<Employee> Users { get; set; } = new();
 
@@ -41,20 +51,23 @@ namespace Time_Managmeent_System.Pages
             public  string Last { get; set; }
         }
 
-        private async Task<List<Employee>> GetEmployeesAsync()
+        private async Task LoadUsersAsync()
         {
-
-            var response = await _supabase.From("employee").Get();
-
-            if (response.Status == 200)
+            try
             {
+                var result = await _supabase.From<Employee>().Get();
+                System.Diagnostics.Debug.WriteLine($"Result: {result}");
+                System.Diagnostics.Debug.WriteLine($"Models: {result.Models}");
 
-                return response.Models.ToList();
+                if (result.Models is IEnumerable<Employee> users)
+                {
+                    foreach (var user in users)
+                        Users.Add(user);
+                }
             }
-
-            else
+            catch (Exception ex)
             {
-                throw new Exception(response.Error.Message);
+                System.Diagnostics.Debug.WriteLine($"Error loading users: {ex}");
             }
         }
 
