@@ -20,7 +20,7 @@ namespace Time_Management_System
             builder.Services.AddSingleton<SupabaseService>();
 
             builder
-                .UseMauiApp<App>()
+                .UseMauiApp<Time_Managmeent_System.App>()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
