@@ -15,8 +15,7 @@ namespace Time_Management_System
             // Register Supabase client as a singleton
             builder.Services.AddSingleton<Supabase.Client>(provider => new Supabase.Client(url, key));
 
-            // Register a service that uses the Supabase client
-            builder.Services.AddSingleton<SupabaseService>();
+       
 
             builder
                 .UseMauiApp<Time_Managmeent_System.App>()
