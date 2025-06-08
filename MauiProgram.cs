@@ -1,10 +1,8 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Supabase;
-using Supabase.Interfaces;
 
-
-namespace Time_Managmeent_System
+namespace Time_Management_System
 {
     public static class MauiProgram
     {
@@ -12,12 +10,14 @@ namespace Time_Managmeent_System
         {
             var builder = MauiApp.CreateBuilder();
 
-
-
             var url = EnvironmentConfig.SUPABASE_URL;
             var key = EnvironmentConfig.SUPABASE_KEY;
 
-            builder.Services.AddSingleton(provider => new Supabase.Client(url, key));
+            // Register Supabase client as a singleton
+            builder.Services.AddSingleton<Supabase.Client>(provider => new Supabase.Client(url, key));
+
+            // Register a service that uses the Supabase client
+            builder.Services.AddSingleton<SupabaseService>();
 
             builder
                 .UseMauiApp<App>()
@@ -37,5 +37,4 @@ namespace Time_Managmeent_System
             return builder.Build(); // Ensure this return statement is present to fix CS0161
         }
     }
-
-    }
+}
