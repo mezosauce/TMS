@@ -35,8 +35,8 @@
                 FontSize="24" 
                 HorizontalOptions="Center" />
 
-            <!-- Ensure CollectionView has a fixed HeightRequest or set VerticalOptions to FillAndExpand -->
-            <CollectionView ItemsSource="{Binding Users}" HeightRequest="200">
+            <!-- Ensure CollectionView has a fixed or set VerticalOptions to FillAndExpand -->
+            <CollectionView ItemsSource="{Binding Employees}" HeightRequest="200">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <VerticalStackLayout Padding="10">

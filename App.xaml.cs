@@ -1,32 +1,34 @@
-﻿namespace Time_Managmeent_System
-{   
-    public partial class App : Application
+﻿using Time_Managmeent_System.Pages;
+using Time_Managmeent_System.ViewModels;
+namespace Time_Managmeent_System;
+
+public partial class App : Application
+{
+    private readonly EmployeesListingViewModel _employeesListingViewModel;
+
+    public App(EmployeesListingViewModel employeesListingViewModel)
     {
-        public App()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        _employeesListingViewModel = employeesListingViewModel;
+    }
 
-        protected override Window CreateWindow(IActivationState? activationState)
-        {
-            // Set the root page of the application in the CreateWindow method
-            var window = new Window(new NavigationPage(new Pages.LoginPage()));
-            return window;
-        }
+    protected override Window CreateWindow(IActivationState? activationState)
+    {
+        // Pass the required parameter to the LoginPage constructor  
+        var window = new Window(new NavigationPage(new Pages.LoginPage(_employeesListingViewModel)));
+        return window;
+    }
 
-        public void ToggleTheme()
+    public void ToggleTheme()
+    {
+        // Toggle between Light and Dark mode  
+        if (App.Current.UserAppTheme == AppTheme.Dark)
         {
-            // Toggle between Light and Dark mode
-            if (App.Current.UserAppTheme == AppTheme.Dark)
-            {
-                App.Current.UserAppTheme = AppTheme.Light;
-            }
-            else
-            {
-                App.Current.UserAppTheme = AppTheme.Dark;
-            }
+            App.Current.UserAppTheme = AppTheme.Light;
         }
-
-      
+        else
+        {
+            App.Current.UserAppTheme = AppTheme.Dark;
+        }
     }
 }

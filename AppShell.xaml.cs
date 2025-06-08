@@ -1,10 +1,12 @@
-﻿namespace Time_Managmeent_System
+﻿using Time_Managmeent_System.Pages;
+namespace Time_Managmeent_System;
+
+public partial class AppShell : Shell
 {
-    public partial class AppShell : Shell
+    public AppShell()
     {
-        public AppShell()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+               
     }
+
 }
