@@ -9,4 +9,7 @@ namespace Time_Managmeent_System.Services;
     public interface IDataService
     {
     Task<IEnumerable<Employee>> GetEmployees();
+    Task CreateEmployee(Employee employee);
+    Task DeleteEmployee(int id);
+    Task UpdateEmployees(Employee employee);
     }

@@ -20,7 +20,25 @@ namespace Time_Managmeent_System.Services;
         {
             var response = await _supabaseClient.From<Employee>().Get();
             return response.Models.OrderByDescending(b => b.Id);
+        }
+
+
+        public async Task CreateEmployee(Employee employee)
+       {
+        await _supabaseClient.From<Employee>().Insert(employee);
+        }
+
+        public async Task DeleteEmployee(int id)
+    {
+        await _supabaseClient.From<Employee>().Where(b => b.Id == id).Delete();
     }
+        public async Task UpdateEmployee(Employee employee)
+        {
+        await _supabaseClient.From<Employee>().Where(b => b.Id == employee.Id)
+        .Set(b => b.Username, employee.Username)
+        .Set
+
+        }
 }
 
 
