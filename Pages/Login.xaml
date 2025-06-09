@@ -65,13 +65,16 @@
                     <DataTemplate x:DataType="model:Employee">  
                         
                         <VerticalStackLayout Padding="10">
+                            <!--NEED TO ADD UPDATE EMPLOYEES COMMAND-->
                             <Button
                      
-                                        BackgroundColor="#4A88DA"
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EmployeesListingViewModel}}, Path= GetEmployeesCommand}"
-                                        CommandParameter="{Binding .}"
-                                        Text="Update"
-                                        TextColor="#eff5f3" />
+                                    BackgroundColor="#4A88DA"
+                                
+                                
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EmployeesListingViewModel}}}"
+                                    CommandParameter="{Binding .}"
+                                    Text="Update"
+                                    TextColor="#eff5f3" />
                             
                             <Label Text="{Binding Id}" FontSize="16" />  
                             <Label Text="{Binding Username}" FontSize="16" />  
