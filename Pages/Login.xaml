@@ -1,61 +1,92 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"
-             x:Class="Time_Managmeent_System.Pages.LoginPage"
-             Title="Login">
-    <ScrollView>
-        <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">
-            
-            <Button 
-                Style="{x:StaticResource FaBrandIconStyle}"
-                Text="{x:Static models:SymbolCode.Moon}"
-                FontFamily="FaSolid"
-                FontSize="20"
-                TextColor="White"
-                BackgroundColor="Transparent"
-                Clicked="OnToggleDarkModeClicked"
-                HorizontalOptions="End"
-            />
-            <Label
-                Text="Welcome to Hour Base!"
-                FontSize="30"
-                HorizontalOptions="Center"
-            />
-                
-            <Label
-                Style="{x:StaticResource FaBrandIconStyle}"
-                Text="{x:Static models:SymbolCode.Clock}" 
-                FontFamily="FaRegular" 
-                FontSize="150" 
-                HorizontalOptions="Center"
-            />
-            <Label Text="Select Login Type" 
-                FontSize="24" 
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"  
+             xmlns:model="clr-namespace:Time_Managmeent_System.Models"  
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+             xmlns:viewmodel="clr-namespace:Time_Managmeent_System.ViewModels"  
+             x:Class="Time_Managmeent_System.Pages.LoginPage"  
+             x:DataType="viewmodel:EmployeesListingViewModel"  
+             Title="Login">  
+
+    <ContentPage.Resources>  
+        <toolkit:BoolToObjectConverter  
+            x:Key="BoolToObjectConverter"  
+            TrueObject="TRUE"  
+            FalseObject="FALSE" />  
+    </ContentPage.Resources>  
+
+    <ContentPage.Behaviors>  
+        <toolkit:EventToCommandBehavior Command="{Binding GetEmployeesCommand}" EventName="Appearing" />  
+    </ContentPage.Behaviors>  
+    
+
+    <ScrollView>  
+        <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">  
+
+            <Button   
+                Style="{x:StaticResource FaBrandIconStyle}"  
+                Text="{x:Static models:SymbolCode.Moon}"  
+                FontFamily="FaSolid"  
+                FontSize="20"  
+                TextColor="White"  
+                BackgroundColor="Transparent"  
+                Clicked="OnToggleDarkModeClicked"  
+                HorizontalOptions="End"  
+            />  
+            <Label  
+                Text="Welcome to Hour Base!"  
+                FontSize="30"  
+                HorizontalOptions="Center"  
+            />  
+
+            <Label  
+                Style="{x:StaticResource FaBrandIconStyle}"  
+                Text="{x:Static models:SymbolCode.Clock}"   
+                FontFamily="FaRegular"   
+                FontSize="150"   
+                HorizontalOptions="Center"  
+            />  
+            <Label Text="Select Login Type"   
+                FontSize="24"   
                 HorizontalOptions="Center" />
 
-            <!-- Ensure CollectionView has a fixed or set VerticalOptions to FillAndExpand -->
-            <CollectionView ItemsSource="{Binding Employees}" HeightRequest="200">
-                <CollectionView.ItemTemplate>
-                    <DataTemplate>
-                        <VerticalStackLayout Padding="10">
-                            <Label Text="{Binding Id}" FontSize="16" />
-                            <Label Text="{Binding Username}" FontSize="16" />
-                            <Label Text="{Binding Password}" FontSize="16" />
-                            <Label Text="{Binding Position}" FontSize="14" />
-                            <Label Text="{Binding First}" FontSize="14" />
-                            <Label Text="{Binding Last}" FontSize="14" />
-                        </VerticalStackLayout>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-
-            <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />
-            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
-            <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />
-            <Button Text="Register" Clicked="OnRegisterClicked" />
             
-        </VerticalStackLayout>
-    </ScrollView>
+            
+            <CollectionView ItemsSource="{Binding Employees}" >
+
+                
+
+                <CollectionView.ItemTemplate>  
+                    
+                    <DataTemplate x:DataType="model:Employee">  
+                        
+                        <VerticalStackLayout Padding="10">
+                            <Button
+                     
+                                        BackgroundColor="#4A88DA"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EmployeesListingViewModel}}, Path= GetEmployeesCommand}"
+                                        CommandParameter="{Binding .}"
+                                        Text="Update"
+                                        TextColor="#eff5f3" />
+                            
+                            <Label Text="{Binding Id}" FontSize="16" />  
+                            <Label Text="{Binding Username}" FontSize="16" />  
+                            <Label Text="{Binding Password}" FontSize="16" />  
+                            <Label Text="{Binding Position}" FontSize="14" />  
+                            <Label Text="{Binding First}" FontSize="14" />  
+                            <Label Text="{Binding Last}" FontSize="14" />  
+                        </VerticalStackLayout>  
+                    </DataTemplate>  
+                </CollectionView.ItemTemplate>  
+            </CollectionView>  
+
+            <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />  
+            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
+            <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />  
+            <Button Text="Register" Clicked="OnRegisterClicked" />  
+
+        </VerticalStackLayout>  
+    </ScrollView>  
 </ContentPage>

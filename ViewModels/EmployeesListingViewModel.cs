@@ -12,11 +12,10 @@ using System.Collections.ObjectModel;
 namespace Time_Managmeent_System.ViewModels;
 public partial class EmployeesListingViewModel : ObservableObject
 {
+    private readonly IDataService _dataService;
     public ObservableCollection<Employee> Employees { get; set; } = new();
 
-    private readonly IDataService _dataService;
-   
-
+    
     public EmployeesListingViewModel(IDataService dataService)
     {
         _dataService = dataService;

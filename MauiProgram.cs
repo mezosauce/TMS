@@ -2,13 +2,12 @@
 using Supabase;
 using Supabase.Postgrest.Attributes;
 using CommunityToolkit.Maui;
-using Time_Managmeent_System;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.ViewModels;
 using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
 
-namespace Time_Management_System;
+namespace Time_Managmeent_System;
 
 public static class MauiProgram
 {
@@ -29,6 +28,7 @@ public static class MauiProgram
             });
 
         //Configure Supabase
+
         var url = AppConfig.SUPABASE_URL;
         var key = AppConfig.SUPABASE_KEY;
         builder.Services.AddSingleton(provider => new Supabase.Client(url, key));

@@ -1,26 +1,17 @@
-using Microsoft.Maui.Controls;
-using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
-using System.Collections.ObjectModel;
-using Time_Managmeent_System;
-using static System.Net.WebRequestMethods;
-using Supabase;
 using Time_Managmeent_System.ViewModels;
-using Time_Managmeent_System.Pages;
+
+
 namespace Time_Managmeent_System.Pages;
 
 
 public partial class LoginPage : ContentPage
 {
-    private readonly Supabase.Client _supabase;
 
     public LoginPage(EmployeesListingViewModel employeesListingViewModel)
     {
         InitializeComponent();
         BindingContext = employeesListingViewModel;
 
-        // Fetch employees when the page is created
-        Loaded += async (s, e) => await employeesListingViewModel.GetEmployees();
     }
 
 
