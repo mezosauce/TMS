@@ -56,7 +56,9 @@
             
             <CollectionView ItemsSource="{Binding Employees}" >
 
-                
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
 
                 <CollectionView.ItemTemplate>  
                     
