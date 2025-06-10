@@ -36,7 +36,11 @@ namespace Time_Managmeent_System.Services;
         {
         await _supabaseClient.From<Employee>().Where(b => b.Id == employee.Id)
         .Set(b => b.Username, employee.Username)
-        .Set
+        .Set(b => b.Password, employee.Password)
+        .Set(b => b.Position, employee.Position)
+        .Set(b => b.First, employee.First)
+        .Set(b => b.Last, employee.Last)
+        .Update();
 
         }
 }

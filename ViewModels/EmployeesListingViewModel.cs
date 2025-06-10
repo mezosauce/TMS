@@ -44,4 +44,33 @@ public partial class EmployeesListingViewModel : ObservableObject
         }
 
     }
+
+    [RelayCommand]
+    private async Task AddEmployee() => await Shell.Current.GoToAsync("AddEmployeePage");
+
+    [RelayCommand]
+    private async Task DeleteEmployee(Employee employee)
+    {
+        var result = await Shell.Current.DisplayAlert("Delete", $"Are you sure you want to delete \"{employee.First}\"?", "Yes", "No");
+
+        if (result is true)
+        {
+            try
+            {
+                await _dataService.DeleteEmployee(employee.Id);
+                await GetEmployees();
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("Error", ex.Message, "OK");
+            }
+        }
+    }
+
+
+    [RelayCommand]
+    private async Task UpdateEmployee(Employee employee) => await Shell.Current.GoToAsync("UpdateEmployeePage", true, new Dictionary<string, object>
+    {
+        { "Employee", employee }
+    });
 }
