@@ -10,19 +10,18 @@
              x:DataType="viewmodel:EmployeesListingViewModel"  
              Title="Login">  
 
-    <ContentPage.Resources>  
-        <toolkit:BoolToObjectConverter  
-            x:Key="BoolToObjectConverter"  
-            TrueObject="TRUE"  
-            FalseObject="FALSE" />  
-    </ContentPage.Resources>  
+
 
     <ContentPage.Behaviors>  
         <toolkit:EventToCommandBehavior Command="{Binding GetEmployeesCommand}" EventName="Appearing" />  
-    </ContentPage.Behaviors>  
-    
+    </ContentPage.Behaviors>
 
-    <ScrollView>  
+    <Grid
+        Margin="20"
+        RowDefinitions="Auto,*"
+        RowSpacing="10">
+        
+        <ScrollView>  
         <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">  
 
             <Button   
@@ -65,13 +64,9 @@
                     <DataTemplate x:DataType="model:Employee">  
                         
                         <VerticalStackLayout Padding="10">
-                            <!--NEED TO ADD UPDATE EMPLOYEES COMMAND-->
                             <Button
-                     
                                     BackgroundColor="#4A88DA"
-                                
-                                
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EmployeesListingViewModel}}}"
+                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EmployeesListingViewModel}}, Path= UpdateEmployeeCommand}"
                                     CommandParameter="{Binding .}"
                                     Text="Update"
                                     TextColor="#eff5f3" />
@@ -83,15 +78,17 @@
                             <Label Text="{Binding First}" FontSize="14" />  
                             <Label Text="{Binding Last}" FontSize="14" />  
                         </VerticalStackLayout>  
-                    </DataTemplate>  
+                    </DataTemplate>
+                    
                 </CollectionView.ItemTemplate>  
             </CollectionView>  
-
+        
             <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />  
             <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
             <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />  
             <Button Text="Register" Clicked="OnRegisterClicked" />  
 
         </VerticalStackLayout>  
-    </ScrollView>  
+    </ScrollView>
+    </Grid>
 </ContentPage>

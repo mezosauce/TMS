@@ -46,6 +46,10 @@ public partial class AddEmployeeViewModel : ObservableObject
 
                 await Shell.Current.GoToAsync("Success");
             }
+            else
+            {
+                await Shell.Current.DisplayAlert("Error", "No title!", "OK");
+            }
 
         }
         catch (Exception ex)
