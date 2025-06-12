@@ -4,7 +4,7 @@
 //
 //  Created by Evan Heidenreich on 6/1/25.
 //
-
+import Supabase
 import SwiftUI
 import SwiftData
 
@@ -22,11 +22,26 @@ struct TMSApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
+    
+    @StateObject var auth = AuthViewModels()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            WelcomeView()
+                .environmentObject(auth)
+        }
+    }
+/*
+    @State private var isLoggedIn = false
+    var body: some Scene {
+        WindowGroup {
+            if isLoggedIn {
+                ContentView()
+            }else{
+                LoginView(isLoggedIn: $isLoggedIn)
+            }
         }
         .modelContainer(sharedModelContainer)
-    }
+    }*/
 }
+
