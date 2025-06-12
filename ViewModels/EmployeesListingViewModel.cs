@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -69,8 +65,8 @@ public partial class EmployeesListingViewModel : ObservableObject
 
 
     [RelayCommand]
-    private async Task UpdateEmployee(Employee employee) => await Shell.Current.GoToAsync("UpdateEmployeePage", true, new Dictionary<string, object>
+    private async Task UpdateEmployee(Employee employee) => await Shell.Current.GoToAsync("UpdateEmployeePage", new Dictionary<string, object>
     {
-        { "Employee", employee }
+        { "EmployeeObject", employee }
     });
 }
