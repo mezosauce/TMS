@@ -37,9 +37,13 @@ public static class MauiProgram
         //Add ViewModels
 
         builder.Services.AddSingleton<EmployeesListingViewModel>();
+        builder.Services.AddTransient<AddEmployeeViewModel>();
+        builder.Services.AddTransient<UpdateEmployeeViewModel>();
 
         //Add Pages
         builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddTransient<AddEmployeePage>();
+        builder.Services.AddTransient<UpdateEmployeePage>();
 
         //Data Service
         builder.Services.AddSingleton<IDataService, DataService>();

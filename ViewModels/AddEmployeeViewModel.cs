@@ -15,15 +15,15 @@ public partial class AddEmployeeViewModel : ObservableObject
     private readonly IDataService _dataService;
 
     [ObservableProperty]
-    private string _Username;
+    private string _EmployeeUsername;
     [ObservableProperty]
-    private string _Password;
+    private string _EmployeePassword;
     [ObservableProperty]
-    private string _Position;
+    private string _EmployeePosition;
     [ObservableProperty]
-    private string _First;
+    private string _EmployeeFirst;
     [ObservableProperty]
-    private string _Last;
+    private string _EmployeeLast;
 
 
     public AddEmployeeViewModel(IDataService dataService)
@@ -36,15 +36,15 @@ public partial class AddEmployeeViewModel : ObservableObject
     {
         try
         {
-            if (!string.IsNullOrEmpty(Username))
+            if (!string.IsNullOrEmpty(EmployeeUsername))
             {
                 Employee employee = new()
                 {
-                    Username = Username,
-                    Password = Password,
-                    Position = Position,
-                    First = First,
-                    Last = Last
+                    Username = EmployeeUsername,
+                    Password = EmployeePassword,
+                    Position = EmployeePosition,
+                    First = EmployeeFirst,
+                    Last = EmployeeLast
                 };
                 await _dataService.CreateEmployee(employee);
 
