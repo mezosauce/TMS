@@ -4,6 +4,7 @@ using Time_Managmeent_System.Services;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
+using Microsoft.Maui.Controls.Platform;
 
 namespace Time_Managmeent_System.ViewModels;
 public partial class EmployeesListingViewModel : ObservableObject
@@ -14,11 +15,14 @@ public partial class EmployeesListingViewModel : ObservableObject
     
     public EmployeesListingViewModel(IDataService dataService)
     {
+        //Time Management service
         _dataService = dataService;
+
     }
 
     [RelayCommand]
     public async Task GetEmployees()
+
     {
         Employees.Clear();
 
@@ -55,7 +59,7 @@ public partial class EmployeesListingViewModel : ObservableObject
             try
             {
                 await _dataService.DeleteEmployee(employee.Id);
-                await GetEmployees();
+                //await GetEmployees();
             }
             catch (Exception ex)
             {

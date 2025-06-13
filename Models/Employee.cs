@@ -8,7 +8,7 @@ namespace Time_Managmeent_System.Models;
 public class Employee : BaseModel
 {
 
-    [PrimaryKey("id", false)]
+    [PrimaryKey("id")]
     public int Id { get; set; }
 
     [Column("Username")]
