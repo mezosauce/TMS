@@ -1,18 +1,14 @@
 using Time_Managmeent_System.ViewModels;
 
-
-namespace Time_Managmeent_System.Pages;
-
-
-public partial class LoginPage : ContentPage
+namespace Time_Managmeent_System.Pages
 {
-
-    public LoginPage(EmployeesListingViewModel employeesListingViewModel)
+    public partial class LoginPage : ContentPage
     {
-        InitializeComponent();
-        BindingContext = employeesListingViewModel;
 
-    }
+        public LoginPage()
+        {
+            InitializeComponent();
+        }
 
 
 

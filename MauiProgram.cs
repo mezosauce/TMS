@@ -7,13 +7,27 @@ using Time_Managmeent_System.ViewModels;
 using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
 
-namespace Time_Managmeent_System;
 
-public static class MauiProgram
+namespace Time_Managmeent_System
 {
-    public static MauiApp CreateMauiApp()
+    public static class MauiProgram
     {
-        var builder = MauiApp.CreateBuilder();
+        public static MauiApp CreateMauiApp()
+        {
+            var builder = MauiApp.CreateBuilder();
+            //hard code them for now and then later move it to a .json config or secret file
+
+            var url = Environment.GetEnvironmentVariable("SUPABASE_URL");
+            var key = Environment.GetEnvironmentVariable("SUPABASE_KEY");
+            var options = new SupabaseOptions
+            {
+                AutoRefreshToken = true,
+                AutoConnectRealtime = true,
+                // SessionHandler = new SupabaseSessionHandler() <-- This must be implemented by the developer
+            };
+            
+            // Note the creation as a singleton.
+            builder.Services.AddSingleton(provider => new Supabase.Client(url, key, options));
 
         builder.UseMauiApp<App>()
             .UseMauiCommunityToolkit()
