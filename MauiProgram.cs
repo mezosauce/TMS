@@ -6,12 +6,13 @@ using Time_Managmeent_System.Models;
 using Time_Managmeent_System.ViewModels;
 using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
+using System.Threading.Tasks;
 
 namespace Time_Managmeent_System;
 
 public static class MauiProgram
 {
-    public static MauiApp CreateMauiApp()
+    public static async Task<MauiApp> CreateMauiApp()
     {
         var builder = MauiApp.CreateBuilder();
 
@@ -31,7 +32,9 @@ public static class MauiProgram
 
         var url = AppConfig.SUPABASE_URL;
         var key = AppConfig.SUPABASE_KEY;
+
         builder.Services.AddSingleton(provider => new Supabase.Client(url, key));
+      
 
 
         //Add ViewModels
