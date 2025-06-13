@@ -15,6 +15,7 @@
             HorizontalOptions="Center" />
 
         <Entry 
+            x:Name="EmailEntry"
             Placeholder="Username"
             WidthRequest="250" 
             x:Name = "EmailEntry"
@@ -22,6 +23,7 @@
         
 
         <Entry
+            x:Name="PasswordEntry"
             Placeholder="Password"
             IsPassword="True"
             WidthRequest="250" 
