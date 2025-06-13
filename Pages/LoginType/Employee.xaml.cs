@@ -20,7 +20,7 @@ public partial class Employee : ContentPage
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        // validate credentials and navigate to the admin dashboard
+        // validate credentials and navigate to the employee dashboard
         // login logic has not been tested yet
         // hold email and password
         string email = EmailEntry.Text;
