@@ -35,13 +35,7 @@ public static class MauiProgram
         var url = AppConfig.SUPABASE_URL;
         var key = AppConfig.SUPABASE_KEY;
 
-        var client = new Supabase.Client(url, key);
-
-        await client.InitializeAsync();
-
-        builder.Services.AddSingleton(client);
-  
-        //builder.Services.AddKeyedSingleton<Supabase.Client>(provider => new Supabase.Client(url, key));
+        builder.Services.AddSingleton(provider => new Supabase.Client(url, key));
         
         //Add ViewModels
 

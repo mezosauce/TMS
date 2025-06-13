@@ -7,14 +7,13 @@ namespace Time_Managmeent_System.Pages;
 public partial class LoginPage : ContentPage
 {
 
-    //private readonly Supabase.Client _supabase;
+    private readonly Supabase.Client _supabase;
 
-    public LoginPage(EmployeesListingViewModel employeesListingViewModel)
+    public LoginPage(Supabase.Client supabase)
     {
         InitializeComponent();
-        BindingContext = employeesListingViewModel;
-        //_supabase = supabase;
-        //_ = _supabase.InitializeAsync(); // Optional: only if not initialized in MauiProgram
+        _supabase = supabase;
+        _ = _supabase.InitializeAsync(); // Optional: only if not initialized in MauiProgram
     }
 
 

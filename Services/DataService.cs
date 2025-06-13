@@ -15,8 +15,7 @@ namespace Time_Managmeent_System.Services;
         public async Task<IEnumerable<Employee>> GetEmployees()
         {
             var response = await _supabaseClient.From<Employee>().Get();
-        //Figure why the values are not being display        
-        return response.Models;
+            return response.Models.OrderByDescending(b => b.Id);
         }
 
 

@@ -5,7 +5,10 @@
              xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"  
              xmlns:model="clr-namespace:Time_Managmeent_System.Models"  
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
+<<<<<<< HEAD
              xmlns:system="clr-namespace:System;assembly=mscorlib"
+=======
+>>>>>>> parent of 0e0660f (Ws in the shat)
              xmlns:viewmodel="clr-namespace:Time_Managmeent_System.ViewModels"  
              x:Class="Time_Managmeent_System.Pages.LoginPage"  
              x:DataType="viewmodel:EmployeesListingViewModel"  
@@ -84,19 +87,8 @@
                 </CollectionView.ItemTemplate>  
             </CollectionView>  
         
-            <!--<Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />  -->
-                <Button Text="Employee Login" x:Name ="MyButton">
-                    <Button.Behaviors>
-                        <toolkit:EventToCommandBehavior
-
-                        x:TypeArguments="system:EventArgs"
-                        EventName="Clicked"
-                        BindingContext="{Binding Path=BindingContext, Source={x:Reference MyButton}, x:DataType=Button}"
-                        Command="{Binding GetEmployeesCommand}" />
-                    </Button.Behaviors>
-                </Button>
-
-                <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
+            <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />  
+            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
             <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />  
             <Button Text="Register" Clicked="OnRegisterClicked" />  
 

@@ -19,11 +19,7 @@ namespace Time_Managmeent_System.WinUI
             this.InitializeComponent();
         }
 
-        protected override MauiApp CreateMauiApp()
-        {
-            // Await the Task and return the result
-            return MauiProgram.CreateMauiApp().GetAwaiter().GetResult();
-        }
+        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
     }
 
 }
