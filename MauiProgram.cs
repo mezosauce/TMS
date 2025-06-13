@@ -28,21 +28,21 @@ public static class MauiProgram
                 fonts.AddFont("fa-solid-900.ttf", "FaSolid");
             });
 
+
+
         //Configure Supabase
 
         var url = AppConfig.SUPABASE_URL;
         var key = AppConfig.SUPABASE_KEY;
 
         builder.Services.AddSingleton(provider => new Supabase.Client(url, key));
-      
-
-
+        
         //Add ViewModels
 
         builder.Services.AddSingleton<EmployeesListingViewModel>();
         builder.Services.AddTransient<AddEmployeeViewModel>();
         builder.Services.AddTransient<UpdateEmployeeViewModel>();
-
+        
         //Add Pages
         builder.Services.AddSingleton<LoginPage>();
         builder.Services.AddTransient<AddEmployeePage>();
@@ -58,4 +58,5 @@ public static class MauiProgram
 
         return builder.Build(); // Ensure this return statement is present to fix CS0161
     }
+
 }
