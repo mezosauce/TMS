@@ -44,6 +44,7 @@ public partial class EmployeesListingViewModel : ObservableObject
     [RelayCommand]
     private async Task AddEmployee() => await Shell.Current.GoToAsync("AddEmployeePage");
 
+
     [RelayCommand]
     private async Task DeleteEmployee(Employee employee)
     {
