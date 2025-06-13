@@ -3,17 +3,17 @@ using CommunityToolkit.Mvvm.Input;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
 
-
 namespace Time_Managmeent_System.ViewModels;
 
+[ObservableObject]
 
 [QueryProperty(nameof(Employee), "EmployeeObject")]
-public partial class UpdateEmployeeViewModel : ObservableObject
+public partial class UpdateEmployeeViewModel
 {
     private readonly IDataService _dataService;
 
     [ObservableProperty]
-    private Employee _employee;  
+    private Employee _employee; // Fix for IDE0044: Add readonly modifier  
 
     public UpdateEmployeeViewModel(IDataService dataService)
     {

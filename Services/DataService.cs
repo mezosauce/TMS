@@ -12,7 +12,7 @@ namespace Time_Managmeent_System.Services;
         {
             _supabaseClient = supabaseClient;
         }
-        public async Task<IEnumerable<Employee>>GetEmployees()
+        public async Task<IEnumerable<Employee>> GetEmployees()
         {
             var response = await _supabaseClient.From<Employee>().Get();
         //Figure why the values are not being display        
