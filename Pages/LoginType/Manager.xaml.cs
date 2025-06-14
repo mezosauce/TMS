@@ -10,20 +10,19 @@ using Time_Managmeent_System;
 
 public partial class Manager : ContentPage
 {
-	public Manager(Supabase.Client supabase)
+    public Manager()
     {
         InitializeComponent();
-        _supabase = supabase;
     }
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
         await DisplayAlert("Login", "Manager login successful!", "OK");
         await Navigation.PushAsync(new Dashboard.ManagerDash()); // Navigate to the main page after login
-        // validate credentials and navigate to the manager dashboard
-        // login logic has not been tested yet
-        // hold email and password
-        // commented out until it can be properly tested
+                                                                 // validate credentials and navigate to the manager dashboard
+                                                                 // login logic has not been tested yet
+                                                                 // hold email and password
+                                                                 // commented out until it can be properly tested
         /*
         string email = EmailEntry.Text;
         string passsword = PasswordEntry.Text;
@@ -48,7 +47,7 @@ public partial class Manager : ContentPage
             }
 
         }
+        
         */
     }
-
 }

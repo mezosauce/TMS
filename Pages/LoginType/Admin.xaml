@@ -17,12 +17,15 @@
 
         <Entry 
             Placeholder="Username"
-            WidthRequest="250" />
+            WidthRequest="250" 
+            x:Name="UsernameEntry"/>
 
         <Entry
             Placeholder="Password"
             IsPassword="True"
-            WidthRequest="250" />
+            WidthRequest="250" 
+            x:Name="PasswordEntry"
+            />
         <Button
             Text="Login"
             WidthRequest="250"

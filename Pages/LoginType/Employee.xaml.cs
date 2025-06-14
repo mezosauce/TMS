@@ -9,13 +9,11 @@ using System.Collections.ObjectModel;
 
 public partial class Employee : ContentPage
 {
-    //private readonly Supabase.Client _supabase;
-    private Supabase.Client _supabase;
 
-    public Employee(Supabase.Client supabase)
+    public Employee()
     {
         InitializeComponent();
-        _supabase = supabase;
+        
     }
 
     private async void OnLoginClicked(object sender, EventArgs e)
@@ -23,12 +21,14 @@ public partial class Employee : ContentPage
         // validate credentials and navigate to the employee dashboard
         // login logic has not been tested yet
         // hold email and password
+
+        /*
         string email = EmailEntry.Text;
         string passsword = PasswordEntry.Text;
 
         try
         {
-            var session = await _supabase.Auth.SignIn(email: email, passsword: passsword);
+            var session = await _supabase.Auth.SignIn(email: email, password: passsword);
 
             // store tokens
             await SecureStorage.SetAsync("access_token", session.AccessToken);
@@ -47,4 +47,8 @@ public partial class Employee : ContentPage
 
         }
     }
-}
+        */
+        await DisplayAlert("Login", "Employee login successful!", "OK");
+        await Navigation.PushAsync(new Dashboard.EmployeeDash()); // Navigate to the main page after login
+    }
+    }

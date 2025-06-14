@@ -10,17 +10,16 @@ using Time_Managmeent_System;
 
 public partial class Admin : ContentPage
 {
-	public Admin(Supabase.Client supabase)
+	public Admin()
 	{
 		InitializeComponent();
-		_supabase = supabase;
+		
 	}
 
     private async void OnLoginClicked(object sender, EventArgs e)
 	{
-        // validate credentials and navigate to the Admin dashboard
-        // login logic has not been tested yet
-        // hold email and password
+
+        /*
         string email = EmailEntry.Text;
         string passsword = PasswordEntry.Text;
 
@@ -44,5 +43,9 @@ public partial class Admin : ContentPage
             }
 
         }
+        */
+        await DisplayAlert("Login", "Employee login successful!", "OK");
+        await Navigation.PushAsync(new Dashboard.AdminDash());
     }
+   
 }
