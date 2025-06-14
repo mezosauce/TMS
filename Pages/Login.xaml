@@ -16,13 +16,13 @@
     <ContentPage.Behaviors>  
         <toolkit:EventToCommandBehavior Command="{Binding GetEmployeesCommand}" EventName="Appearing" />  
     </ContentPage.Behaviors>
-
-    <Grid
+    <ScrollView>
+        <Grid
         Margin="20"
         RowDefinitions="Auto,*"
         RowSpacing="10">
         
-        <ScrollView>  
+        
         <VerticalStackLayout Padding="0" Spacing="20" VerticalOptions="Center">  
 
             <Button   
@@ -65,12 +65,7 @@
                     <DataTemplate x:DataType="model:Employee">  
                         
                         <VerticalStackLayout Padding="10">
-                            <Button
-                                    BackgroundColor="#4A88DA"
-                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:EmployeesListingViewModel}}, Path= UpdateEmployeeCommand}"
-                                    CommandParameter="{Binding .}"
-                                    Text="Update"
-                                    TextColor="#eff5f3" />
+                          
                             
                             <Label Text="{Binding Id}" FontSize="16" />  
                             <Label Text="{Binding Username}" FontSize="16" />  
@@ -102,6 +97,7 @@
             <Button Text="Register" Clicked="OnRegisterClicked" />  
 
         </VerticalStackLayout>  
-    </ScrollView>
+    
     </Grid>
+    </ScrollView>
 </ContentPage>
