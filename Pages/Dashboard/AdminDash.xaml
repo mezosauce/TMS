@@ -20,12 +20,12 @@
                 <VerticalStackLayout
                     Padding="10, 50, 10, 60" >
                     <Label
-                Style="{x:StaticResource FaBrandIconStyle}"
-                Text="{x:Static models:SymbolCode.User}"
-                FontFamily="FaSolid"
-                FontSize="40"
-                HorizontalOptions="Center" 
-                VerticalOptions="Start"
+                        Style="{x:StaticResource FaBrandIconStyle}"
+                        Text="{x:Static models:SymbolCode.User}"
+                        FontFamily="FaSolid"
+                        FontSize="40"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Start"
                     />
                 
                 <Label

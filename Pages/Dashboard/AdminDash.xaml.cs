@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using Time_Management_System.Pages;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
@@ -80,5 +81,10 @@ public partial class AdminDash : ContentPage
             }
             await Task.Delay(3000, token); // Update every 3 seconds
         }
+    }
+
+    private async void OnWorkerScheduleClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CalendarPage());
     }
 }

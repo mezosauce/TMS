@@ -1,5 +1,6 @@
 ﻿using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.ViewModels;
+
 namespace Time_Managmeent_System;
 
 public partial class App : Application
@@ -31,21 +32,15 @@ public partial class App : Application
             App.Current.UserAppTheme = AppTheme.Dark;
         }
     }
-
-
-
-    namespace Time_Managmeent_System
-    {
-        public partial class App : Application
-        {
-            public App()
-            {
-                InitializeComponent();
-
-                // Set the main page to the Shell
-                MainPage = new AppShell();
-            }
-        }
 }
 
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        // Set the main page to the Shell
+        MainPage = new AppShell();
+    }
 }
