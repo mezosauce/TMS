@@ -7,7 +7,7 @@ public partial class Guest : ContentPage
 {
     private readonly EmployeesListingViewModel _employeesListingViewModel;
 
-    public Guest(EmployeesListingViewModel employeesListingViewModel, DataService dataservice)
+    public Guest(EmployeesListingViewModel employeesListingViewModel)
     {
         InitializeComponent();
         _employeesListingViewModel = employeesListingViewModel;

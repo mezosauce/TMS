@@ -7,11 +7,10 @@ public partial class App : Application
 {
     private readonly EmployeesListingViewModel _employeesListingViewModel;
     private readonly DataService _dataservice;
-    public App(EmployeesListingViewModel employeesListingViewModel, DataService dataservice)
+    public App(EmployeesListingViewModel employeesListingViewModel)
     {
         InitializeComponent();
         _employeesListingViewModel = employeesListingViewModel;
-        _dataservice = dataservice;
     }
     
 

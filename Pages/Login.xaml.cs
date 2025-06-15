@@ -8,7 +8,6 @@ namespace Time_Managmeent_System.Pages;
 public partial class LoginPage : ContentPage
 {
 
-   private readonly DataService _dataservice;
 
     public LoginPage(EmployeesListingViewModel employeesListingViewModel)
     {
@@ -19,7 +18,7 @@ public partial class LoginPage : ContentPage
 
     private async void OnEmployeeLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginType.Employee(_dataservice));
+        await Navigation.PushAsync(new LoginType.Employee());
     }
 
     private async void OnManagerLoginClicked(object sender, EventArgs e)
@@ -36,7 +35,7 @@ public partial class LoginPage : ContentPage
     {
         if (BindingContext is EmployeesListingViewModel employeesListingViewModel)
         {
-            await Navigation.PushAsync(new LoginType.Guest(employeesListingViewModel, _dataservice));
+            await Navigation.PushAsync(new LoginType.Guest(employeesListingViewModel));
         }
         else
         {

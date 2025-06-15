@@ -13,9 +13,6 @@
 
  
 
-    <ContentPage.Behaviors>  
-        <toolkit:EventToCommandBehavior Command="{Binding GetEmployeesCommand}" EventName="Appearing" />  
-    </ContentPage.Behaviors>
     <ScrollView>
         <Grid
         Margin="20"
