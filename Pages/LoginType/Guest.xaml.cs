@@ -1,3 +1,4 @@
+using Time_Managmeent_System.Services;
 using Time_Managmeent_System.ViewModels;
 
 namespace Time_Managmeent_System.Pages.LoginType;
@@ -6,7 +7,7 @@ public partial class Guest : ContentPage
 {
     private readonly EmployeesListingViewModel _employeesListingViewModel;
 
-    public Guest(EmployeesListingViewModel employeesListingViewModel)
+    public Guest(EmployeesListingViewModel employeesListingViewModel, DataService dataservice)
     {
         InitializeComponent();
         _employeesListingViewModel = employeesListingViewModel;

@@ -1,16 +1,19 @@
 ﻿using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.ViewModels;
+using Time_Managmeent_System.Services;
 namespace Time_Managmeent_System;
 
 public partial class App : Application
 {
     private readonly EmployeesListingViewModel _employeesListingViewModel;
-
-    public App(EmployeesListingViewModel employeesListingViewModel)
+    private readonly DataService _dataservice;
+    public App(EmployeesListingViewModel employeesListingViewModel, DataService dataservice)
     {
         InitializeComponent();
         _employeesListingViewModel = employeesListingViewModel;
+        _dataservice = dataservice;
     }
+    
 
     protected override Window CreateWindow(IActivationState? activationState)
     {

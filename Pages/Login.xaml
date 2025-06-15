@@ -52,47 +52,11 @@
                 FontSize="24"   
                 HorizontalOptions="Center" />
 
-            
-            
-            <CollectionView ItemsSource="{Binding Employees}" >
+           
 
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="4" Orientation="Vertical" />
-                </CollectionView.ItemsLayout>
-
-                <CollectionView.ItemTemplate>  
-                    
-                    <DataTemplate x:DataType="model:Employee">  
-                        
-                        <VerticalStackLayout Padding="10">
-                          
-                            
-                            <Label Text="{Binding Id}" FontSize="16" />  
-                            <Label Text="{Binding Username}" FontSize="16" />  
-                            <Label Text="{Binding Password}" FontSize="16" />  
-                            <Label Text="{Binding Position}" FontSize="14" />  
-                            <Label Text="{Binding First}" FontSize="14" />  
-                            <Label Text="{Binding Last}" FontSize="14" />  
-                        </VerticalStackLayout>  
-                    </DataTemplate>
-                    
-                </CollectionView.ItemTemplate>  
-            </CollectionView>
-
-                <!--<Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" />  -->
-                <Button Text="Employee Login" x:Name ="MyButton">
-                    <Button.Behaviors>
-                        <toolkit:EventToCommandBehavior
-
-                        x:TypeArguments="system:EventArgs"
-                        EventName="Clicked"
-                        BindingContext="{Binding Path=BindingContext, Source={x:Reference MyButton}, x:DataType=Button}"
-                        Command="{Binding GetEmployeesCommand}" />
-                    </Button.Behaviors>
-                </Button>
-
-                <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
-                <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
+            <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" /> 
+            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />
+            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
             <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />  
             <Button Text="Register" Clicked="OnRegisterClicked" />  
 

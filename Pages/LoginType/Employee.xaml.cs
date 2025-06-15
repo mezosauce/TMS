@@ -1,34 +1,33 @@
 namespace Time_Managmeent_System.Pages.LoginType;
 using Microsoft.Maui.Storage;
 using Supabase;
-using Supabase.Gotrue;
-using Time_Managmeent_System;
-using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
-using System.Collections.ObjectModel;
+using Time_Managmeent_System.Services;
 
 public partial class Employee : ContentPage
 {
+    private readonly Client _supabaseClient;
 
-    public Employee()
+    private Client GetSupabaseClientFromDataService(DataService dataService)
+    {
+        // Use reflection to access the private _supabaseClient field
+        var field = typeof(DataService).GetField("_supabaseClient", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance);
+        return (Client)field.GetValue(dataService);
+    }
+    public Employee(DataService dataService)
     {
         InitializeComponent();
-        
+        _supabaseClient = GetSupabaseClientFromDataService(dataService);
     }
+
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        // validate credentials and navigate to the employee dashboard
-        // login logic has not been tested yet
-        // hold email and password
-
-        /*
         string email = EmailEntry.Text;
-        string passsword = PasswordEntry.Text;
+        string password = PasswordEntry.Text;
 
         try
         {
-            var session = await _supabase.Auth.SignIn(email: email, password: passsword);
+            var session = await _supabaseClient.Auth.SignIn(email: email, password: password);
 
             // store tokens
             await SecureStorage.SetAsync("access_token", session.AccessToken);
@@ -37,18 +36,10 @@ public partial class Employee : ContentPage
             await DisplayAlert("Login", "Employee login successful!", "OK");
             // navigate to the main page after login
             await Navigation.PushAsync(new Dashboard.EmployeeDash());
-
         }
         catch (Exception ex)
         {
-            {
-                await DisplayAlert("Login unsuccessful :(", ex.Message, "OK");
-            }
-
+            await DisplayAlert("Login unsuccessful :(", ex.Message, "OK");
         }
     }
-        */
-        await DisplayAlert("Login", "Employee login successful!", "OK");
-        await Navigation.PushAsync(new Dashboard.EmployeeDash()); // Navigate to the main page after login
-    }
-    }
+}
