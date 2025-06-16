@@ -1,6 +1,7 @@
 using Time_Managmeent_System.Services;
+using Time_Managmeent_System.Models;
 using Time_Managmeent_System.ViewModels;
-
+using Supabase;
 
 namespace Time_Managmeent_System.Pages;
 
@@ -8,29 +9,25 @@ namespace Time_Managmeent_System.Pages;
 public partial class LoginPage : ContentPage
 {
 
-
-    public LoginPage(EmployeesListingViewModel employeesListingViewModel)
+    private readonly DataService _dataservice;
+    public LoginPage(DataService dataservice)
     {
         InitializeComponent();
-        BindingContext= employeesListingViewModel;
+        _dataservice = dataservice;
     }
 
 
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginType.SignIn());
+        await Navigation.PushAsync(new LoginType.SignIn(_dataservice));
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        if (BindingContext is EmployeesListingViewModel employeesListingViewModel)
-        {
-            await Navigation.PushAsync(new LoginType.Guest(employeesListingViewModel));
-        }
-        else
-        {
-            await DisplayAlert("Error", "Unable to navigate. Invalid context.", "OK");
-        }
+      
+            await Navigation.PushAsync(new LoginType.Guest(_dataservice));
+        
+        
     }
 
     private void OnToggleDarkModeClicked(object sender, EventArgs e)

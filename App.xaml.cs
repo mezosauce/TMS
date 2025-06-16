@@ -1,23 +1,23 @@
-﻿using Time_Managmeent_System.Pages;
-using Time_Managmeent_System.ViewModels;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Supabase;
+using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
+using Time_Managmeent_System.ViewModels;
 namespace Time_Managmeent_System;
 
 public partial class App : Application
 {
-    private readonly EmployeesListingViewModel _employeesListingViewModel;
-    private readonly DataService _dataservice;
-    public App(EmployeesListingViewModel employeesListingViewModel)
+
+    public App()
     {
         InitializeComponent();
-        _employeesListingViewModel = employeesListingViewModel;
     }
-    
 
     protected override Window CreateWindow(IActivationState? activationState)
     {
-        // Pass the required parameter to the LoginPage constructor  
-        var window = new Window(new NavigationPage(new Pages.LoginPage(_employeesListingViewModel)));
+        // Pass the required parameter to the LoginPage constructor
+        var loginPage = Current.Services.GetService<LoginPage>();
+        var window = new Window(loginPage);
         return window;
     }
 

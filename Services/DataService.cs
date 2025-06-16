@@ -12,7 +12,9 @@ namespace Time_Managmeent_System.Services;
         {
             _supabaseClient = supabaseClient;
         }
-        public async Task<IEnumerable<Employee>> GetEmployees()
+
+        public Client SupabaseClient => _supabaseClient;
+    public async Task<IEnumerable<Employee>> GetEmployees()
         {
             var response = await _supabaseClient.From<Employee>().Get();
             return response.Models.OrderByDescending(b => b.Id);

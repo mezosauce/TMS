@@ -50,6 +50,8 @@ public static class MauiProgram
 
         //Data Service
         builder.Services.AddSingleton<IDataService, DataService>();
+        builder.Services.AddSingleton<DataService>();
+
 
 
 #if DEBUG
