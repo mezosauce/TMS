@@ -16,19 +16,9 @@ public partial class LoginPage : ContentPage
     }
 
 
-    private async void OnEmployeeLoginClicked(object sender, EventArgs e)
+    private async void OnLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginType.Employee());
-    }
-
-    private async void OnManagerLoginClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LoginType.Manager());
-    }
-
-    private async void OnAdminLoginClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LoginType.Admin());
+        await Navigation.PushAsync(new LoginType.SignIn());
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)

@@ -51,9 +51,7 @@
 
            
 
-            <Button Text="Employee Login" Clicked="OnEmployeeLoginClicked" /> 
-            <Button Text="Manager Login" Clicked="OnManagerLoginClicked" />  
-            <Button Text="Admin Login" Clicked="OnAdminLoginClicked" />  
+            <Button Text="Sign In" Clicked="OnLoginClicked" /> 
             <Button Text="Register" Clicked="OnRegisterClicked" />  
 
         </VerticalStackLayout>  
