@@ -9,11 +9,12 @@ import Supabase
 import Foundation
 
 struct AppUser: Codable {
-    var id: UUID
+    var id: String
     var email: String
-    var first_name: String
-    var last_name: String
-    var role: String
+    var Password: String
+    var Position: String
+    var First: String
+    var Last: String
     
 }
 

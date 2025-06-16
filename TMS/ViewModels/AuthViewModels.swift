@@ -32,17 +32,32 @@ class AuthViewModels: ObservableObject {
         }
     }
     // signUp Function
-    func signUp(email: String, password: String) async {
+    func signUp(Email: String, Password: String, Position: String, First: String, Last: String) async {
         do {
-            let session = try await supabase.auth.signUp(email: email, password: password)
-            user = session.user
-            isAuthenticated = true
+            print("Start Signup")
+            let session = try await supabase.auth.signUp(email: Email, password: Password)
+            let user = session.user
             
-            let newUser = AppUser(id: session.user.id, email: email, first_name: "Evan", last_name: "Heidenreich", role: "user")
+            self.user = user
+            isAuthenticated = true
+            print("Signup Successful \(user)")
+            //let newUser = AppUser(Username: Username, Password: Password, Position: Position, First: First, Last: Last)
+            //try await supabase
+                //.from("Employee")
+                //.insert(newUser)
+                //.execute()
+            let newUser = AppUser(id: user.id.uuidString, email: Email, Password: Password, Position: Position, First: First, Last: Last)
+            print("User Data \(newUser)")
             try await supabase
-                .from("users")
-                .insert(newUser)
+                .from("User Data")
+                .insert([
+                    "id": newUser.id,
+                    "First": newUser.First,
+                    "Last": newUser.Last,
+                    "Position": newUser.Position,
+                ])
                 .execute()
+            print("Success Inserting Table")
             
         } catch {
             errorMessage = "Signup failed: \(error.localizedDescription)"

@@ -12,6 +12,9 @@ struct SignupView: View {
     @StateObject private var authViewModel = AuthViewModels()
     @State private var email = ""
     @State private var password = ""
+    @State private var position = ""
+    @State private var first = ""
+    @State private var last = ""
     
     var body: some View {
         VStack {
@@ -27,8 +30,20 @@ struct SignupView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
             
+            TextField("Position", text: $position)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+            
+            TextField("First Name", text: $first)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+            
+            TextField("Last Name", text: $last)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .autocapitalization(.none)
+            
             Button("Create Account") {
-                Task { await authViewModel.signUp(email: email, password: password)}
+                Task { await authViewModel.signUp(Email: email, Password: password, Position: position, First: first, Last: last)}
             }
             .buttonStyle(.borderedProminent)
             

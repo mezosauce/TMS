@@ -7,9 +7,12 @@
 
 import Foundation
 import SwiftUI
+import Supabase
 
 struct EmployeeHomeView: View {
     var body: some View {
-        Text("Employee Dashboard")
+        VStack {
+            Text("Employee Dashboard")
+        }
     }
 }
