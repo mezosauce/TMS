@@ -7,6 +7,8 @@ using Time_Managmeent_System.ViewModels;
 using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
 using System.Threading.Tasks;
+using Microsoft.Extensions.DependencyInjection;
+using Time_Managmeent_System.Pages.LoginType;
 
 namespace Time_Managmeent_System;
 
@@ -28,7 +30,7 @@ public static class MauiProgram
                 fonts.AddFont("fa-solid-900.ttf", "FaSolid");
             });
 
-
+        // THIS IS THE DEPENDENCY INJECTION CONTAINER
 
         //Configure Supabase
 
@@ -44,7 +46,10 @@ public static class MauiProgram
         builder.Services.AddTransient<UpdateEmployeeViewModel>();
         
         //Add Pages
-        builder.Services.AddSingleton<LoginPage>();
+        builder.Services.AddTransient<LoginPage>();
+        builder.Services.AddTransient<Guest>();
+        builder.Services.AddTransient<SignIn>();
+
         builder.Services.AddTransient<AddEmployeePage>();
         builder.Services.AddTransient<UpdateEmployeePage>();
 
@@ -53,7 +58,7 @@ public static class MauiProgram
         builder.Services.AddSingleton<DataService>();
 
 
-
+        // THIS IS THE DEPENDENCY INJECTION CONTAINER
 #if DEBUG
         builder.Logging.AddDebug();
 #endif

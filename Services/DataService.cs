@@ -7,32 +7,34 @@ namespace Time_Managmeent_System.Services;
 
     public class DataService : IDataService
 {
-        private readonly Client _supabaseClient;
-        public DataService(Supabase.Client supabaseClient)
-        {
-            _supabaseClient = supabaseClient;
-        }
+        public Client SupabaseClient { get; private set;}
 
-        public Client SupabaseClient => _supabaseClient;
+    public DataService(Supabase.Client supabaseClient)
+        {
+        var url = AppConfig.SUPABASE_URL;
+        var key = AppConfig.SUPABASE_KEY;
+        SupabaseClient = new Client(url, key);
+    }
+
     public async Task<IEnumerable<Employee>> GetEmployees()
         {
-            var response = await _supabaseClient.From<Employee>().Get();
+            var response = await SupabaseClient.From<Employee>().Get();
             return response.Models.OrderByDescending(b => b.Id);
         }
 
 
         public async Task CreateEmployee(Employee employee)
        {
-        await _supabaseClient.From<Employee>().Insert(employee);
+        await SupabaseClient.From<Employee>().Insert(employee);
         }
 
         public async Task DeleteEmployee(int id)
     {
-        await _supabaseClient.From<Employee>().Where(b => b.Id == id).Delete();
+        await SupabaseClient.From<Employee>().Where(b => b.Id == id).Delete();
     }
         public async Task UpdateEmployee(Employee employee)
         {
-        await _supabaseClient.From<Employee>().Where(b => b.Id == employee.Id)
+        await SupabaseClient.From<Employee>().Where(b => b.Id == employee.Id)
         .Set(b => b.Username, employee.Username)
         .Set(b => b.Password, employee.Password)
         .Set(b => b.Position, employee.Position)
