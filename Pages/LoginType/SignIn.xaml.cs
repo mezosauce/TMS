@@ -1,5 +1,8 @@
 using Time_Managmeent_System.Services;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 using Supabase;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace Time_Managmeent_System.Pages.LoginType;
 
@@ -14,27 +17,30 @@ public partial class SignIn : ContentPage
     }
 
 
+    // Define a UserProfile class to match the structure of your User Data table
+    [Table("User Data")]
+    public class UserProfile : BaseModel
+    {
+        [PrimaryKey("id", false)]
+        public string Id { get; set; } // Ensure this matches your database schema
+        [Column("First")]
+        public string First { get; set; }
+        [Column("Last")]
+        public string Last { get; set; }
+        [Column("Position")]
+        public string Position { get; set; }
+        [Column("avatar_url")]
+        public string AvatarUrl { get; set; }
+    }
     public async Task<UserProfile> GetUserProfile(string userId)
     {
         var response = await _dataService.SupabaseClient
-            .From("User_Data") // Use underscores instead of spaces
-            .Select<UserProfile>("*")
-            .Eq("id", userId)
-            .SingleAsync(); // Use SingleAsync for asynchronous operation
-
-        return response;
+            .From<UserProfile>() // Use underscores instead of space
+            .Get();
+        
+        var userProfile = response.Models.FirstOrDefault(u => u.Id.ToString() == userId);
+        return userProfile;
     }
-
-    // Define a UserProfile class to match the structure of your User Data table
-    public class UserProfile
-    {
-        public int Id { get; set; } 
-        public string First { get; set; }
-        public string Last { get; set; }
-        public string Position { get; set; }
-        public string AvatarUrl { get; set; }
-    }
-
     private async void OnLoginClicked(object sender, EventArgs e)
     {
         string email = EmailEntry.Text;
@@ -55,6 +61,7 @@ public partial class SignIn : ContentPage
 
                 // Retrieve user profile information
                 var userId = session.User.Id; // Assuming you have the user ID
+
                 var userProfile = await GetUserProfile(userId); // Fetch user data
 
                 if (userProfile != null)
@@ -67,6 +74,9 @@ public partial class SignIn : ContentPage
                             break;
                         case "Employee":
                             await Navigation.PushAsync(new Dashboard.EmployeeDash());
+                            break;
+                        case "Admin": 
+                            await Navigation.PushAsync(new Dashboard.AdminDash());
                             break;
                         // Add more cases as needed for different positions
                         default:
