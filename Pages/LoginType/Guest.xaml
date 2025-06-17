@@ -48,7 +48,7 @@
 		<Button
             Text="Register"
             WidthRequest="250"
-            Clicked="OnLoginClicked" />
+            Clicked="OnSignUpClicked" />
 
 	</VerticalStackLayout>
 </ContentPage>
