@@ -13,18 +13,30 @@ public partial class SignIn : ContentPage
         _dataService = dataService;
     }
 
-   
+
+    public async Task<UserProfile> GetUserProfile(string userId)
+    {
+        var response = await _dataService.SupabaseClient
+            .From("User_Data") // Use underscores instead of spaces
+            .Select<UserProfile>("*")
+            .Eq("id", userId)
+            .SingleAsync(); // Use SingleAsync for asynchronous operation
+
+        return response;
+    }
+
+    // Define a UserProfile class to match the structure of your User Data table
+    public class UserProfile
+    {
+        public int Id { get; set; } 
+        public string First { get; set; }
+        public string Last { get; set; }
+        public string Position { get; set; }
+        public string AvatarUrl { get; set; }
+    }
+
     private async void OnLoginClicked(object sender, EventArgs e)
     {
-        // await DisplayAlert("Login", "Manager login successful!", "OK");
-        //  await Navigation.PushAsync(new Dashboard.ManagerDash()); // Navigate to the main page after login
-        // validate credentials and navigate to the manager dashboard
-        // login logic has not been tested yet
-        // hold email and password
-        // commented out until it can be properly tested
-
-
-        
         string email = EmailEntry.Text;
         string password = PasswordEntry.Text;
 
@@ -40,31 +52,42 @@ public partial class SignIn : ContentPage
             if (session.User != null)
             {
                 await DisplayAlert("SUCCESS", "Login successful!", "OK");
-                await Navigation.PushAsync(new Dashboard.ManagerDash()); 
+
+                // Retrieve user profile information
+                var userId = session.User.Id; // Assuming you have the user ID
+                var userProfile = await GetUserProfile(userId); // Fetch user data
+
+                if (userProfile != null)
+                {
+                    // Check the Position attribute
+                    switch (userProfile.Position)
+                    {
+                        case "Manager":
+                            await Navigation.PushAsync(new Dashboard.ManagerDash());
+                            break;
+                        case "Employee":
+                            await Navigation.PushAsync(new Dashboard.EmployeeDash());
+                            break;
+                        // Add more cases as needed for different positions
+                        default:
+                            await DisplayAlert("Position Error", "Unknown position. Cannot navigate.", "OK");
+                            break;
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Profile Error", "Unable to retrieve user profile.", "OK");
+                }
             }
             else
             {
                 await DisplayAlert("Login Failed", "Invalid email or password.", "OK");
                 return;
             }
-                // store tokens
-              /*  await SecureStorage.SetAsync("access_token", session.AccessToken);
-            await SecureStorage.SetAsync("refresh_token", session.RefreshToken);
-
-            await DisplayAlert("Login", "Employee login successful!", "OK");
-            // navigate to the main page after login
-            await Navigation.PushAsync(new Dashboard.ManagerDash());
-            */
-
         }
         catch (Exception ex)
         {
-            {
-                await DisplayAlert("Login unsuccessful :(", ex.Message, "OK");
-            }
-
+            await DisplayAlert("Login unsuccessful :(", ex.Message, "OK");
         }
-        
-        
     }
 }
