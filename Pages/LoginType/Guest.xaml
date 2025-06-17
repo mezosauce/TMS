@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Time_Managmeent_System.Pages.LoginType.Guest"
              Title="Guest">
+    
 	<VerticalStackLayout
         VerticalOptions="Center"
         HorizontalOptions="Center"
@@ -42,7 +43,6 @@
 
 		<Entry
             Placeholder="Last Name"
-            
             x:Name="LastEntry" />
             
 		<Button
