@@ -17,7 +17,7 @@ public partial class Guest : ContentPage
     }
 
     // Define a UserProfile class to match the structure of your User Data table
-    [Table("User_Data")]
+    [Table("User Data")]
     public class UserProfile : BaseModel
     {
         [PrimaryKey("id", false)]
@@ -75,7 +75,8 @@ public partial class Guest : ContentPage
 
                 var insertResponse = await _dataservice.SupabaseClient
                     .From<UserProfile>() // Use underscores instead of space
-                    .Insert(userProfile); // Insert the new user profile
+                    .Insert([userProfile]); // Insert the new user profile
+                    
                     
                 // Fix: Check the HTTP response status instead of a non-existent 'Error' property
                 if (insertResponse != null)
