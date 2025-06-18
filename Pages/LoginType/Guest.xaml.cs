@@ -1,9 +1,10 @@
-using Supabase.Postgrest.Models;
-using Time_Managmeent_System.Services;
-using Supabase.Postgrest.Attributes;
-using Time_Managmeent_System.ViewModels;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Supabase.Postgrest;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
 using System.Linq;
+using Time_Managmeent_System.Services;
+using Time_Managmeent_System.ViewModels;
 
 namespace Time_Managmeent_System.Pages.LoginType;
 
@@ -17,7 +18,7 @@ public partial class Guest : ContentPage
     }
 
     // Define a UserProfile class to match the structure of your User Data table
-    [Table("User Data")]
+    [Table("Data User")]
     public class UserProfile : BaseModel
     {
         [PrimaryKey("id", false)]
@@ -73,12 +74,11 @@ public partial class Guest : ContentPage
                 };
                 await DisplayAlert("User ID", userProfile.Id, "OK");
 
-                //THIS IS THE ISSUE
                 var insertResponse = await _dataservice.SupabaseClient
-                    .From<UserProfile>() // Use underscores instead of space
-                    .Insert([userProfile]); // Insert the new user profile
-                    
-                    
+                .From<UserProfile>()
+                .Insert(userProfile, new QueryOptions { Returning = QueryOptions.ReturnType.Representation });
+
+
                 // Fix: Check the HTTP response status instead of a non-existent 'Error' property
                 if (insertResponse != null)
                 {
