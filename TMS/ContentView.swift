@@ -19,10 +19,13 @@ struct ContentView: View {
         NavigationView {
             if authViewModel.isAuthenticated {
                 EmployeeHomeView()
+                    .environmentObject(authViewModel)
             } else {
                 LoginView()
+                    .environmentObject(authViewModel)
             }
         }
+        .id(authViewModel.isAuthenticated)
         .onAppear {
             Task {
                 await authViewModel.checkSession()

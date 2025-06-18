@@ -10,7 +10,7 @@ import Supabase
 
 
 struct LoginView: View {
-    @StateObject private var authViewModel = AuthViewModels()
+    @EnvironmentObject var authViewModel: AuthViewModels
     @State private var email = ""
     @State private var password = ""
     
@@ -28,7 +28,8 @@ struct LoginView: View {
                 .autocapitalization(.none)
             
             Button("Login") {
-                Task { await authViewModel.login(email: email, password: password)}
+                Task {
+                    await authViewModel.login(email: email, password: password)}
             }
             .buttonStyle(.borderedProminent)
             

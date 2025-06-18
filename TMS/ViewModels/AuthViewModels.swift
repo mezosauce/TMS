@@ -24,9 +24,13 @@ class AuthViewModels: ObservableObject {
     // Login Function
     func login(email: String, password: String) async {
         do {
+            print("Start Login")
             let session = try await supabase.auth.signIn(email: email, password: password)
+            print("Login Successful \(session.user)")
+            
             user = session.user
             isAuthenticated = true
+            
         } catch {
             errorMessage = "Login failed: \(error.localizedDescription)"
         }
