@@ -73,6 +73,7 @@ public partial class Guest : ContentPage
                 };
                 await DisplayAlert("User ID", userProfile.Id, "OK");
 
+                //THIS IS THE ISSUE
                 var insertResponse = await _dataservice.SupabaseClient
                     .From<UserProfile>() // Use underscores instead of space
                     .Insert([userProfile]); // Insert the new user profile
