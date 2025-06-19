@@ -103,6 +103,51 @@ namespace Time_Management_System.Control
                 DateTime cellDate = startDate.AddDays(i);
                 bool isCurrentMonth = cellDate.Month == _currentDate.Month;
 
+                var dayLabel = new Label
+                {
+                    Text = cellDate.Day.ToString(),
+                    FontSize = 12,
+                    HorizontalOptions = LayoutOptions.End,
+                    VerticalOptions = LayoutOptions.Start,
+                    TextColor = isCurrentMonth ? Colors.Black : Colors.LightGray,
+                    Margin = new Thickness(0, 0, 2, 0)
+                };
+
+                var events = Services.EventStorage.GetEvents(cellDate);
+                Label eventLabel = null;
+
+                if (events.Any())
+                {
+                    var firstEvent = events.OrderBy(e => e.Time).FirstOrDefault();
+                    string timeText = firstEvent?.Time.HasValue == true
+                        ? firstEvent.Time.Value.ToString(@"hh\:mm")
+                        : "Event";
+                    eventLabel = new Label
+                    {
+                        Text = timeText,
+                        FontSize = 10,
+                        TextColor = Colors.DarkGreen,
+                        HorizontalOptions = LayoutOptions.Start,
+                        VerticalOptions = LayoutOptions.End
+                    };
+
+                }
+
+                var tapGesture = new TapGestureRecognizer();
+                tapGesture.Tapped += async (s, e) =>
+                {
+                    await Application.Current.MainPage.Navigation.PushModalAsync(new Pages.EventModalPage(cellDate));
+                };
+
+                var dayContent = new Grid();
+                dayContent.Children.Add(dayLabel);
+                if (eventLabel != null)
+                    {
+                        dayContent.Children.Add(eventLabel);
+                        Grid.SetRow(eventLabel, 1);
+                    }
+                dayContent.GestureRecognizers.Add(tapGesture);
+
                 var dayFrame = new Frame
                 {
                     BorderColor = Colors.Gray,
@@ -110,27 +155,18 @@ namespace Time_Management_System.Control
                     CornerRadius = 0,
                     Padding = new Thickness(4),
                     HasShadow = false,
-                    Content = new Grid
-                    {
-                        Children =
-                        {
-                            new Label
-                            {
-                                Text = cellDate.Day.ToString(),
-                                FontSize = 12,
-                                HorizontalOptions = LayoutOptions.End,
-                                VerticalOptions = LayoutOptions.Start,
-                                TextColor = isCurrentMonth ? Colors.Black : Colors.LightGray,
-                                Margin = new Thickness(0, 0, 2, 0)
-                            }
-                        }
-                    }
+                    Content = dayContent
                 };
 
                 _calendarGrid.Children.Add(dayFrame);
                 _calendarGrid.SetColumn((IView)dayFrame, col);
                 _calendarGrid.SetRow((IView)dayFrame, row);
             }
+        }
+
+        public void Rebuild()
+        {
+            BuildCalendar();
         }
     }
 }
