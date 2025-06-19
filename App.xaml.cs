@@ -52,15 +52,3 @@ namespace Time_Managmeent_System;
             }
         }
     }
-}
-
-public partial class App : Application
-{
-    public App()
-    {
-        InitializeComponent();
-
-        // Set the main page to the Shell
-        MainPage = new AppShell();
-    }
-}

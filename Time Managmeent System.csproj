@@ -99,9 +99,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-
-	  <MauiXaml Update="Pages\CalendarPage.xaml">
-
+		<MauiXaml Update="CalendarPage.xaml">
+			<Generator>MSBuild:Compile</Generator>
+		</MauiXaml>
 	  <MauiXaml Update="Pages\AddEmployeePage.xaml">
 
 	    <Generator>MSBuild:Compile</Generator>
