@@ -1,35 +1,55 @@
-﻿using Time_Managmeent_System.Pages;
+﻿using CommunityToolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Maui.Controls;
+using Supabase;
+using System.Diagnostics;
+using Microsoft.Extensions.DependencyInjection;
+using Time_Managmeent_System.Pages;
+using Time_Managmeent_System.Services;
 using Time_Managmeent_System.ViewModels;
+
 
 namespace Time_Managmeent_System;
 
-public partial class App : Application
-{
-    private readonly EmployeesListingViewModel _employeesListingViewModel;
 
-    public App(EmployeesListingViewModel employeesListingViewModel)
+    public partial class App : Application
     {
-        InitializeComponent();
-        _employeesListingViewModel = employeesListingViewModel;
-    }
+        public IServiceProvider ServiceProvider { get; }
 
-    protected override Window CreateWindow(IActivationState? activationState)
-    {
-        // Pass the required parameter to the LoginPage constructor  
-        var window = new Window(new NavigationPage(new Pages.LoginPage(_employeesListingViewModel)));
-        return window;
-    }
-
-    public void ToggleTheme()
-    {
-        // Toggle between Light and Dark mode  
-        if (App.Current.UserAppTheme == AppTheme.Dark)
+        public App(IServiceProvider serviceProvider)
         {
-            App.Current.UserAppTheme = AppTheme.Light;
+            InitializeComponent();
+            ServiceProvider = serviceProvider;
+            if (ServiceProvider == null)
+            {
+                throw new InvalidOperationException("ServiceProvider is not initialized.");
+            }
+            var LoginPage = ServiceProvider.GetService<LoginPage>();
+            if (LoginPage == null)
+            {
+                throw new InvalidOperationException("LoginPage is not registered in the service provider.");
+            }
+            MainPage = new NavigationPage(LoginPage);
         }
-        else
+
+        
+        
+        protected override Window CreateWindow(IActivationState? activationState)
         {
-            App.Current.UserAppTheme = AppTheme.Dark;
+            return base.CreateWindow(activationState);
+        }
+
+        public void ToggleTheme()
+        {
+            // Toggle between Light and Dark mode  
+            if (App.Current.UserAppTheme == AppTheme.Dark)
+            {
+                App.Current.UserAppTheme = AppTheme.Light;
+            }
+            else
+            {
+                App.Current.UserAppTheme = AppTheme.Dark;
+            }
         }
     }
 }

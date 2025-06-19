@@ -1,5 +1,7 @@
+using Time_Managmeent_System.Services;
+using Time_Managmeent_System.Models;
 using Time_Managmeent_System.ViewModels;
-
+using Supabase;
 
 namespace Time_Managmeent_System.Pages;
 
@@ -7,42 +9,25 @@ namespace Time_Managmeent_System.Pages;
 public partial class LoginPage : ContentPage
 {
 
-    public LoginPage(EmployeesListingViewModel employeesListingViewModel)
+    private readonly DataService _dataservice;
+    public LoginPage(DataService dataservice)
     {
         InitializeComponent();
-        BindingContext = employeesListingViewModel;
-
+        _dataservice = dataservice;
     }
 
 
-
-    private async void OnEmployeeLoginClicked(object sender, EventArgs e)
+    private async void OnLoginClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new LoginType.Employee());
-    }
-
-    private async void OnManagerLoginClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LoginType.Manager());
-    }
-
-    private async void OnAdminLoginClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new LoginType.Admin());
+        await Navigation.PushAsync(new LoginType.SignIn(_dataservice));
     }
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-        // Pass the required 'employeesListingViewModel' parameter to the Guest constructor
-        if (BindingContext is EmployeesListingViewModel employeesListingViewModel)
-        {
-            await Navigation.PushAsync(new LoginType.Guest(employeesListingViewModel));
-        }
-        else
-        {
-            // Handle the case where BindingContext is not of the expected type
-            await DisplayAlert("Error", "Unable to navigate. Invalid context.", "OK");
-        }
+      
+            await Navigation.PushAsync(new LoginType.Guest(_dataservice));
+        
+        
     }
 
     private void OnToggleDarkModeClicked(object sender, EventArgs e)

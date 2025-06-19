@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Time_Managmeent_System.Pages.LoginType.Guest"
              Title="Guest">
+    
 	<VerticalStackLayout
         VerticalOptions="Center"
         HorizontalOptions="Center"
@@ -14,27 +15,40 @@
             FontSize="30"
             HorizontalOptions="Center" />
         <Entry
-            Placeholder="Refrence Number"
-            WidthRequest="250" />
-        <Entry
-            Placeholder="First Name"
+            Placeholder="Email"
+            x:Name="EmailEntry"
             />
         <Entry
-            Placeholder="Last Name"
-            />
-
-        <Entry
-            Placeholder="Username"
-            WidthRequest="250" />
-
-		<Entry
             Placeholder="Password"
             IsPassword="True"
-            WidthRequest="250" />
+            x:Name="PasswordEntry"
+            />
+        <Picker
+    Title="Role"
+    x:Name="RoleEntry">
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Employee</x:String>
+                    <x:String>Admin</x:String>
+                    <x:String>Manager</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+
+        <Entry
+            Placeholder="First Name"
+            x:Name="FirstEntry" 
+            
+            />
+
+		<Entry
+            Placeholder="Last Name"
+            x:Name="LastEntry" />
+            
 		<Button
             Text="Register"
             WidthRequest="250"
-            Clicked="OnLoginClicked" />
+            Clicked="OnSignUpClicked" />
 
 	</VerticalStackLayout>
 </ContentPage>

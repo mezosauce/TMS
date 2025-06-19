@@ -9,7 +9,6 @@
     Title="Time_Managmeent_System">
 
     <ShellContent
-        Title="Home"
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="LoginPage" />
 

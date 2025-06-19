@@ -5,7 +5,8 @@ using Time_Managmeent_System.Services;
 
 namespace Time_Managmeent_System.ViewModels;
 
-[ObservableObject] // Fix for MVVMTK0019: Add [ObservableObject] to make the class compatible with ObservableProperty  
+[ObservableObject]
+
 [QueryProperty(nameof(Employee), "EmployeeObject")]
 public partial class UpdateEmployeeViewModel
 {

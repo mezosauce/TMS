@@ -12,6 +12,10 @@ namespace Time_Managmeent_System
         {
         }
 
-        protected override MauiApp CreateMauiApp() => MauiProgram.CreateMauiApp();
+        protected override MauiApp CreateMauiApp()
+        {
+            // Await the Task and return the result
+            return MauiProgram.CreateMauiApp().GetAwaiter().GetResult();
+        }
     }
 }
