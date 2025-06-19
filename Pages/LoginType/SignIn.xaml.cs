@@ -17,8 +17,8 @@ public partial class SignIn : ContentPage
     }
 
 
-    // Define a UserProfile class to match the structure of your User Data table
-    [Table("User Data")]
+    // Define a UserProfile class to match the structure of your user_data table
+    [Table("user_data")]
     public class UserProfile : BaseModel
     {
         [PrimaryKey("id", false)]

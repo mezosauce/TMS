@@ -17,11 +17,12 @@ public partial class Guest : ContentPage
         _dataservice = dataService;
     }
 
-    // Define a UserProfile class to match the structure of your User Data table
-    [Table("Data User")]
+    // Define a UserProfile class to match the structure of your user_data table
+    [Table("user_data")]
     public class UserProfile : BaseModel
     {
         [PrimaryKey("id", false)]
+        [Column("id")]
         public string Id { get; set; } // Ensure this matches your database schema
         [Column("First")]
         public string First { get; set; }
@@ -62,7 +63,7 @@ public partial class Guest : ContentPage
                
 
                 //The code is showing the ID fine but as soon as it tries to insert, it inserts null
-                // Step 2: Insert user profile into User Data table
+                // Step 2: Insert user profile into user_data table
 
                 var userProfile = new UserProfile
                 {
@@ -76,13 +77,14 @@ public partial class Guest : ContentPage
 
                 var insertResponse = await _dataservice.SupabaseClient
                 .From<UserProfile>()
-                .Insert(userProfile, new QueryOptions { Returning = QueryOptions.ReturnType.Representation });
+                .Insert(userProfile);
 
 
                 // Fix: Check the HTTP response status instead of a non-existent 'Error' property
                 if (insertResponse != null)
                 {
-                    await DisplayAlert("Success", "User registered successfully!", "OK");
+                    await DisplayAlert("Success", "User registered successfully! \n Make sure to verify your email before Signing In", "OK");
+                    await Navigation.PushAsync(new SignIn(_dataservice));
                 }
                 else
                 {
