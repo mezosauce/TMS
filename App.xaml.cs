@@ -7,8 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
 using Time_Managmeent_System.ViewModels;
-namespace Time_Managmeent_System
-{
+
+
+namespace Time_Managmeent_System;
+
 
     public partial class App : Application
     {
@@ -49,5 +51,16 @@ namespace Time_Managmeent_System
                 App.Current.UserAppTheme = AppTheme.Dark;
             }
         }
+    }
+}
+
+public partial class App : Application
+{
+    public App()
+    {
+        InitializeComponent();
+
+        // Set the main page to the Shell
+        MainPage = new AppShell();
     }
 }

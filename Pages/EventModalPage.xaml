@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Time_Management_System.Pages.EventModalPage"
+             Title="Events">
+    <VerticalStackLayout Padding="20">
+        <Label x:Name="DateLabel" FontSize="20" HorizontalOptions="Center" />
+        <CollectionView x:Name="EventList" Margin="0,10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="Gray" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Title}" FontAttributes="Bold" />
+                            <Label Text="{Binding Description}" FontSize="12" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Entry x:Name="TitleEntry" Placeholder="Event Title" />
+        <Editor x:Name="DescriptionEditor" Placeholder="Event Description" HeightRequest="80" />
+        <TimePicker x:Name="TimePicker" />
+        <Button Text="Add Event" Clicked="OnAddEventClicked" />
+        <Button Text="Back to Calendar" Clicked="OnBackClicked" />
+    </VerticalStackLayout>
+</ContentPage>

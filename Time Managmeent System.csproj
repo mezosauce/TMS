@@ -99,7 +99,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
+
+	  <MauiXaml Update="Pages\CalendarPage.xaml">
+
 	  <MauiXaml Update="Pages\AddEmployeePage.xaml">
+
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Dashboard\AdminDash.xaml">
@@ -109,6 +113,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Dashboard\ManagerDash.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Pages\EventModalPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\Login.xaml">

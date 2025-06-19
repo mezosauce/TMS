@@ -18,16 +18,14 @@
                          Spacing="20">
 
                 <VerticalStackLayout
-                    Padding="10, 50, 10, 60"
-                    >
-                <Label
-                Style="{x:StaticResource FaBrandIconStyle}"
-                Text="{x:Static models:SymbolCode.User}"
-                FontFamily="FaSolid"
-                FontSize="40"
-                HorizontalOptions="Center" 
-                VerticalOptions="Start"
-                
+                    Padding="10, 50, 10, 60" >
+                    <Label
+                        Style="{x:StaticResource FaBrandIconStyle}"
+                        Text="{x:Static models:SymbolCode.User}"
+                        FontFamily="FaSolid"
+                        FontSize="40"
+                        HorizontalOptions="Center" 
+                        VerticalOptions="Start"
                     />
                 
                 <Label
@@ -37,19 +35,23 @@
                     />
                 </VerticalStackLayout>
                 <Button
-                Text="View Hours"
-                WidthRequest="180"
-                Margin="0,0,0,10"
+                    Text="Worker Schedule"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnWorkerScheduleClicked"
                 />
             <Button
-                Text="Call Off"
+                Text="Reports"
                 WidthRequest="180"
                 Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
                 />
             <Button
-                Text="Offer Shift"
+                Text="Geo-Location"
                 WidthRequest="180"
                 Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
                 />
             <Button
                 x:Name="TrackLocationButton"
@@ -57,6 +59,7 @@
                 Clicked="OnTrackLocationClicked"
                 WidthRequest="180"
                 Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
                 />
             </VerticalStackLayout>
 
