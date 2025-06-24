@@ -16,23 +16,37 @@
                              Spacing="20">
             
             <Button
-                Text="View Hours"
+                Text="Home"
                 WidthRequest="180"
-                Margin="0,0,0,10"/>
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="HomeClicked"/>
+                
             <Button
-                Text="Call Off"
+                Text="Profile"
                 WidthRequest="180"
-                Margin="0,0,0,10"/>
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="ProfileClicked"/>
             <Button
-                Text="Offer Shift"
+                Text="View Schedule"
                 WidthRequest="180"
-                Margin="0,0,0,10"/>
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="ScheduleClicked"/>
             <Button
                 x:Name="TrackLocationButton"
                 Text="Start Tracking"
                 Clicked="OnTrackLocationClicked"
                 WidthRequest="180"
-                Margin="0,0,0,10"/>
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"/>
+            <Button
+                Text="Request Time off"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="TimeOffClicked"/>
         </VerticalStackLayout>
 
         <!-- Main Content -->
@@ -75,6 +89,7 @@
                     x:Name="ClockButton"
                     Text="Clock In"
                     WidthRequest="180"
+                    Style="{StaticResource HoverExpandButtonStyle}"
                     Clicked="OnClockClicked"
                     Margin="0,20,0,0"
                     VerticalOptions="Center"/>
