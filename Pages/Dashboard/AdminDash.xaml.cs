@@ -68,18 +68,23 @@ public partial class AdminDash : ContentPage
                 var location = await Geolocation.GetLastKnownLocationAsync();
                 if (location != null)
                 {
-                    LocationLabel.Text = $"Location: {location.Latitude:F4}, {location.Longitude:F4}";
+                    LocationLabel.Text = $"Location Lat, Long: {location.Latitude:F4}, {location.Longitude:F4}";
                 }
                 else
                 {
                     LocationLabel.Text = "Location: Unavailable";
                 }
+                await Task.Delay(3000, token); // Update every 3 seconds
+            }
+            catch (TaskCanceledException)
+            {
+                // Gracefully handle cancellation
+                break;
             }
             catch (Exception ex)
             {
                 LocationLabel.Text = $"Error: {ex.Message}";
             }
-            await Task.Delay(3000, token); // Update every 3 seconds
         }
     }
 
