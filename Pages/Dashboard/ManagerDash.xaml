@@ -17,17 +17,35 @@
                          Spacing="20">
 
                 <Button
-            Text="View Hours"
-            WidthRequest="180"
-            Margin="0,0,0,10"/>
+                    Text="Home"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="HomeClicked"/>
                 <Button
-            Text="Call Off"
-            WidthRequest="180"
-            Margin="0,0,0,10"/>
+                    Text="Profile"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="ProfileClicked"/>
                 <Button
-            Text="Offer Shift"
-            WidthRequest="180"
-            Margin="0,0,0,10"/>
+                    Text="Schedules"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="ScheduleClicked"/>
+                <Button
+                    Text="Reports"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="ReportsClicked"/>
+                <Button
+                    Text="Edit Employees"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="EditEmployeesClicked"/>
                 
             </VerticalStackLayout>
 

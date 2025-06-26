@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using Time_Management_System.Pages;
 
 
 namespace Time_Managmeent_System.Pages.Dashboard;
@@ -52,4 +53,28 @@ public partial class ManagerDash : ContentPage
         ClockButton.Text = "Clock Out"; // Change button text to "Clock Out"
     }
 
+    private void HomeClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void ProfileClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void ScheduleClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CalendarPage());
+    }
+
+    private void ReportsClicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private void EditEmployeesClicked(object sender, EventArgs e)
+    {
+
+    }
 }
