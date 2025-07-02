@@ -58,9 +58,9 @@ public partial class ManagerDash : ContentPage
 
     }
 
-    private void ProfileClicked(object sender, EventArgs e)
+    private async void OnProfileTapped(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new EditProfile());
     }
 
     private async void ScheduleClicked(object sender, EventArgs e)

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Time_Managmeent_System.Pages.Dashboard.ManagerDash"
              Title="ManagerDash">
@@ -13,8 +14,34 @@
             <!-- Side Panel -->
             <VerticalStackLayout Grid.Column="0"
                          BackgroundColor="lightgray"
-                         Padding="10,150,10,10"
+                         Padding="10,0,10,10"
                          Spacing="20">
+
+                <VerticalStackLayout
+                     Padding="10, 50, 10, 60" >
+
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileTapped" />
+                        </StackLayout.GestureRecognizers>
+
+                        <Label
+                    Style="{x:StaticResource FaBrandIconStyle}"
+                    Text="{x:Static models:SymbolCode.User}"
+                    FontFamily="FaSolid"
+                    FontSize="40"
+                    HorizontalOptions="Center" 
+                    VerticalOptions="Start"
+                />
+
+                        <Label
+                Text="[Employee Name]"
+                FontSize="20"
+                HorizontalOptions="Center"
+             />
+                    </StackLayout>
+
+                </VerticalStackLayout>
 
                 <Button
                     Text="Home"
@@ -22,12 +49,7 @@
                     Margin="0,0,0,10"
                     Style="{StaticResource HoverExpandButtonStyle}"
                     Clicked="HomeClicked"/>
-                <Button
-                    Text="Profile"
-                    WidthRequest="180"
-                    Margin="0,0,0,10"
-                    Style="{StaticResource HoverExpandButtonStyle}"
-                    Clicked="ProfileClicked"/>
+                
                 <Button
                     Text="Schedules"
                     WidthRequest="180"
