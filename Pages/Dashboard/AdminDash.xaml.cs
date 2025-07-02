@@ -60,6 +60,7 @@ public partial class AdminDash : ContentPage
     private async void OnGeoFencingPageClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new GeoFencingPage());
+    }
 
     private void Button_Clicked(object sender, EventArgs e)
     {
