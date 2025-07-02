@@ -65,4 +65,16 @@ public partial class AdminDash : ContentPage
     {
         await Navigation.PushAsync(new EditAccount());
     }
+
+    private async void HomeClicked(object sender, EventArgs e)
+    {
+        // Navigate to the home page (replace with your actual home page)
+        await Navigation.PushAsync(new AdminDash());
+    }
+
+    private async void ReportsClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CalendarPage());
+
+    }
 }

@@ -42,7 +42,14 @@
                     </StackLayout>
                     
                 </VerticalStackLayout>
-                
+
+                <Button
+                    Text="Home"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="HomeClicked"
+                    />
                 <Button
                     Text="Schedule"
                     WidthRequest="180"
@@ -56,6 +63,16 @@
                 WidthRequest="180"
                 Margin="0,0,0,10"
                 Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="ReportsClicked"
+                />
+                
+                <Button
+                x:Name="EditAccountButton"
+                Text="Edit Accounts"
+                Clicked="OnEditAccount"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
                 />
                 
             <Button
@@ -66,14 +83,7 @@
                 Clicked="SetGeoLocation"
                 />
                 
-            <Button
-                x:Name="EditAccountButton"
-                Text="Edit Accounts"
-                Clicked="OnEditAccount"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                />
+            
             </VerticalStackLayout>
 
             <!-- Main Content -->
