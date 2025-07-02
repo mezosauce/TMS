@@ -43,6 +43,14 @@
                     
                 </VerticalStackLayout>
 
+				<Button
+                    Text="Worker Schedule"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnWorkerScheduleClicked"
+                    />
+
                 <Button
                     Text="Home"
                     WidthRequest="180"
@@ -50,38 +58,39 @@
                     Style="{StaticResource HoverExpandButtonStyle}"
                     Clicked="HomeClicked"
                     />
-                <Button
+                
+				<Button
                     Text="Schedule"
                     WidthRequest="180"
                     Margin="0,0,0,10"
                     Style="{StaticResource HoverExpandButtonStyle}"
                     Clicked="OnWorkerScheduleClicked"
-                />
-                
-            <Button
-                Text="Reports"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                Clicked="ReportsClicked"
-                />
+                    />
                 
                 <Button
-                x:Name="EditAccountButton"
-                Text="Edit Accounts"
-                Clicked="OnEditAccount"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                />
+                    Text="Reports"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnReportPageClicked"
+                    />
                 
-            <Button
-                Text="Set Geo-Location"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                Clicked="SetGeoLocation"
-                />
+                <Button
+                    x:Name="EditAccountButton"
+                    Text="Edit Accounts"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+					Clicked="OnEditAccount"
+                    />
+                
+                <Button
+                    Text="Set Geo-Location"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnGeoFencingPageClicked"
+                    />
                 
             
             </VerticalStackLayout>

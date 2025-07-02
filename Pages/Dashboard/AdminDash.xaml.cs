@@ -52,13 +52,19 @@ public partial class AdminDash : ContentPage
         await Navigation.PushAsync(new CalendarPage());
     }
 
+    private async void OnReportPageClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ReportPage());
+    }
+
+    private async void OnGeoFencingPageClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new GeoFencingPage());
+    }
+
     private void Button_Clicked(object sender, EventArgs e)
     {
 
-    }
-    private async void SetGeoLocation(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new SetGeoLocation());
     }
 
     private async void OnEditAccount(object sender, EventArgs e)
@@ -70,11 +76,5 @@ public partial class AdminDash : ContentPage
     {
         // Navigate to the home page (replace with your actual home page)
         await Navigation.PushAsync(new AdminDash());
-    }
-
-    private async void ReportsClicked(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new CalendarPage());
-
     }
 }
