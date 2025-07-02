@@ -9,7 +9,7 @@ public partial class AppShell : Shell
         InitializeComponent();
 
         // Register routes for navigation
-        RegisterForRoute<AddEmployeePage>();
+        
         RegisterForRoute<UpdateEmployeePage>();
 
     }

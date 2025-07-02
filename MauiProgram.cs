@@ -50,7 +50,7 @@ public static class MauiProgram
         builder.Services.AddTransient<Guest>();
         builder.Services.AddTransient<SignIn>();
 
-        builder.Services.AddTransient<AddEmployeePage>();
+       
         builder.Services.AddTransient<UpdateEmployeePage>();
 
         //Data Service

@@ -19,6 +19,12 @@
 
                 <VerticalStackLayout
                     Padding="10, 50, 10, 60" >
+                    
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileTapped" />
+                        </StackLayout.GestureRecognizers>
+                    
                     <Label
                         Style="{x:StaticResource FaBrandIconStyle}"
                         Text="{x:Static models:SymbolCode.User}"
@@ -33,30 +39,37 @@
                     FontSize="20"
                     HorizontalOptions="Center"
                     />
+                    </StackLayout>
+                    
                 </VerticalStackLayout>
+                
                 <Button
-                    Text="Worker Schedule"
+                    Text="Schedule"
                     WidthRequest="180"
                     Margin="0,0,0,10"
                     Style="{StaticResource HoverExpandButtonStyle}"
                     Clicked="OnWorkerScheduleClicked"
                 />
+                
             <Button
                 Text="Reports"
                 WidthRequest="180"
                 Margin="0,0,0,10"
                 Style="{StaticResource HoverExpandButtonStyle}"
                 />
+                
             <Button
-                Text="Geo-Location"
+                Text="Set Geo-Location"
                 WidthRequest="180"
                 Margin="0,0,0,10"
                 Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="SetGeoLocation"
                 />
+                
             <Button
-                x:Name="TrackLocationButton"
-                Text="Start Tracking"
-                Clicked="OnTrackLocationClicked"
+                x:Name="EditAccountButton"
+                Text="Edit Accounts"
+                Clicked="OnEditAccount"
                 WidthRequest="180"
                 Margin="0,0,0,10"
                 Style="{StaticResource HoverExpandButtonStyle}"
