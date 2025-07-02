@@ -34,24 +34,26 @@
                     HorizontalOptions="Center"
                     />
                 </VerticalStackLayout>
-                <Button
-                    Text="Worker Schedule"
-                    WidthRequest="180"
-                    Margin="0,0,0,10"
-                    Style="{StaticResource HoverExpandButtonStyle}"
-                    Clicked="OnWorkerScheduleClicked"
+            <Button
+                Text="Worker Schedule"
+                WidthRequest="180"
+                Margin="0,0,0,10"
+                Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="OnWorkerScheduleClicked"
                 />
             <Button
                 Text="Reports"
                 WidthRequest="180"
                 Margin="0,0,0,10"
                 Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="OnReportPageClicked"
                 />
             <Button
                 Text="Geo-Location"
                 WidthRequest="180"
                 Margin="0,0,0,10"
                 Style="{StaticResource HoverExpandButtonStyle}"
+                Clicked="OnGeoFencingPageClicked"
                 />
             <Button
                 x:Name="TrackLocationButton"

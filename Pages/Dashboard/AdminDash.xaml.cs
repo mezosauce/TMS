@@ -87,4 +87,14 @@ public partial class AdminDash : ContentPage
     {
         await Navigation.PushAsync(new CalendarPage());
     }
+
+    private async void OnReportPageClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ReportPage());
+    }
+
+    private async void OnGeoFencingPageClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new GeoFencingPage());
+    }
 }
