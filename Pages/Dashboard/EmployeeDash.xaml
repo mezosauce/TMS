@@ -14,7 +14,7 @@
         <!-- Side Panel -->
         <VerticalStackLayout Grid.Column="0"
                              BackgroundColor="lightgray"
-                             Padding="10,150,10,10"
+                             Padding="10,0,10,10"
                              Spacing="20">
             <VerticalStackLayout
                 Padding="10, 50, 10, 60" >
@@ -24,20 +24,20 @@
                             <TapGestureRecognizer Tapped="OnProfileTapped" />
                         </StackLayout.GestureRecognizers>
 
-                                <Label
-                    Style="{x:StaticResource FaBrandIconStyle}"
-                    Text="{x:Static models:SymbolCode.User}"
-                    FontFamily="FaSolid"
-                    FontSize="40"
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Start"
-                />
+                         <Label
+                                Style="{x:StaticResource FaBrandIconStyle}"
+                                Text="{x:Static models:SymbolCode.User}"
+                                FontFamily="FaSolid"
+                                FontSize="40"
+                                HorizontalOptions="Center" 
+                                VerticalOptions="Start"
+                            />
 
-                                <Label
-                Text="[Employee Name]"
-                FontSize="20"
-                HorizontalOptions="Center"
-                />
+                        <Label
+                            Text="[Employee Name]"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                         />
                             </StackLayout>
 
             </VerticalStackLayout>

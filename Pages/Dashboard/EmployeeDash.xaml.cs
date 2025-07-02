@@ -106,9 +106,9 @@ public partial class EmployeeDash : ContentPage
         _timer?.Dispose();
     }
    
-    private void HomeClicked(object sender, EventArgs e)
+    private async void HomeClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new EmployeeDash());
     }
 
     private async void ReportsClicked(object sender, EventArgs e)
