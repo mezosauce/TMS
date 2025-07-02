@@ -19,7 +19,10 @@ public partial class EmployeeDash : ContentPage
         InitializeComponent();
         StartEasternTimeClock();
     }
-
+    private async void OnProfileTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditProfile());
+    }
     private async void OnClockClicked(object sender, EventArgs e)
     {
         //CLOCK IN AND OUT LOGIC
@@ -33,6 +36,7 @@ public partial class EmployeeDash : ContentPage
         ClockButton.Text = "Clock Out"; // Change button text to "Clock Out"
     }
 
+    /*
     async void OnTrackLocationClicked(object sender, EventArgs e)
     {
         if (!_isTracking)
@@ -73,7 +77,7 @@ public partial class EmployeeDash : ContentPage
             await Task.Delay(3000, token); // Update every 3 seconds
         }
     }
-
+     */
     private void StartEasternTimeClock()
     {
         _timer = new System.Timers.Timer(1000);
@@ -101,17 +105,17 @@ public partial class EmployeeDash : ContentPage
         _timer?.Stop();
         _timer?.Dispose();
     }
-
-    private void HomeClicked(object sender, EventArgs e)
+   
+    private async void HomeClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new EmployeeDash());
     }
 
-    private  void ProfileClicked(object sender, EventArgs e)
+    private async void ReportsClicked(object sender, EventArgs e)
     {
+        await Navigation.PushAsync(new CalendarPage());
 
     }
-
     private async void ScheduleClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new CalendarPage());

@@ -19,6 +19,12 @@
 
                 <VerticalStackLayout
                     Padding="10, 50, 10, 60" >
+                    
+                    <StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="OnProfileTapped" />
+                        </StackLayout.GestureRecognizers>
+                    
                     <Label
                         Style="{x:StaticResource FaBrandIconStyle}"
                         Text="{x:Static models:SymbolCode.User}"
@@ -33,36 +39,60 @@
                     FontSize="20"
                     HorizontalOptions="Center"
                     />
+                    </StackLayout>
+                    
                 </VerticalStackLayout>
-            <Button
-                Text="Worker Schedule"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                Clicked="OnWorkerScheduleClicked"
-                />
-            <Button
-                Text="Reports"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                Clicked="OnReportPageClicked"
-                />
-            <Button
-                Text="Geo-Location"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                Clicked="OnGeoFencingPageClicked"
-                />
-            <Button
-                x:Name="TrackLocationButton"
-                Text="Start Tracking"
-                Clicked="OnTrackLocationClicked"
-                WidthRequest="180"
-                Margin="0,0,0,10"
-                Style="{StaticResource HoverExpandButtonStyle}"
-                />
+
+				<Button
+                    Text="Worker Schedule"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnWorkerScheduleClicked"
+                    />
+
+                <Button
+                    Text="Home"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="HomeClicked"
+                    />
+                
+				<Button
+                    Text="Schedule"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnWorkerScheduleClicked"
+                    />
+                
+                <Button
+                    Text="Reports"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnReportPageClicked"
+                    />
+                
+                <Button
+                    x:Name="EditAccountButton"
+                    Text="Edit Accounts"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+					Clicked="OnEditAccount"
+                    />
+                
+                <Button
+                    Text="Set Geo-Location"
+                    WidthRequest="180"
+                    Margin="0,0,0,10"
+                    Style="{StaticResource HoverExpandButtonStyle}"
+                    Clicked="OnGeoFencingPageClicked"
+                    />
+                
+            
             </VerticalStackLayout>
 
             <!-- Main Content -->

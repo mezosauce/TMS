@@ -28,6 +28,10 @@ public partial class AdminDash : ContentPage
         _timer.AutoReset = true;
         _timer.Start();
     }
+    private async void OnProfileTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditProfile());
+    }
 
     private void UpdateEasternTimeClock(object? sender, System.Timers.ElapsedEventArgs e)
     {
@@ -42,46 +46,6 @@ public partial class AdminDash : ContentPage
         });
     }
 
-    async void OnTrackLocationClicked(object sender, EventArgs e)
-    {
-        if (!_isTracking)
-        {
-            _isTracking = true;
-            TrackLocationButton.Text = "Stop Tracking";
-            _cts = new CancellationTokenSource();
-            await StartTrackingAsync(_cts.Token);
-        }
-        else
-        {
-            _isTracking = false;
-            TrackLocationButton.Text = "Start Tracking";
-            _cts?.Cancel();
-        }
-    }
-
-    async Task StartTrackingAsync(CancellationToken token)
-    {
-        while (!token.IsCancellationRequested)
-        {
-            try
-            {
-                var location = await Geolocation.GetLastKnownLocationAsync();
-                if (location != null)
-                {
-                    LocationLabel.Text = $"Location: {location.Latitude:F4}, {location.Longitude:F4}";
-                }
-                else
-                {
-                    LocationLabel.Text = "Location: Unavailable";
-                }
-            }
-            catch (Exception ex)
-            {
-                LocationLabel.Text = $"Error: {ex.Message}";
-            }
-            await Task.Delay(3000, token); // Update every 3 seconds
-        }
-    }
 
     private async void OnWorkerScheduleClicked(object sender, EventArgs e)
     {
@@ -96,5 +60,20 @@ public partial class AdminDash : ContentPage
     private async void OnGeoFencingPageClicked(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new GeoFencingPage());
+
+    private void Button_Clicked(object sender, EventArgs e)
+    {
+
+    }
+
+    private async void OnEditAccount(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditAccount());
+    }
+
+    private async void HomeClicked(object sender, EventArgs e)
+    {
+        // Navigate to the home page (replace with your actual home page)
+        await Navigation.PushAsync(new AdminDash());
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Time_Managmeent_System.Pages.EditProfile"
+             Title="Edit Profile">
+    <VerticalStackLayout Padding="20" Spacing="16">
+        <Label Text="Edit Profile" FontSize="24" HorizontalOptions="Center" />
+        <Entry x:Name="FirstNameEntry" Placeholder="First Name" />
+        <Entry x:Name="LastNameEntry" Placeholder="Last Name" />
+        <Entry x:Name="PositionEntry" Placeholder="Position" />
+        <Button Text="Save" Clicked="OnSaveClicked" />
+    </VerticalStackLayout>  
+</ContentPage>
