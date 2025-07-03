@@ -1,9 +1,8 @@
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Controls;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
+using Time_Managmeent_System.Services;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+using Supabase;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Time_Management_System.Pages;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
@@ -14,10 +13,12 @@ public partial class AdminDash : ContentPage
     bool _isTracking = false;
     private System.Timers.Timer? _timer;
 
-    public AdminDash()
+    private readonly DataService _dataService;
+    public AdminDash(DataService dataService)
     {
         InitializeComponent();
         StartEasternTimeClock();
+        _dataService = dataService;
     }
 
     private void StartEasternTimeClock()
