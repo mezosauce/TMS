@@ -53,9 +53,9 @@ public partial class ManagerDash : ContentPage
         ClockButton.Text = "Clock Out"; // Change button text to "Clock Out"
     }
 
-    private void HomeClicked(object sender, EventArgs e)
+    private async void HomeClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new ManagerDash());
     }
 
     private async void OnProfileTapped(object sender, EventArgs e)
@@ -68,13 +68,13 @@ public partial class ManagerDash : ContentPage
         await Navigation.PushAsync(new CalendarPage());
     }
 
-    private void ReportsClicked(object sender, EventArgs e)
+    private async void ReportsClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new CalendarPage());
     }
 
-    private void EditEmployeesClicked(object sender, EventArgs e)
+    private async void EditEmployeesClicked(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new EditAccount());
     }
 }
