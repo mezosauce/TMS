@@ -70,13 +70,13 @@ public partial class SignIn : ContentPage
                     switch (userProfile.Position)
                     {
                         case "Manager":
-                            await Navigation.PushAsync(new Dashboard.ManagerDash());
+                            await Navigation.PushAsync(new Dashboard.ManagerDash(_dataService));
                             break;
                         case "Employee":
-                            await Navigation.PushAsync(new Dashboard.EmployeeDash());
+                            await Navigation.PushAsync(new Dashboard.EmployeeDash(_dataService));
                             break;
                         case "Admin": 
-                            await Navigation.PushAsync(new Dashboard.AdminDash());
+                            await Navigation.PushAsync(new Dashboard.AdminDash(_dataService));
                             break;
                         // Add more cases as needed for different positions
                         default:

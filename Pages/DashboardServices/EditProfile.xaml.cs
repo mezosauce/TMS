@@ -1,23 +1,34 @@
 using Microsoft.Maui.Controls;
+using Supabase.Postgrest.Attributes;
+using Supabase.Postgrest.Models;
+using System.Threading.Tasks;
 
 namespace Time_Managmeent_System.Pages;
 
 public partial class EditProfile : ContentPage
 {
-    // Simulated user profile (replace with your actual data source/service)
-    private UserProfile _userProfile = new UserProfile
-    {
-        First = "John",
-        Last = "Doe",
-        Position = "Admin"
-    };
-
+    private UserProfile _userProfile;
     public EditProfile()
     {
         InitializeComponent();
-        LoadProfile();
+        LoadProfileAsync();
     }
+    private async void LoadProfileAsync()
+    {
+        // Example: Fetch user profile from Supabase (replace with your actual fetch logic)
+        var userId = "current_user_id"; // Replace with actual user ID
+        _userProfile = await GetUserProfileAsync(userId);
 
+        // Map all attributes to variables or UI fields
+        if (_userProfile != null)
+        {
+            FirstNameEntry.Text = _userProfile.First;
+            LastNameEntry.Text = _userProfile.Last;
+            PositionEntry.Text = _userProfile.Position;
+            // Add more fields as needed, e.g.:
+            // AvatarUrlEntry.Text = _userProfile.AvatarUrl;
+        }
+    }
     private void LoadProfile()
     {
         // Populate fields with current user data
