@@ -4,6 +4,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using Time_Managmeent_System.Services;
 using Time_Management_System.Pages;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
@@ -14,10 +15,12 @@ public partial class EmployeeDash : ContentPage
     bool _isTracking = false;
     private System.Timers.Timer _timer;
 
-    public EmployeeDash()
+    private readonly DataService _dataService;
+    public EmployeeDash(DataService dataService)
     {
         InitializeComponent();
         StartEasternTimeClock();
+        _dataService = dataService;
     }
     private async void OnProfileTapped(object sender, EventArgs e)
     {
@@ -108,7 +111,7 @@ public partial class EmployeeDash : ContentPage
    
     private async void HomeClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EmployeeDash());
+        await Navigation.PushAsync(new EmployeeDash(_dataService));
     }
 
     private async void ReportsClicked(object sender, EventArgs e)

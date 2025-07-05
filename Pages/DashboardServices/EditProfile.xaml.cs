@@ -17,7 +17,7 @@ public partial class EditProfile : ContentPage
     {
         // Example: Fetch user profile from Supabase (replace with your actual fetch logic)
         var userId = "current_user_id"; // Replace with actual user ID
-        _userProfile = await GetUserProfileAsync(userId);
+        //_userProfile = await GetUserProfileAsync(userId);
 
         // Map all attributes to variables or UI fields
         if (_userProfile != null)

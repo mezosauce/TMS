@@ -6,43 +6,52 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Time_Management_System.Control;
 using Microsoft.Maui.Controls.Compatibility;
+
+using Time_Management_System.Pages;
+using Time_Management_System.Services;
+using Time_Management_System.Models;
+
 using Layout = Microsoft.Maui.Controls.Layout; // Explicitly alias the Layout type
 
-namespace Time_Management_System.Pages
+namespace Time_Management_System.Pages;
+
+
+public partial class CalendarPage : ContentPage
 {
-    public partial class CalendarPage : ContentPage
+
+
+    //private readonly DataService _dataService;
+    public CalendarPage()
     {
-        public CalendarPage()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
+        //_dataService = dataService;
+    }
 
-        protected override void OnAppearing()
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        if (Content is Layout layout)
         {
-            base.OnAppearing();
-            if (Content is Layout layout)
+            var calendarView = FindDescendant<CalendarView>(layout);
+            calendarView?.Rebuild();
+        }
+    }
+
+    private T FindDescendant<T>(Layout layout) where T : View
+    {
+        foreach (var child in layout.Children)
+        {
+            if (child is T match)
+                return match;
+
+            if (child is Layout childLayout)
             {
-                var calendarView = FindDescendant<CalendarView>(layout);
-                calendarView?.Rebuild();
+                var descendant = FindDescendant<T>(childLayout);
+                if (descendant != null)
+                    return descendant;
             }
         }
-
-        private T FindDescendant<T>(Layout layout) where T : View
-        {
-            foreach (var child in layout.Children)
-            {
-                if (child is T match)
-                    return match;
-
-                if (child is Layout childLayout)
-                {
-                    var descendant = FindDescendant<T>(childLayout);
-                    if (descendant != null)
-                        return descendant;
-                }
-            }
-            return null;
-        }
+        return null;
     }
 }
 

@@ -93,9 +93,6 @@
 	  <Compile Update="Pages\Login.xaml.cs">
 	    <DependentUpon>Login.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="Pages\LoginType\Employee.xaml.cs">
-	    <DependentUpon>Employee.xaml</DependentUpon>
-	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -124,16 +121,7 @@
 	  <MauiXaml Update="Pages\Login.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginType\Admin.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginType\Employee.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginType\Guest.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="Pages\LoginType\Manager.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Pages\LoginType\SignIn.xaml">

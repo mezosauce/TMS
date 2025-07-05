@@ -45,12 +45,14 @@ public static class MauiProgram
         builder.Services.AddTransient<AddEmployeeViewModel>();
         builder.Services.AddTransient<UpdateEmployeeViewModel>();
         
+
         //Add Pages
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<Guest>();
         builder.Services.AddTransient<SignIn>();
+        
+        //Dashboard Pages
 
-       
         builder.Services.AddTransient<UpdateEmployeePage>();
 
         //Data Service
