@@ -7,7 +7,10 @@
         <Label Text="Edit Profile" FontSize="24" HorizontalOptions="Center" />
         <Entry x:Name="FirstNameEntry" Placeholder="First Name" />
         <Entry x:Name="LastNameEntry" Placeholder="Last Name" />
-        <Entry x:Name="PositionEntry" Placeholder="Position" />
+
+        <Entry x:Name="AvatarUrl" Placeholder="Avatar URL" IsReadOnly="True" />
+        <Button Text="Upload Avatar" Clicked="OnUploadAvatarClicked" />
+
         <Button Text="Save" Clicked="OnSaveClicked" />
     </VerticalStackLayout>  
 </ContentPage>

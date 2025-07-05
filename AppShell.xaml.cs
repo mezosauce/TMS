@@ -1,5 +1,4 @@
-﻿using Time_Management_System.Pages;
-using Time_Managmeent_System.Pages;
+﻿using Time_Managmeent_System.Pages;
 
 namespace Time_Managmeent_System;
 
@@ -12,7 +11,6 @@ public partial class AppShell : Shell
         // Register routes for navigation
        
         RegisterForRoute<UpdateEmployeePage>();
-
     }
 
     protected void RegisterForRoute<T>()

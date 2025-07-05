@@ -4,6 +4,7 @@
              xmlns:controls="clr-namespace:Time_Management_System.Control"
              x:Class="Time_Management_System.Pages.ReportPage"
              Title="Worker Reports">
+    
     <VerticalStackLayout Padding="20">
         <controls:ReportView /> 
     </VerticalStackLayout>

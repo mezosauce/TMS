@@ -63,21 +63,21 @@ public partial class ManagerDash : ContentPage
 
     private async void OnProfileTapped(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditProfile());
+        await Navigation.PushAsync(new EditProfile(_dataService));
     }
 
     private async void ScheduleClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage());
+        await Navigation.PushAsync(new CalendarPage(_dataService));
     }
 
     private async void ReportsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage());
+        await Navigation.PushAsync(new CalendarPage(_dataService));
     }
 
     private async void EditEmployeesClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditAccount());
+        await Navigation.PushAsync(new EditAccount(_dataService));
     }
 }

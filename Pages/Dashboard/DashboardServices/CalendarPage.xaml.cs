@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 using Time_Management_System.Control;
 using Microsoft.Maui.Controls.Compatibility;
-
-using Time_Management_System.Pages;
-using Time_Management_System.Services;
-using Time_Management_System.Models;
+using Time_Managmeent_System.Services;
 
 using Layout = Microsoft.Maui.Controls.Layout; // Explicitly alias the Layout type
 
@@ -20,11 +17,11 @@ public partial class CalendarPage : ContentPage
 {
 
 
-    //private readonly DataService _dataService;
-    public CalendarPage()
+    private readonly DataService _dataService;
+    public CalendarPage(DataService dataService)
     {
         InitializeComponent();
-        //_dataService = dataService;
+        _dataService = dataService;
     }
 
     protected override void OnAppearing()

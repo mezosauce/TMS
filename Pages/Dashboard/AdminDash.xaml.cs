@@ -1,8 +1,4 @@
 using Time_Managmeent_System.Services;
-using Supabase.Postgrest.Attributes;
-using Supabase.Postgrest.Models;
-using Supabase;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Time_Management_System.Pages;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
@@ -31,7 +27,7 @@ public partial class AdminDash : ContentPage
     }
     private async void OnProfileTapped(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditProfile());
+        await Navigation.PushAsync(new EditProfile(_dataService));
     }
 
     private void UpdateEasternTimeClock(object? sender, System.Timers.ElapsedEventArgs e)
@@ -50,7 +46,7 @@ public partial class AdminDash : ContentPage
 
     private async void OnWorkerScheduleClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage());
+        await Navigation.PushAsync(new CalendarPage(_dataService));
     }
 
     private async void OnReportPageClicked(object sender, EventArgs e)
@@ -60,12 +56,12 @@ public partial class AdminDash : ContentPage
 
     private async void OnGeoFencingPageClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new GeoFencingPage());
+        await Navigation.PushAsync(new GeoFencingPage(_dataService));
     }
 
     private async void OnEditAccount(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditAccount());
+        await Navigation.PushAsync(new EditAccount(_dataService));
     }
 
     private async void HomeClicked(object sender, EventArgs e)

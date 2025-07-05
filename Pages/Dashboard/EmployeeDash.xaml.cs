@@ -24,7 +24,7 @@ public partial class EmployeeDash : ContentPage
     }
     private async void OnProfileTapped(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new EditProfile());
+        await Navigation.PushAsync(new EditProfile(_dataService));
     }
     private async void OnClockClicked(object sender, EventArgs e)
     {
@@ -116,12 +116,12 @@ public partial class EmployeeDash : ContentPage
 
     private async void ReportsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage());
+        await Navigation.PushAsync(new CalendarPage(_dataService));
 
     }
     private async void ScheduleClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage());
+        await Navigation.PushAsync(new CalendarPage(_dataService));
     }
 
     private void TimeOffClicked(object sender, EventArgs e)

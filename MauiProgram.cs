@@ -50,8 +50,8 @@ public static class MauiProgram
         builder.Services.AddTransient<LoginPage>();
         builder.Services.AddTransient<Guest>();
         builder.Services.AddTransient<SignIn>();
-        
-        //Dashboard Pages
+
+
 
         builder.Services.AddTransient<UpdateEmployeePage>();
 
