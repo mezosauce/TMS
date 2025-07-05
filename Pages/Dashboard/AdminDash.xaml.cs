@@ -1,5 +1,7 @@
 using Time_Managmeent_System.Services;
 using Time_Management_System.Pages;
+using Time_Managmeent_System.Models;
+
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
@@ -10,12 +12,66 @@ public partial class AdminDash : ContentPage
     private System.Timers.Timer? _timer;
 
     private readonly DataService _dataService;
+    public UserProfile _userProfile { get; set; }
+
     public AdminDash(DataService dataService)
     {
         InitializeComponent();
         StartEasternTimeClock();
         _dataService = dataService;
+        LoadProfileAsync();
     }
+
+    private async void LoadProfileAsync()
+    {
+        try
+        {
+            // Get currently authenticated user from Supabase Auth
+            var user = _dataService.SupabaseClient.Auth.CurrentUser;
+            if (user == null)
+            {
+                await DisplayAlert("Error", "No authenticated user found.", "OK");
+                return;
+            }
+
+            // Query your "UserProfile" table using the user's ID
+            var response = await _dataService.SupabaseClient
+                .From<UserProfile>()
+                .Where(x => x.Id == user.Id)
+                .Get();
+
+            // Get first user profile
+            var profile = response.Models.FirstOrDefault();
+            if (profile == null)
+            {
+                await DisplayAlert("Error", "Profile data not found.", "OK");
+                return;
+            }
+
+            // Set the profile to the property
+            UserProfile = new UserProfile
+            {
+                Id = profile.Id,
+                First = profile.First,
+                Last = profile.Last,
+                AvatarUrl = profile.AvatarUrl
+            };
+
+            // Optionally update the label text if you also show full name somewhere
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                // If you want to show "First Last" together in one label, update label text here
+                // For example:
+                // NameLabel.Text = $"{UserProfile.First} {UserProfile.Last}";
+            });
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to load profile: {ex.Message}", "OK");
+        }
+    }
+
+
 
     private void StartEasternTimeClock()
     {

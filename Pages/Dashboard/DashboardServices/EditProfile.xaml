@@ -10,6 +10,7 @@
 
         <Entry x:Name="AvatarUrl" Placeholder="Avatar URL" IsReadOnly="True" />
         <Button Text="Upload Avatar" Clicked="OnUploadAvatarClicked" />
+        <Image x:Name="AvatarPreview" HeightRequest="100" WidthRequest="100" />
 
         <Button Text="Save" Clicked="OnSaveClicked" />
     </VerticalStackLayout>  

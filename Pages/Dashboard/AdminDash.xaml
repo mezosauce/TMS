@@ -3,7 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"
              x:Class="Time_Managmeent_System.Pages.Dashboard.AdminDash"
+             
+             xmlns:converters="clr-namespace:Time_Managmeent_System.Converters"
+
              Title="AdminDash">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToDefaultImageConverter x:Key="NullToDefaultImageConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ScrollView>
         <Grid>
             <Grid.ColumnDefinitions>
@@ -19,28 +28,25 @@
 
                 <VerticalStackLayout
                     Padding="10, 50, 10, 60" >
-                    
+
                     <StackLayout>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnProfileTapped" />
                         </StackLayout.GestureRecognizers>
-                    
-                    <Label
-                        Style="{x:StaticResource FaBrandIconStyle}"
-                        Text="{x:Static models:SymbolCode.User}"
-                        FontFamily="FaSolid"
-                        FontSize="40"
-                        HorizontalOptions="Center" 
+
+                        <Image
+                        HeightRequest="80"
+                        WidthRequest="80"
+                        HorizontalOptions="Center"
                         VerticalOptions="Start"
-                    />
-                
-                <Label
-                    Text="[Admin Name]"
-                    FontSize="20"
-                    HorizontalOptions="Center"
-                    />
+                        Source="{Binding UserProfile.AvatarUrl, Converter={StaticResource NullToDefaultImageConverter}}" />
+
+                        <Label
+                        Text="{Binding UserProfile.First, TargetNullValue='[Admin Name]'}"
+                        FontSize="20"
+                        HorizontalOptions="Center" />
                     </StackLayout>
-                    
+
                 </VerticalStackLayout>
 
 				<Button
