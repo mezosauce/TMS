@@ -8,10 +8,11 @@
 
              Title="AdminDash">
     <ContentPage.Resources>
-        <ResourceDictionary>
-            <converters:NullToDefaultImageConverter x:Key="NullToDefaultImageConverter" />
-        </ResourceDictionary>
-    </ContentPage.Resources>
+    <ResourceDictionary>
+        <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+        <converters:NullToInverseVisibilityConverter x:Key="NullToInverseVisibilityConverter" />
+    </ResourceDictionary>
+</ContentPage.Resources>
     
     <ScrollView>
         <Grid>
@@ -35,16 +36,24 @@
                         </StackLayout.GestureRecognizers>
 
                         <Image
+                        Source="{Binding UserProfile.AvatarUrl}"
                         HeightRequest="80"
                         WidthRequest="80"
                         HorizontalOptions="Center"
-                        VerticalOptions="Start"
-                        Source="{Binding UserProfile.AvatarUrl, Converter={StaticResource NullToDefaultImageConverter}}" />
+                        VerticalOptions="Start" />
+                        <!-- Label shown when there is no URL -->
+                         <Label
+                        Text="{x:Static models:SymbolCode.User}"
+                        Style="{x:StaticResource FaBrandIconStyle}"
+                        FontSize="60"
+                        HorizontalOptions="Center"
+                        IsVisible="{Binding UserProfile.AvatarUrl, Converter={StaticResource NullToInverseVisibilityConverter}}" />
 
                         <Label
-                        Text="{Binding UserProfile.First, TargetNullValue='[Admin Name]'}"
+                        Text="{Binding FullName, TargetNullValue='[Admin Name]'}"
                         FontSize="20"
                         HorizontalOptions="Center" />
+
                     </StackLayout>
 
                 </VerticalStackLayout>

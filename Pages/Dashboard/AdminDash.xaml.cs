@@ -1,24 +1,46 @@
-using Time_Managmeent_System.Services;
+using System.ComponentModel;
 using Time_Management_System.Pages;
 using Time_Managmeent_System.Models;
+using Time_Managmeent_System.Services;
 
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
-public partial class AdminDash : ContentPage
+public partial class AdminDash : ContentPage, INotifyPropertyChanged
 {
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    void OnPropertyChanged(string propertyName) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
     CancellationTokenSource? _cts;
     bool _isTracking = false;
     private System.Timers.Timer? _timer;
 
     private readonly DataService _dataService;
-    public UserProfile _userProfile { get; set; }
+
+    private UserProfile _userProfile;
+    public UserProfile UserProfile
+    {
+        get => _userProfile;
+        set
+        {
+            if (_userProfile != value)
+            {
+                _userProfile = value;
+                OnPropertyChanged(nameof(UserProfile));
+                OnPropertyChanged(nameof(FullName)); // Notify UI to update FullName too
+            }
+        }
+    }
+    public string FullName => $"{UserProfile?.First} {UserProfile?.Last}".Trim();
 
     public AdminDash(DataService dataService)
     {
         InitializeComponent();
         StartEasternTimeClock();
         _dataService = dataService;
+        BindingContext = this;
         LoadProfileAsync();
     }
 
@@ -48,13 +70,15 @@ public partial class AdminDash : ContentPage
                 return;
             }
 
+            var encodedUrl = profile.AvatarUrl.Replace(" ", "%20");
+
             // Set the profile to the property
-            _userProfile = new UserProfile
+            UserProfile = new UserProfile
             {
                 Id = profile.Id,
                 First = profile.First,
                 Last = profile.Last,
-                AvatarUrl = profile.AvatarUrl
+               AvatarUrl = encodedUrl
             };
 
             // Optionally update the label text if you also show full name somewhere

@@ -28,7 +28,9 @@ public static class MauiProgram
                 fonts.AddFont("fa-brands-400.ttf", "FaBrands");
                 fonts.AddFont("fa-regular-400.ttf", "FaRegular");
                 fonts.AddFont("fa-solid-900.ttf", "FaSolid");
-            });
+            })
+                .ConfigureImageSources(); // Add this if you are using additional image handlers
+        ;
 
         // THIS IS THE DEPENDENCY INJECTION CONTAINER
 
