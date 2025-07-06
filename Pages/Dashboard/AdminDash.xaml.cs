@@ -49,7 +49,7 @@ public partial class AdminDash : ContentPage
             }
 
             // Set the profile to the property
-            UserProfile = new UserProfile
+            _userProfile = new UserProfile
             {
                 Id = profile.Id,
                 First = profile.First,
