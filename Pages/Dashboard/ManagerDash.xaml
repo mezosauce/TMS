@@ -1,125 +1,136 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Time_Managmeent_System.Pages.Dashboard.ManagerDash"
-             Title="ManagerDash">
-    <ScrollView>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="220"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
+    <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+                 xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                 x:Class="Time_Managmeent_System.Pages.Dashboard.ManagerDash"
+                 xmlns:converters="clr-namespace:Time_Managmeent_System.Converters"
 
-            <!-- Side Panel -->
-            <VerticalStackLayout Grid.Column="0"
-                         BackgroundColor="lightgray"
-                         Padding="10,0,10,10"
-                         Spacing="20">
+                 Title="ManagerDash">
 
-                <VerticalStackLayout
-                     Padding="10, 50, 10, 60" >
+        <ContentPage.Resources>
+            <ResourceDictionary>
+                <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+                <converters:NullToInverseVisibilityConverter x:Key="NullToInverseVisibilityConverter" />
+            </ResourceDictionary>
+        </ContentPage.Resources>
+    
+        <ScrollView>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="220"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <StackLayout>
-                        <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="OnProfileTapped" />
-                        </StackLayout.GestureRecognizers>
+                <!-- Side Panel -->
+                <VerticalStackLayout Grid.Column="0"
+                             BackgroundColor="lightgray"
+                             Padding="10,0,10,10"
+                             Spacing="20">
 
-                        <Label
-                    Style="{x:StaticResource FaBrandIconStyle}"
-                    Text="{x:Static models:SymbolCode.User}"
-                    FontFamily="FaSolid"
-                    FontSize="40"
-                    HorizontalOptions="Center" 
-                    VerticalOptions="Start"
-                />
+                    <VerticalStackLayout
+                         Padding="10, 50, 10, 60" >
 
-                        <Label
-                            
-                Text="[Employee Name]"
-                FontSize="20"
-                HorizontalOptions="Center"
-             />
-                    </StackLayout>
+                        <StackLayout>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="OnProfileTapped" />
+                            </StackLayout.GestureRecognizers>
 
+                            <Image
+                             Source="{Binding UserProfile.AvatarUrl}"
+                             HeightRequest="80"
+                             WidthRequest="80"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Start" />
+                            <!-- Label shown when there is no URL -->
+                            <Label
+                             Text="{x:Static models:SymbolCode.User}"
+                             Style="{x:StaticResource FaBrandIconStyle}"
+                             FontSize="60"
+                             HorizontalOptions="Center"
+                             IsVisible="{Binding UserProfile.AvatarUrl, Converter={StaticResource NullToInverseVisibilityConverter}}" />
+
+                            <Label
+                             Text="{Binding FullName, TargetNullValue='[Manager Name]'}"
+                             FontSize="20"
+                             HorizontalOptions="Center" />
+
+                        </StackLayout>
+                        
+                </VerticalStackLayout>
+                <Button
+                        Text="Home"
+                        WidthRequest="180"
+                        Margin="0,0,0,10"
+                        Style="{StaticResource HoverExpandButtonStyle}"
+                        Clicked="HomeClicked"/>
+                
+                    <Button
+                        Text="Schedules"
+                        WidthRequest="180"
+                        Margin="0,0,0,10"
+                        Style="{StaticResource HoverExpandButtonStyle}"
+                        Clicked="ScheduleClicked"/>
+                    <Button
+                        Text="Reports"
+                        WidthRequest="180"
+                        Margin="0,0,0,10"
+                        Style="{StaticResource HoverExpandButtonStyle}"
+                        Clicked="ReportsClicked"/>
+                    <Button
+                        Text="Edit Employees"
+                        WidthRequest="180"
+                        Margin="0,0,0,10"
+                        Style="{StaticResource HoverExpandButtonStyle}"
+                        Clicked="EditEmployeesClicked"/>
+                
                 </VerticalStackLayout>
 
-                <Button
-                    Text="Home"
-                    WidthRequest="180"
-                    Margin="0,0,0,10"
-                    Style="{StaticResource HoverExpandButtonStyle}"
-                    Clicked="HomeClicked"/>
-                
-                <Button
-                    Text="Schedules"
-                    WidthRequest="180"
-                    Margin="0,0,0,10"
-                    Style="{StaticResource HoverExpandButtonStyle}"
-                    Clicked="ScheduleClicked"/>
-                <Button
-                    Text="Reports"
-                    WidthRequest="180"
-                    Margin="0,0,0,10"
-                    Style="{StaticResource HoverExpandButtonStyle}"
-                    Clicked="ReportsClicked"/>
-                <Button
-                    Text="Edit Employees"
-                    WidthRequest="180"
-                    Margin="0,0,0,10"
-                    Style="{StaticResource HoverExpandButtonStyle}"
-                    Clicked="EditEmployeesClicked"/>
-                
-            </VerticalStackLayout>
+                <!-- Main Content -->
+                <VerticalStackLayout Grid.Column="1"
+                             Padding="20"
+                             Spacing="15">
 
-            <!-- Main Content -->
-            <VerticalStackLayout Grid.Column="1"
-                         Padding="20"
-                         Spacing="15">
-
-                <HorizontalStackLayout>
-                    <VerticalStackLayout>
+                    <HorizontalStackLayout>
+                        <VerticalStackLayout>
+                            
+                            <Label
+                        x:Name="LocationLabel"
+                        Text="Location: Unknown"
+                        FontSize="16"
+                        Margin="0,0,0,10"
+                        HorizontalOptions="Start" />
+                        </VerticalStackLayout>
                         <Label
-                    Text="Welcome Back, [Employee Name]!"
-                    FontSize="20"
-                    Margin="0,0,0,10"
-                    HorizontalOptions="Start" 
-                    VerticalOptions="Start" />
-                        <Label
-                    x:Name="LocationLabel"
-                    Text="Location: Unknown"
-                    FontSize="16"
-                    Margin="0,0,0,10"
-                    HorizontalOptions="Start" />
-                    </VerticalStackLayout>
-                    <Label
-                x:Name="EasternTimeLabel"
-                Text="--:--:--"
-                FontSize="38"
-                Margin="120,0,0,0"
-                HorizontalOptions="Center" />
-                </HorizontalStackLayout>
-
-                <!-- Shift and Clock In on left side -->
-                <HorizontalStackLayout HorizontalOptions="Start">
-                    <VerticalStackLayout>
-                        <Label
-                Text="Shift:"
-                FontSize="16"
-                Margin="0,0,10,0"
-                VerticalOptions="Center" />
-                        <Button
-                x:Name="ClockButton"
-                Text="Clock In"
-                WidthRequest="180"
-                Clicked="OnClockClicked"
-                Margin="0,20,0,0"
-                VerticalOptions="Center"/>
+                    x:Name="EasternTimeLabel"
+                    Text="--:--:--"
+                    FontSize="38"
+                    Margin="120,0,0,0"
+                    HorizontalOptions="Center" />
                         
-                    </VerticalStackLayout>
-                </HorizontalStackLayout>
-            </VerticalStackLayout>
+                    </HorizontalStackLayout>
 
-        </Grid>
-    </ScrollView>
-</ContentPage>
+                    <!-- Shift and Clock In on left side -->
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <VerticalStackLayout>
+
+                            <Label
+                    Text="Shift:"
+                    FontSize="16"
+                    Margin="0,0,10,0"
+                    VerticalOptions="Center" />
+                            
+                            <Button
+                    x:Name="ClockButton"
+                    Text="Clock In"
+                    WidthRequest="180"
+                    Clicked="OnClockClicked"
+                    Margin="0,20,0,0"
+                    VerticalOptions="Center"/>
+                        
+                        </VerticalStackLayout>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage>

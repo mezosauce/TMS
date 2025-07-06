@@ -1,27 +1,99 @@
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Controls;
-using System;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
+
+using System.ComponentModel;
 using Time_Managmeent_System.Services;
 using Time_Management_System.Pages;
-
+using Time_Managmeent_System.Models;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
-public partial class ManagerDash : ContentPage
+public partial class ManagerDash : ContentPage, INotifyPropertyChanged
 {
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    void OnPropertyChanged(string propertyName) =>
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
     CancellationTokenSource? _cts;
     bool _isTracking = false;
     private System.Timers.Timer? _timer;
 
     private readonly DataService _dataService;
+
+    private UserProfile _userProfile;
+    public UserProfile UserProfile
+    {
+        get => _userProfile;
+        set
+        {
+            if (_userProfile != value)
+            {
+                _userProfile = value;
+                OnPropertyChanged(nameof(UserProfile));
+                OnPropertyChanged(nameof(FullName)); // Notify UI to update FullName too
+            }
+        }
+    }
+    public string FullName => $"{UserProfile?.First} {UserProfile?.Last}".Trim();
+
     public ManagerDash(DataService dataService)
     {
         InitializeComponent();
         StartEasternTimeClock();
         _dataService = dataService;
+        BindingContext = this;
+        LoadProfileAsync();
+    }
+
+    private async void LoadProfileAsync()
+    {
+        try
+        {
+            // Get currently authenticated user from Supabase Auth
+            var user = _dataService.SupabaseClient.Auth.CurrentUser;
+            if (user == null)
+            {
+                await DisplayAlert("Error", "No authenticated user found.", "OK");
+                return;
+            }
+
+            // Query your "UserProfile" table using the user's ID
+            var response = await _dataService.SupabaseClient
+                .From<UserProfile>()
+                .Where(x => x.Id == user.Id)
+                .Get();
+
+            // Get first user profile
+            var profile = response.Models.FirstOrDefault();
+            if (profile == null)
+            {
+                await DisplayAlert("Error", "Profile data not found.", "OK");
+                return;
+            }
+
+
+
+            // Set the profile to the property
+            UserProfile = new UserProfile
+            {
+                Id = profile.Id,
+                First = profile.First,
+                Last = profile.Last,
+                AvatarUrl = profile.AvatarUrl
+            };
+
+            // Optionally update the label text if you also show full name somewhere
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                // If you want to show "First Last" together in one label, update label text here
+                // For example:
+                // NameLabel.Text = $"{UserProfile.First} {UserProfile.Last}";
+            });
+        }
+        catch (Exception ex)
+        {
+            await DisplayAlert("Error", $"Failed to load profile: {ex.Message}", "OK");
+        }
     }
 
     private void StartEasternTimeClock()
@@ -42,7 +114,6 @@ public partial class ManagerDash : ContentPage
             EasternTimeLabel.Text = easternTime.ToString("hh:mm:ss tt");
         });
     }
-
     private async void OnClockClicked(object sender, EventArgs e)
     {
         //CLOCK IN AND OUT LOGIC
@@ -55,6 +126,7 @@ public partial class ManagerDash : ContentPage
         await DisplayAlert("Clock", "Clock-in successful!", "OK");
         ClockButton.Text = "Clock Out"; // Change button text to "Clock Out"
     }
+
 
     private async void HomeClicked(object sender, EventArgs e)
     {

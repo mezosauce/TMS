@@ -3,7 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:models="clr-namespace:Time_Managmeent_System.AwsomeFonts"
              x:Class="Time_Managmeent_System.Pages.Dashboard.EmployeeDash"
+             xmlns:converters="clr-namespace:Time_Managmeent_System.Converters"
+
              Title="EmployeeDash">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter" />
+            <converters:NullToInverseVisibilityConverter x:Key="NullToInverseVisibilityConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
     <ScrollView>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -17,30 +27,35 @@
                              Padding="10,0,10,10"
                              Spacing="20">
             <VerticalStackLayout
-                Padding="10, 50, 10, 60" >
+                Padding="10, 0, 10, 60" >
 
                     <StackLayout>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="OnProfileTapped" />
                         </StackLayout.GestureRecognizers>
 
-                         <Label
-                                Style="{x:StaticResource FaBrandIconStyle}"
-                                Text="{x:Static models:SymbolCode.User}"
-                                FontFamily="FaSolid"
-                                FontSize="40"
-                                HorizontalOptions="Center" 
-                                VerticalOptions="Start"
-                            />
+                        <Image
+                            Source="{Binding UserProfile.AvatarUrl}"
+                            HeightRequest="80"
+                            WidthRequest="80"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Start" />
+                        <!-- Label shown when there is no URL -->
+                        <Label
+                            Text="{x:Static models:SymbolCode.User}"
+                            Style="{x:StaticResource FaBrandIconStyle}"
+                            FontSize="60"
+                            HorizontalOptions="Center"
+                            IsVisible="{Binding UserProfile.AvatarUrl, Converter={StaticResource NullToInverseVisibilityConverter}}" />
 
                         <Label
-                            Text="[Employee Name]"
+                            Text="{Binding FullName, TargetNullValue='[Employee Name]'}"
                             FontSize="20"
-                            HorizontalOptions="Center"
-                         />
-                            </StackLayout>
+                            HorizontalOptions="Center" />
 
-            </VerticalStackLayout>
+                    </StackLayout>
+
+                </VerticalStackLayout>
             <Button
                 Text="Home"
                 WidthRequest="180"
@@ -79,12 +94,7 @@
 
             <HorizontalStackLayout>
                 <VerticalStackLayout>
-                    <Label
-                        Text="Welcome Back, [Employee Name]!"
-                        FontSize="20"
-                        Margin="0,0,0,10"
-                        HorizontalOptions="Start" 
-                        VerticalOptions="Start" />
+                    
                     <Label
                         x:Name="LocationLabel"
                         Text="Location: Unknown"

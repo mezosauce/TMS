@@ -70,7 +70,7 @@ public partial class AdminDash : ContentPage, INotifyPropertyChanged
                 return;
             }
 
-            var encodedUrl = profile.AvatarUrl.Replace(" ", "%20");
+
 
             // Set the profile to the property
             UserProfile = new UserProfile
@@ -78,7 +78,7 @@ public partial class AdminDash : ContentPage, INotifyPropertyChanged
                 Id = profile.Id,
                 First = profile.First,
                 Last = profile.Last,
-               AvatarUrl = encodedUrl
+                AvatarUrl = profile.AvatarUrl
             };
 
             // Optionally update the label text if you also show full name somewhere
@@ -105,11 +105,6 @@ public partial class AdminDash : ContentPage, INotifyPropertyChanged
         _timer.AutoReset = true;
         _timer.Start();
     }
-    private async void OnProfileTapped(object sender, EventArgs e)
-    {
-        await Navigation.PushAsync(new EditProfile(_dataService));
-    }
-
     private void UpdateEasternTimeClock(object? sender, System.Timers.ElapsedEventArgs e)
     {
         // Get the current Eastern Time
@@ -123,6 +118,13 @@ public partial class AdminDash : ContentPage, INotifyPropertyChanged
         });
     }
 
+
+    private async void OnProfileTapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditProfile(_dataService));
+    }
+
+  
 
     private async void OnWorkerScheduleClicked(object sender, EventArgs e)
     {
