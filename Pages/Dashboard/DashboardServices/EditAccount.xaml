@@ -2,11 +2,68 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Time_Managmeent_System.Pages.EditAccount"
-             Title="EditAccount">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
+             Title="Edit Account">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+            <Label 
+            Text="Select the position you want to adjust:"
             HorizontalOptions="Center" />
-    </VerticalStackLayout>
+
+            <Picker
+            Title="Role"
+            x:Name="RoleEntry"
+            SelectedIndexChanged="RoleEntry_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Employee</x:String>
+                        <x:String>Admin</x:String>
+                        <x:String>Manager</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Label 
+            Text="Select an employee:"
+            HorizontalOptions="Center" />
+
+            <Picker
+            Title="Select First Name"
+            x:Name="FirstNamePicker"
+            IsVisible="False" />
+
+
+            <Label 
+            x:Name="EditProfileLabel"
+            Text="Edit Profile" 
+            FontSize="24" 
+            HorizontalOptions="Center" 
+            IsVisible="False" />
+
+            <Entry 
+            x:Name="FirstNameEntry" 
+            Placeholder="First Name" 
+            IsVisible="False" />
+
+            <Entry 
+            x:Name="LastNameEntry" 
+            Placeholder="Last Name" 
+            IsVisible="False" />
+            <HorizontalStackLayout>
+                <Button 
+                   x:Name="SaveButton"
+            Text="Save" 
+            Clicked="OnSaveClicked" 
+            IsVisible="False" />
+                <Button 
+                x:Name="DeleteButton"
+                Text="Delete Employee"
+                IsVisible="False"
+                Clicked="OnDeleteButtonClicked" />
+            </HorizontalStackLayout>
+            <!-- Additional fields for editing can go here -->
+
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
