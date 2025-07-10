@@ -13,7 +13,7 @@ namespace Time_Managmeent_System.Models;
 public class Time: BaseModel
 {
     [PrimaryKey("tid", false)]
-    public string Time_ID { get; set; } // Ensure this matches your database schema
+    public string Tid { get; set; } // Ensure this matches your database schema
     [Column("id")]
     public string User_ID { get; set; }
     [Column("shift")]
@@ -22,6 +22,8 @@ public class Time: BaseModel
     public DateTimeOffset Clocked_in { get; set; } // Consider using DateTimeOffset if you need timezone support
     [Column("clock-out")]
     public DateTimeOffset Clocked_out { get; set; } // Nullable if the notification can be unread
+    [Column("hours")]
+    public double Hours { get; set; } // Total hours worked in this shift
     [Column("status")]
     public bool Status { get; set; } // True for completed, false for pending
 
