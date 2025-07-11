@@ -1,4 +1,6 @@
 
+using Microsoft.Maui.ApplicationModel.Communication;
+using Supabase.Gotrue;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
 
@@ -130,8 +132,36 @@ public partial class EditAccount : ContentPage
                 .Where(x => x.Id == user.Id)
                 .Delete();
 
+
+            // Delete the user using the Admin API
+            var response = await _dataService.SupabaseClient.Auth.DeleteUser(user.Id);
+            if (response != null && response.Error == null)
+            {
+                await DisplayAlert("Success", "User deleted successfully", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", $"Failed to delete user: {response?.Error?.Message}", "OK");
+            }
             // If no exception was thrown, consider it successful
             await DisplayAlert("Success", "Employee deleted successfully.", "OK");
+
+
+            var changeMessage = "User: " + user.First + " " + user.Last + " was deleted.";
+
+            // Create a proper Audit object matching your model structure
+            var auditEntry = new Audit
+            {
+                Id = Guid.NewGuid().ToString(),  // Generate a unique audit ID
+                change = changeMessage  // Your change message
+            };
+
+            // Insert the audit entry
+            await _dataService.SupabaseClient
+                .From<Audit>()
+                .Insert(auditEntry);
+
+
 
             // Refresh the list by triggering the role selection again
             if (RoleEntry.SelectedItem != null)

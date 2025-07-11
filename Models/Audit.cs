@@ -8,13 +8,12 @@ using System.Threading.Tasks;
 
 namespace Time_Managmeent_System.Models;
 
-[Table("user_data")]
+[Table("audit_log")]
 public class Audit : BaseModel
 {
-    [PrimaryKey("id", false)]
+    [PrimaryKey("a_id", false)]
     public string Id { get; set; } // Ensure this matches your database schema
-    [Column("a_id")]
-    public string auditID { get; set; }
+
     [Column("change")]
     public string change { get; set; }
     
