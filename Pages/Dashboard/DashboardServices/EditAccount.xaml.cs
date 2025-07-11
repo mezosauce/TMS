@@ -1,8 +1,9 @@
-
+using Supabase;
 using Microsoft.Maui.ApplicationModel.Communication;
 using Supabase.Gotrue;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
+
 
 namespace Time_Managmeent_System.Pages;
 
@@ -134,16 +135,27 @@ public partial class EditAccount : ContentPage
 
 
             // Delete the user using the Admin API
-            var response = await _dataService.SupabaseClient.Auth.DeleteUser(user.Id);
-            if (response != null && response.Error == null)
+
+            var supabaseUrl = AppConfig.SUPABASE_URL;
+            var serviceRoleKey = AppConfig.SUPABASE_KEY;
+
+            var httpClient = new HttpClient();
+            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", serviceRoleKey);
+
+            var authUserId = user.Id; // replace this with actual auth user ID field
+            var deleteResponse = await httpClient.DeleteAsync($"{supabaseUrl}/auth/v1/admin/users/{authUserId}");
+
+            if (deleteResponse.IsSuccessStatusCode)
             {
-                await DisplayAlert("Success", "User deleted successfully", "OK");
+                await DisplayAlert("Success", "User deleted successfully from Auth", "OK");
             }
             else
             {
-                await DisplayAlert("Error", $"Failed to delete user: {response?.Error?.Message}", "OK");
+                var errorBody = await deleteResponse.Content.ReadAsStringAsync();
+                await DisplayAlert("Error", $"Failed to delete Auth user: {errorBody}", "OK");
             }
-            // If no exception was thrown, consider it successful
+
+
             await DisplayAlert("Success", "Employee deleted successfully.", "OK");
 
 
