@@ -30,7 +30,7 @@ namespace Time_Management_System.Pages
             EventList.ItemsSource = EventStorage.GetEvents(_selectedDate);
         }
 
-        private void OnAddEventClicked(object sender, EventArgs e)
+        private async void OnAddEventClicked(object sender, EventArgs e)
         {
             if (!string.IsNullOrWhiteSpace(TitleEntry.Text))
             {
@@ -42,16 +42,25 @@ namespace Time_Management_System.Pages
                     Time = TimePicker.Time
                 });
 
-                TitleEntry.Text = string.Empty;
-                DescriptionEditor.Text = string.Empty;
-                LoadEvents();
+                await Navigation.PopModalAsync(); // Close modal and trigger calendar refresh
             }
         }
+
 
         private async void OnBackClicked(object sender, EventArgs e)
         {
             await Navigation.PopModalAsync(); // Close the modal and return to the calendar view
         }
+
+        private void OnDeleteEventClicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is CalendarEvent calendarEvent)
+            {
+                EventStorage.DeleteEvent(calendarEvent);
+                LoadEvents(); // Refresh the list
+            }
+        }
+
     }
 }
 

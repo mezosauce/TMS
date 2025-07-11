@@ -16,5 +16,12 @@ namespace Time_Management_System.Services
 
         public static void AddEvent(CalendarEvent calendarEvent) =>
             _events.Add(calendarEvent);
+
+
+        public static void DeleteEvent(CalendarEvent calendarEvent)
+        {
+            _events.Remove(calendarEvent);
+        }
+
     }
 }
