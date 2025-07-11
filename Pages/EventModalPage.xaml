@@ -12,6 +12,12 @@
                         <VerticalStackLayout>
                             <Label Text="{Binding Title}" FontAttributes="Bold" />
                             <Label Text="{Binding Description}" FontSize="12" />
+                            <Button Text="Delete"
+                                    Clicked="OnDeleteEventClicked"
+                                    CommandParameter="{Binding .}"
+                                    BackgroundColor="Red"
+                                    TextColor="White"
+                                    Margin="0,5,0,0" />
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>

@@ -119,6 +119,7 @@
                     Text="Clock In"
                     WidthRequest="180"
                     Clicked="OnClockClicked"
+                    Style="{StaticResource HoverExpandButtonStyle}"
                     Margin="0,20,0,0"
                     VerticalOptions="Center"/>
                         
