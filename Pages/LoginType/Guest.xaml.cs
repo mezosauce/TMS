@@ -3,8 +3,9 @@ using Supabase.Postgrest;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 using System.Linq;
+using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
-using Time_Managmeent_System.ViewModels;
+
 
 namespace Time_Managmeent_System.Pages.LoginType;
 
@@ -17,7 +18,6 @@ public partial class Guest : ContentPage
         _dataservice = dataService;
     }
 
-    // Define a UserProfile class to match the structure of your user_data table
     [Table("user_data")]
     public class UserProfile : BaseModel
     {
@@ -83,8 +83,25 @@ public partial class Guest : ContentPage
                 // Fix: Check the HTTP response status instead of a non-existent 'Error' property
                 if (insertResponse != null)
                 {
-                    await DisplayAlert("Success", "User registered successfully! \n Make sure to verify your email before Signing In", "OK");
+                    // Corrected audit insertion code based on your actual Audit model
+                await DisplayAlert("Success", "User registered successfully! \n Make sure to verify your email before Signing In", "OK");
+
+                // Create the audit message
+                var changeMessage = "User Made \n Id: " + UserID + "\n Name: " + firstName + " " + lastName + "\n Role: " + position;
+
+                // Create a proper Audit object matching your model structure
+                var auditEntry = new Audit
+                {
+                    Id = Guid.NewGuid().ToString(),  // Generate a unique audit ID
+                    change = changeMessage  // Your change message
+                };
+
+                // Insert the audit entry
+                await _dataservice.SupabaseClient
+                    .From<Audit>()
+                    .Insert(auditEntry);
                     await Navigation.PushAsync(new SignIn(_dataservice));
+
                 }
                 else
                 {

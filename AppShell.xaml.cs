@@ -10,7 +10,6 @@ public partial class AppShell : Shell
 
         // Register routes for navigation
        
-        RegisterForRoute<UpdateEmployeePage>();
     }
 
     protected void RegisterForRoute<T>()

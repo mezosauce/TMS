@@ -3,7 +3,6 @@ using Supabase;
 using Supabase.Postgrest.Attributes;
 using CommunityToolkit.Maui;
 using Time_Managmeent_System.Models;
-using Time_Managmeent_System.ViewModels;
 using Time_Managmeent_System.Pages;
 using Time_Managmeent_System.Services;
 using System.Threading.Tasks;
@@ -43,9 +42,6 @@ public static class MauiProgram
         
         //Add ViewModels
 
-        builder.Services.AddSingleton<EmployeesListingViewModel>();
-        builder.Services.AddTransient<AddEmployeeViewModel>();
-        builder.Services.AddTransient<UpdateEmployeeViewModel>();
         
 
         //Add Pages
@@ -55,7 +51,6 @@ public static class MauiProgram
 
 
 
-        builder.Services.AddTransient<UpdateEmployeePage>();
 
         //Data Service
         builder.Services.AddSingleton<IDataService, DataService>();

@@ -6,13 +6,10 @@
              xmlns:model="clr-namespace:Time_Managmeent_System.Models"  
              xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"  
              xmlns:system="clr-namespace:System;assembly=mscorlib"
-             xmlns:viewmodel="clr-namespace:Time_Managmeent_System.ViewModels"  
              x:Class="Time_Managmeent_System.Pages.LoginPage"  
-             x:DataType="viewmodel:EmployeesListingViewModel"  
              Title="Login">  
 
  
-
     <ScrollView>
         <Grid
         Margin="20"
@@ -51,10 +48,10 @@
 
            
 
-            <Button Text="Sign In" Clicked="OnLoginClicked" /> 
-            <Button Text="Register" Clicked="OnRegisterClicked" />  
+            <Button Text="Sign In" Clicked="OnLoginClicked" />
+                <Button Text="Register" Clicked="OnRegisterClicked" />
 
-        </VerticalStackLayout>  
+            </VerticalStackLayout>  
     
     </Grid>
     </ScrollView>

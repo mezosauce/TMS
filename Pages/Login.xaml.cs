@@ -1,7 +1,7 @@
-using Time_Managmeent_System.Services;
-using Time_Managmeent_System.Models;
-using Time_Managmeent_System.ViewModels;
 using Supabase;
+using Supabase.Gotrue;
+using Time_Managmeent_System.Models;
+using Time_Managmeent_System.Services;
 
 namespace Time_Managmeent_System.Pages;
 
@@ -24,10 +24,10 @@ public partial class LoginPage : ContentPage
 
     private async void OnRegisterClicked(object sender, EventArgs e)
     {
-      
-            await Navigation.PushAsync(new LoginType.Guest(_dataservice));
-        
-        
+
+        await Navigation.PushAsync(new LoginType.Guest(_dataservice));
+
+
     }
 
     private void OnToggleDarkModeClicked(object sender, EventArgs e)
@@ -51,4 +51,5 @@ public partial class LoginPage : ContentPage
             }
         }
     }
+
 }
