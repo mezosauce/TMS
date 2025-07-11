@@ -116,22 +116,33 @@ namespace Time_Management_System.Control
                 var events = Services.EventStorage.GetEvents(cellDate);
                 Label eventLabel = null;
 
-                if (events.Any())
+                var eventStack = new StackLayout
                 {
-                    var firstEvent = events.OrderBy(e => e.Time).FirstOrDefault();
-                    string timeText = firstEvent?.Time.HasValue == true
-                        ? firstEvent.Time.Value.ToString(@"hh\:mm")
-                        : "Event";
-                    eventLabel = new Label
+                    Spacing = 1,
+                    Padding = new Thickness(0),
+                    VerticalOptions = LayoutOptions.End,
+                    HorizontalOptions = LayoutOptions.Fill,
+                };
+
+                foreach (var calendarEvent in events.OrderBy(e => e.Time))
+                {
+                    string timeText = calendarEvent.Time.HasValue
+                        ? calendarEvent.Time.Value.ToString(@"hh\:mm")
+                        : "";
+                    string titleText = calendarEvent.Title ?? "Event";
+
+                    var label = new Label
                     {
-                        Text = timeText,
+                        Text = $"{timeText} {titleText}".Trim(),
                         FontSize = 10,
                         TextColor = Colors.DarkGreen,
-                        HorizontalOptions = LayoutOptions.Start,
-                        VerticalOptions = LayoutOptions.End
+                        LineBreakMode = LineBreakMode.TailTruncation
                     };
 
+                    eventStack.Children.Add(label);
                 }
+
+
 
                 var tapGesture = new TapGestureRecognizer();
                 tapGesture.Tapped += async (s, e) =>
@@ -141,11 +152,11 @@ namespace Time_Management_System.Control
 
                 var dayContent = new Grid();
                 dayContent.Children.Add(dayLabel);
-                if (eventLabel != null)
-                    {
-                        dayContent.Children.Add(eventLabel);
-                        Grid.SetRow(eventLabel, 1);
-                    }
+                if (eventStack.Children.Any())
+                {
+                    dayContent.Children.Add(eventStack);
+                }
+
                 dayContent.GestureRecognizers.Add(tapGesture);
 
                 var dayFrame = new Frame
