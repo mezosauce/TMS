@@ -136,36 +136,17 @@ public partial class EditAccount : ContentPage
 
             // Delete the user using the Admin API
 
-            var supabaseUrl = AppConfig.SUPABASE_URL;
-            var serviceRoleKey = AppConfig.SUPABASE_KEY;
-
-            var httpClient = new HttpClient();
-            httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", serviceRoleKey);
-
-            var authUserId = user.Id; // replace this with actual auth user ID field
-            var deleteResponse = await httpClient.DeleteAsync($"{supabaseUrl}/auth/v1/admin/users/{authUserId}");
-
-            if (deleteResponse.IsSuccessStatusCode)
-            {
-                await DisplayAlert("Success", "User deleted successfully from Auth", "OK");
-            }
-            else
-            {
-                var errorBody = await deleteResponse.Content.ReadAsStringAsync();
-                await DisplayAlert("Error", $"Failed to delete Auth user: {errorBody}", "OK");
-            }
-
-
+            //await _dataService.SupabaseClient.Auth.AdminDeleteUser(user.Id);  Auth method to delete user NOT WORKING.
             await DisplayAlert("Success", "Employee deleted successfully.", "OK");
 
-
-            var changeMessage = "User: " + user.First + " " + user.Last + " was deleted.";
+            var thisuser = _dataService.SupabaseClient.Auth.CurrentUser;
+            var changeMessage = "User: " + user.First + " " + user.Last + " was deleted by ID:: " + thisuser.Id ;
 
             // Create a proper Audit object matching your model structure
             var auditEntry = new Audit
             {
-                Id = Guid.NewGuid().ToString(),  // Generate a unique audit ID
-                change = changeMessage  // Your change message
+                Id = Guid.NewGuid().ToString(), 
+                change = changeMessage  
             };
 
             // Insert the audit entry
@@ -214,6 +195,22 @@ public partial class EditAccount : ContentPage
             UpdateUserProfile(user);
 
             await DisplayAlert("Success", "Profile updated!", "OK");
+
+            var thisuser = _dataService.SupabaseClient.Auth.CurrentUser;
+            var changeMessage = "User: " + user.First + " " + user.Last + " was deleted by ID:: " + thisuser.Id;
+
+            // Create a proper Audit object matching your model structure
+            var auditEntry = new Audit
+            {
+                Id = Guid.NewGuid().ToString(),
+                change = changeMessage
+            };
+
+            // Insert the audit entry
+            await _dataService.SupabaseClient
+                .From<Audit>()
+                .Insert(auditEntry);
+
             // route back
             await Navigation.PopAsync();
         }

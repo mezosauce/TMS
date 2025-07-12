@@ -1,4 +1,5 @@
 using Microsoft.Maui.Controls;
+using Supabase.Gotrue;
 using Supabase.Interfaces;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
@@ -84,6 +85,21 @@ public partial class EditProfile : ContentPage
             await UpdateUserProfile(_userProfile);
 
             await DisplayAlert("Profile Updated", "Your profile has been updated.", "OK");
+            var user = _dataService.SupabaseClient.Auth.CurrentUser;
+
+            var changeMessage = "User: " + _userProfile.First + " " + _userProfile.Last + " was Updated by ID::" + user.Id;
+
+            // Create a proper Audit object matching your model structure
+            var auditEntry = new Audit
+            {
+                Id = Guid.NewGuid().ToString(),
+                change = changeMessage
+            };
+
+            // Insert the audit entry
+            await _dataService.SupabaseClient
+                .From<Audit>()
+                .Insert(auditEntry);
             await Navigation.PopAsync();
         }
     }
