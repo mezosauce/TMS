@@ -10,7 +10,7 @@ namespace Time_Managmeent_System.Models;
 
 
 [Table("geolocating")]
-public class Geolocation : BaseModel
+public class Geolocating : BaseModel
 {
     [PrimaryKey("id", false)]
     public string Id { get; set; } // Ensure this matches your database schema

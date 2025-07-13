@@ -28,7 +28,7 @@
                          Spacing="20">
 
                 <VerticalStackLayout
-                    Padding="10, 50, 10, 60" >
+                    Padding="10, 0, 10, 50" >
 
                     <StackLayout>
                         <StackLayout.GestureRecognizers>
