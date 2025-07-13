@@ -18,6 +18,10 @@ public class Notifications : BaseModel
     public string Sender_ID { get; set; }
     [Column("r_id")]
     public string Receiver_ID { get; set; }
+    
+    [Column("message")]
+    public string message { get; set; } // This should be a string or text type in your database
+    
     [Column("s_time")]
     public DateTimeOffset Send_Time { get; set; } // Consider using DateTimeOffset if you need timezone support
     [Column("r_Time")]

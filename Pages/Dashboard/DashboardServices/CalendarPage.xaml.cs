@@ -22,6 +22,7 @@ public partial class CalendarPage : ContentPage
     {
         InitializeComponent();
         _dataService = dataService;
+
     }
 
     protected override void OnAppearing()

@@ -16,9 +16,12 @@ public class Geolocation : BaseModel
     public string Id { get; set; } // Ensure this matches your database schema
     [Column("name")]
     public string Name { get; set; }
-    [Column("Longitude")]
+    [Column("longitude")]
     public string Longitude { get; set; } //Consider making Longitude and Latitude double if they are numeric values
-    [Column("Latitude")]
+    [Column("latitude")]
     public string Latitude { get; set; }
+    [Column("active")]
+    public bool Active { get; set; } 
+
 
 }
