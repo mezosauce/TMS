@@ -27,8 +27,9 @@ struct TMSApp: App {
     
     var body: some Scene {
         WindowGroup {
-            WelcomeView()
+            ContentView()
                 .environmentObject(auth)
+                .modelContainer(sharedModelContainer)
         }
     }
 /*

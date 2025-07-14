@@ -10,6 +10,7 @@ import Supabase
 
 struct SignupView: View {
     @StateObject private var authViewModel = AuthViewModels()
+    @State private var positions = ["Employee", "Manager", "Admin"]
     @State private var email = ""
     @State private var password = ""
     @State private var position = ""
@@ -30,9 +31,28 @@ struct SignupView: View {
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
             
-            TextField("Position", text: $position)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
+            Menu {
+                ForEach(positions, id: \.self) { option in
+                    Button(action: {
+                        position = option
+                    }) {
+                        Text(option)
+                    }
+                }
+            } label: {
+                HStack {
+                    Text(position.isEmpty ? "Select Position" : "Position: \(position)")
+                        .foregroundColor(position.isEmpty ? .gray : .primary)
+                    Spacer()
+                    Image(systemName: "chevron.down")
+                }
+                .padding()
+                .background(Color.gray.opacity(0.1))
+                .cornerRadius(8)
+            }
+            //TextField("Position", text: $position)
+              //  .textFieldStyle(RoundedBorderTextFieldStyle())
+                //.autocapitalization(.none)
             
             TextField("First Name", text: $first)
                 .textFieldStyle(RoundedBorderTextFieldStyle())

@@ -16,19 +16,24 @@ struct ContentView: View {
     @StateObject private var authViewModel = AuthViewModels()
     
     var body: some View {
-        NavigationView {
-            if authViewModel.isAuthenticated {
+        if authViewModel.isAuthenticated {
+            switch authViewModel.userRole {
+            case "Employee":
                 EmployeeHomeView()
                     .environmentObject(authViewModel)
-            } else {
+            case "Manager":
+                ManagerHomeView()
+                    .environmentObject(authViewModel)
+            case "Admin":
+                AdminHomeView()
+                    .environmentObject(authViewModel)
+            default:
+                Text("Unknown Role")
+            }
+        } else {
+            NavigationView {
                 LoginView()
                     .environmentObject(authViewModel)
-            }
-        }
-        .id(authViewModel.isAuthenticated)
-        .onAppear {
-            Task {
-                await authViewModel.checkSession()
             }
         }
     }
