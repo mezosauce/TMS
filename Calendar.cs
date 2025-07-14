@@ -48,17 +48,23 @@ public class CalendarView : ContentView
 
         var calendarContainer = new Grid
         {
-            HeightRequest = 420, // Adjust height as needed
+            VerticalOptions = LayoutOptions.FillAndExpand,
             RowDefinitions = { new RowDefinition { Height = GridLength.Star } },
             Children = { _calendarGrid }
         };
 
-        var layout = new StackLayout
-        {
-            Children = { header, calendarContainer }
-        };
+        var layout = new Grid();
+        layout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
+        layout.RowDefinitions.Add(new RowDefinition { Height = GridLength.Star });
+
+        layout.Children.Add(header);
+        Grid.SetRow(header, 0);
+
+        layout.Children.Add(calendarContainer);
+        Grid.SetRow(calendarContainer, 1);
 
         Content = layout;
+
 
         BuildCalendar();
     }

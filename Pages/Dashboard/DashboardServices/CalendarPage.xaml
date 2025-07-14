@@ -4,9 +4,23 @@
              xmlns:controls="clr-namespace:Time_Management_System.Control"
              x:Class="Time_Management_System.Pages.CalendarPage"
              Title="Worker Schedule">
-    <VerticalStackLayout Padding="20">
-        <Label Text="Worker Schedule Calendar" FontSize="24" HorizontalOptions="Center" />
-        <controls:CalendarView />
-    </VerticalStackLayout>
+
+    <Grid RowSpacing="10" Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Text="Worker Schedule Calendar"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Grid.Row="0" />
+
+        <controls:CalendarView 
+            Grid.Row="1"
+            VerticalOptions="FillAndExpand"
+            HorizontalOptions="FillAndExpand" />
+    </Grid>
 </ContentPage>
+
 
