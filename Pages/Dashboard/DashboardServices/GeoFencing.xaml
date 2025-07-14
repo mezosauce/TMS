@@ -15,6 +15,11 @@
                             <Label Text="{Binding Longitude, StringFormat='Lon: {0}'}" />
                             <Label Text="{Binding Active, StringFormat='Active: {0}'}" FontSize="12" />
                             <Button Text="Activate" Clicked="OnSelectLocation" />
+                            <Button Text="Delete" 
+                        Clicked="OnDeleteLocation" 
+                        BindingContext="{Binding .}" 
+                        BackgroundColor="Red" 
+                        TextColor="White"/>
                         </VerticalStackLayout>
                     </Frame>
                 </DataTemplate>

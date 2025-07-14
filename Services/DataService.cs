@@ -16,11 +16,7 @@ public class DataService : IDataService
         SupabaseClient = new Client(url, key);
     }
 
-    public async Task<List<Geolocating>> GetAllGeolocationsAsync()
-    {
-        var response = await SupabaseClient.From<Geolocating>().Get();
-        return response.Models;
-    }
+  
 
    
 }

@@ -45,6 +45,7 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
         LoadProfileAsync();
     }
 
+    
     private async void LoadProfileAsync()
     {
         try
@@ -149,6 +150,10 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
     }
 
     private async void EditEmployeesClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditAccount(_dataService));
+    }
+    private async void EditScheduling(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new EditAccount(_dataService));
     }
