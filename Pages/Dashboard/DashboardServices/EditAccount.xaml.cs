@@ -136,8 +136,15 @@ public partial class EditAccount : ContentPage
 
             // Delete the user using the Admin API
 
-            //await _dataService.SupabaseClient.Auth.AdminDeleteUser(user.Id);  Auth method to delete user NOT WORKING.
-            await DisplayAlert("Success", "Employee deleted successfully.", "OK");
+            var edgeResult = await _dataService.CallDeleteUserEdgeFunctionAsync(user.Id);
+            if (edgeResult)
+            {
+                await DisplayAlert("Success", "Employee deleted successfully via edge function.", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", "Failed to delete employee via edge function.", "OK");
+            }
 
             var thisuser = _dataService.SupabaseClient.Auth.CurrentUser;
             var changeMessage = "User: " + user.First + " " + user.Last + " was deleted by ID:: " + thisuser.Id ;
