@@ -29,14 +29,14 @@ public class DataService : IDataService
     {
         try
         {
-            var functionUrl = $"{AppConfig.SUPABASE_URL}/functions/v1/delete-user";
+            var functionUrl = "https://shdzcbiecsofkxhvscdn.supabase.co/functions/v1/swift-user-delete";
 
             // Add Authorization header
             _httpClient.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", AppConfig.SUPABASE_KEY);
 
             // Replace with your actual edge function URL
-            var functionUrl = $"{AppConfig.SUPABASE_URL}/functions/v1/delete-user";
+           
 
             // If your function expects JSON body:
             var payload = new { user_id = userId };
