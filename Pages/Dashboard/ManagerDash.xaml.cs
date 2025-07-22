@@ -1,9 +1,9 @@
-
 using System.ComponentModel;
 using Time_Managmeent_System.Services;
 using Time_Management_System.Pages;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Pages.Dashboard.DashboardServices;
+using System.Collections.ObjectModel;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
@@ -37,11 +37,19 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
     }
     public string FullName => $"{UserProfile?.First} {UserProfile?.Last}".Trim();
 
+    public ObservableCollection<string> ShiftOptions { get; set; }
+
     public ManagerDash(DataService dataService)
     {
         InitializeComponent();
         StartEasternTimeClock();
         _dataService = dataService;
+        ShiftOptions = new ObservableCollection<string>
+        {
+            "First Shift",
+            "Second Shift",
+            "Third Shift"
+        };
         BindingContext = this;
         LoadProfileAsync();
     }
