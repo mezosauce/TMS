@@ -2,6 +2,11 @@
 using Microsoft.Maui.Graphics;
 using System;
 using System.Globalization;
+using System.Linq;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Time_Managmeent_System.Models;
+using Time_Managmeent_System.Services;
 
 namespace Time_Management_System.Control;
 
@@ -12,9 +17,14 @@ public class CalendarView : ContentView
     private readonly Label _monthLabel;
     private DateTime _currentDate;
 
-    public CalendarView()
+    private DataService _dataService;
+
+    private List<Time> _monthShifts = new();
+
+    public CalendarView(DataService dataService)
     {
         _currentDate = DateTime.Today;
+        _dataService = dataService;
 
         _monthLabel = new Label
         {
@@ -66,7 +76,30 @@ public class CalendarView : ContentView
         Content = layout;
 
 
+        _ = LoadAndBuildCalendarAsync();
+    }
+
+    private async Task LoadAndBuildCalendarAsync()
+    {
+        await LoadMonthShiftsAsync();
         BuildCalendar();
+    }
+
+
+
+    private async Task LoadMonthShiftsAsync()
+    {
+        // Get first and last day of the current month
+        var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, 1);
+        var lastDay = firstDay.AddMonths(1).AddDays(-1);
+
+        // Query Supabase for shifts in this month
+        var response = await _dataService.SupabaseClient
+            .From<Time>()
+            .Where(t => t.Shift >= firstDay && t.Shift <= lastDay)
+            .Get();
+
+        _monthShifts = response.Models.ToList();
     }
 
     private void BuildCalendar()
@@ -120,8 +153,7 @@ public class CalendarView : ContentView
                 Margin = new Thickness(0, 0, 2, 0)
             };
 
-            var events = Services.EventStorage.GetEvents(cellDate);
-            Label eventLabel = null;
+            var shifts = _monthShifts.Where(s => s.Shift.Date == cellDate.Date).OrderBy(s => s.Shift).ToList();
 
             var eventStack = new StackLayout
             {
@@ -131,21 +163,15 @@ public class CalendarView : ContentView
                 HorizontalOptions = LayoutOptions.Fill,
             };
 
-            foreach (var calendarEvent in events.OrderBy(e => e.Time))
+            foreach (var shift in shifts)
             {
-                string timeText = calendarEvent.Time.HasValue
-                    ? calendarEvent.Time.Value.ToString(@"hh\:mm")
-                    : "";
-                string titleText = calendarEvent.Title ?? "Event";
-
                 var label = new Label
                 {
-                    Text = $"{timeText} {titleText}".Trim(),
+                    Text = $"Shift: {shift.Clocked_in:HH:mm}-{shift.Clocked_out:HH:mm} ({shift.Hours}h)",
                     FontSize = 10,
                     TextColor = Colors.DarkGreen,
                     LineBreakMode = LineBreakMode.TailTruncation
                 };
-
                 eventStack.Children.Add(label);
             }
 

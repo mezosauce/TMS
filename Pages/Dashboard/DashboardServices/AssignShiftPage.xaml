@@ -5,7 +5,7 @@
              Title="AssignShiftPage">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="Assign Following Shifts"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Picker
