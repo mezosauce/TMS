@@ -21,10 +21,13 @@ public class CalendarView : ContentView
 
     private List<Time> _monthShifts = new();
 
-    public CalendarView(DataService dataService)
+
+
+   
+    public CalendarView()
     {
         _currentDate = DateTime.Today;
-        _dataService = dataService;
+       
 
         _monthLabel = new Label
         {
@@ -32,6 +35,8 @@ public class CalendarView : ContentView
             FontSize = 20,
             HorizontalOptions = LayoutOptions.Center
         };
+
+
 
         var prevButton = new Button { Text = "<" };
         prevButton.Clicked += (s, e) => { _currentDate = _currentDate.AddMonths(-1); BuildCalendar(); };
@@ -76,7 +81,24 @@ public class CalendarView : ContentView
         Content = layout;
 
 
-        _ = LoadAndBuildCalendarAsync();
+    }
+
+    public DataService DataService
+    {
+        get => _dataService;
+        set
+        {
+            MainThread.BeginInvokeOnMainThread(async () =>
+            {
+                await Application.Current.MainPage.DisplayAlert(
+                    "Info",
+                    "CalendarView.DataService setter called",
+                    "OK");
+            });
+            _dataService = value;
+            if (_dataService != null)
+                _ = LoadAndBuildCalendarAsync();
+        }
     }
 
     private async Task LoadAndBuildCalendarAsync()
@@ -89,17 +111,30 @@ public class CalendarView : ContentView
 
     private async Task LoadMonthShiftsAsync()
     {
-        // Get first and last day of the current month
-        var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, 1);
-        var lastDay = firstDay.AddMonths(1).AddDays(-1);
+        try
+        {
+            var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, 1);
+            var lastDay = firstDay.AddMonths(1).AddDays(-1);
 
-        // Query Supabase for shifts in this month
-        var response = await _dataService.SupabaseClient
-            .From<Time>()
-            .Where(t => t.Shift >= firstDay && t.Shift <= lastDay)
-            .Get();
+            var response = await _dataService.SupabaseClient
+                .From<Time>()
+                .Where(t => t.Shift_date >= firstDay)
+                .Get();
 
-        _monthShifts = response.Models.ToList();
+            System.Diagnostics.Debug.WriteLine($"Supabase response: {response?.Models?.Count ?? -1} items");
+
+            _monthShifts = response.Models.ToList();
+
+            System.Diagnostics.Debug.WriteLine($"_monthShifts assigned: {_monthShifts.Count} items");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Exception in LoadMonthShiftsAsync: {ex}");
+            await MainThread.InvokeOnMainThreadAsync(async () =>
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", $"Failed to load shifts: {ex.Message}", "OK");
+            });
+        }
     }
 
     private void BuildCalendar()

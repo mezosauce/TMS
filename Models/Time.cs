@@ -26,5 +26,9 @@ public class Time: BaseModel
     public double Hours { get; set; } // Total hours worked in this shift
     [Column("status")]
     public bool Status { get; set; } // True for completed, false for pending
+    [Column("shift_date")]
+    public DateTimeOffset Shift_date { get; set; } // Date of the shift, used for calendar display
+    [Column("shift_type")]
+    public string Shift_type { get; set; } // Type of shift (e.g., First Shift, Second Shift, Third Shift)
 
 }

@@ -21,7 +21,10 @@ public partial class CalendarPage : ContentPage
     public CalendarPage(DataService dataService)
     {
         InitializeComponent();
+        Calendar.DataService = dataService;
         _dataService = dataService;
+
+        
 
     }
 
