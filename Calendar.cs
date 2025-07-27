@@ -90,13 +90,7 @@ public class CalendarView : ContentView
         get => _dataService;
         set
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Info",
-                    "CalendarView.DataService setter called",
-                    "OK");
-            });
+            
             _dataService = value;
             if (_dataService != null)
                 _ = LoadAndBuildCalendarAsync();
@@ -115,7 +109,7 @@ public class CalendarView : ContentView
     {
         try
         {
-            var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, 1);
+            var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, _currentDate.Day);
             var lastDay = firstDay.AddMonths(1).AddDays(-1);
 
             var response = await _dataService.SupabaseClient
@@ -281,6 +275,14 @@ public class CalendarView : ContentView
                 Padding = new Thickness(4),
                 HasShadow = false,
                 Content = dayContent
+            };
+
+            // Trading Shift and Canceling shift purposes
+
+            var tapGesture = new TapGestureRecognizer();
+            tapGesture.Tapped += async (s, e) =>
+            {
+                await Application.Current.MainPage.Navigation.PushModalAsync(new Pages.EventModalPage(cellDate));
             };
 
             _calendarGrid.Children.Add(dayFrame);

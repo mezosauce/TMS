@@ -65,7 +65,7 @@ public class ReportView : ContentView
 
         var calendarContainer = new Grid
         {
-            VerticalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.Fill,
             RowDefinitions = { new RowDefinition { Height = GridLength.Star } },
             Children = { _calendarGrid }
         };
@@ -90,13 +90,7 @@ public class ReportView : ContentView
         get => _dataService;
         set
         {
-            MainThread.BeginInvokeOnMainThread(async () =>
-            {
-                await Application.Current.MainPage.DisplayAlert(
-                    "Info",
-                    "CalendarView.DataService setter called",
-                    "OK");
-            });
+            
             _dataService = value;
             if (_dataService != null)
                 _ = LoadAndBuildCalendarAsync();
@@ -115,12 +109,12 @@ public class ReportView : ContentView
     {
         try
         {
-            var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, 1);
+            var firstDay = new DateTime(_currentDate.Year, _currentDate.Month, _currentDate.Day);
             var lastDay = firstDay.AddMonths(1).AddDays(-1);
 
             var response = await _dataService.SupabaseClient
                 .From<Time>()
-                .Where(t => t.Shift_date < firstDay)
+                .Where(t => t.Shift_date <= firstDay)
                 .Get();
 
 
