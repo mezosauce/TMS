@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
 using System.Collections.Immutable;
-
+using System.Text.Json.Serialization;
 
 namespace Time_Management_System.Control;
 
@@ -239,13 +239,15 @@ public class ReportView : ContentView
                 var endTime = GetShiftEndTime(shift.Shift_type, shift.Shift_date);
 
 
-
-
                 var backgroundColor = position == "Manager" ? Colors.LightCoral : Colors.LightGreen;
+
+                System.Diagnostics.Debug.WriteLine($"Raw Clocked_in: {shift.Clocked_in}");
+                System.Diagnostics.Debug.WriteLine($"Raw Clocked_out: {shift.Clocked_out}");
+
 
                 var label = new Label
                 {
-                    Text = $"{employeeName}: {startTime:hh:mm tt} - {endTime:hh:mm tt}",
+                    Text = $"{employeeName}: {shift.Clocked_in:hh:mm tt} - {shift.Clocked_out:hh:mm tt}",
                     FontSize = 6,
                     TextColor = Colors.DarkGreen,
                     LineBreakMode = LineBreakMode.TailTruncation,
@@ -282,8 +284,6 @@ public class ReportView : ContentView
             _calendarGrid.SetRow((IView)dayFrame, row);
         }
     }
-
-
     private DateTime GetShiftStartTime(string shiftType, DateTime shiftDate)
     {
         return shiftType switch
@@ -304,6 +304,8 @@ public class ReportView : ContentView
             _ => throw new ArgumentException("Invalid shift type")
         };
     }
+
+
 
     public void Rebuild()
     {

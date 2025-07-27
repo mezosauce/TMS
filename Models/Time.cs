@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Text.Json.Serialization;
 namespace Time_Managmeent_System.Models;
 
 
@@ -17,10 +17,10 @@ public class Time: BaseModel
     [Column("id")]
     public string User_ID { get; set; }
     
-    [Column("clock-in")]
-    public DateTime Clocked_in { get; set; } // Consider using  if you need timezone support
-    [Column("clock-out")]
-    public DateTime Clocked_out { get; set; } // Nullable if the notification can be unread
+    [Column("clock_in")]
+    public DateTimeOffset Clocked_in { get; set; } // Consider using  if you need timezone support
+    [Column("clock_out")]
+    public DateTimeOffset Clocked_out { get; set; } // Nullable if the notification can be unread
     [Column("hours")]
     public double Hours { get; set; } // Total hours worked in this shift
     [Column("status")]

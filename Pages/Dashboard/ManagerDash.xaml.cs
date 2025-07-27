@@ -155,7 +155,7 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
 
     private async void ReportsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage(_dataService));
+        await Navigation.PushAsync(new ReportPage(_dataService));
     }
 
     private async void EditEmployeesClicked(object sender, EventArgs e)
