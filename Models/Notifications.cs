@@ -23,8 +23,8 @@ public class Notifications : BaseModel
     public string message { get; set; } // This should be a string or text type in your database
     
     [Column("s_time")]
-    public DateTimeOffset Send_Time { get; set; } // Consider using DateTimeOffset if you need timezone support
+    public DateTime Send_Time { get; set; } // Consider using  if you need timezone support
     [Column("r_Time")]
-    public DateTimeOffset Receive_Time { get; set; } // Nullable if the notification can be unread
+    public DateTime Receive_Time { get; set; } // Nullable if the notification can be unread
 }
 

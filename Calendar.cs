@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
+using System.Collections.Immutable;
 
 namespace Time_Management_System.Control;
 
@@ -21,9 +22,10 @@ public class CalendarView : ContentView
 
     private List<Time> _monthShifts = new();
 
+    private Dictionary<string, string> _userNames = new();
+    private Dictionary<string, string> _userPositions = new();
 
 
-   
     public CalendarView()
     {
         _currentDate = DateTime.Today;
@@ -121,11 +123,47 @@ public class CalendarView : ContentView
                 .Where(t => t.Shift_date >= firstDay)
                 .Get();
 
+
+
             System.Diagnostics.Debug.WriteLine($"Supabase response: {response?.Models?.Count ?? -1} items");
 
             _monthShifts = response.Models.ToList();
 
             System.Diagnostics.Debug.WriteLine($"_monthShifts assigned: {_monthShifts.Count} items");
+
+            var userIds = _monthShifts
+                .Where(s => !string.IsNullOrEmpty(s.User_ID))
+                .Select(s => s.User_ID)
+                .Distinct()
+                .ToList();
+
+            // Load corresponding user profiles from Supabase
+            if (userIds.Any())
+            {
+                var userProfilesResponse = await _dataService.SupabaseClient
+                    .From<UserProfile>()
+                    .Get();
+
+
+
+
+                // userProfilesResponse.Models is likely IEnumerable<UserProfile>
+                var userProfiles = userProfilesResponse.Models
+                    .Where(u => userIds.Contains(u.Id))
+                    .ToList();
+
+                _userNames = userProfiles.ToDictionary(
+                    u => u.Id,
+                    u => $"{u.First} {u.Last}" // adjust field names based on your actual schema
+                );
+                _userPositions = userProfiles.ToDictionary(
+                    u => u.Id,
+                    u => u.Position ?? "Employee" // default to "Employee" if null
+                );
+
+                System.Diagnostics.Debug.WriteLine($"Loaded {_userNames.Count} user names");
+            }
+
         }
         catch (Exception ex)
         {
@@ -144,7 +182,7 @@ public class CalendarView : ContentView
 
         _monthLabel.Text = _currentDate.ToString("MMMM yyyy");
 
-        // Day headers
+        // Day headers  
         string[] days = CultureInfo.CurrentCulture.DateTimeFormat.AbbreviatedDayNames;
         _calendarGrid.RowDefinitions.Add(new RowDefinition { Height = GridLength.Auto });
         for (int i = 0; i < 7; i++)
@@ -181,14 +219,14 @@ public class CalendarView : ContentView
             var dayLabel = new Label
             {
                 Text = cellDate.Day.ToString(),
-                FontSize = 12,
+                FontSize = 6,
                 HorizontalOptions = LayoutOptions.End,
                 VerticalOptions = LayoutOptions.Start,
                 TextColor = isCurrentMonth ? Colors.Black : Colors.LightGray,
                 Margin = new Thickness(0, 0, 2, 0)
             };
 
-            var shifts = _monthShifts.Where(s => s.Shift.Date == cellDate.Date).OrderBy(s => s.Shift).ToList();
+            var shifts = _monthShifts.Where(s => s.Shift_date.Date == cellDate.Date).OrderBy(s => s.Shift_date).ToList();
 
             var eventStack = new StackLayout
             {
@@ -200,23 +238,31 @@ public class CalendarView : ContentView
 
             foreach (var shift in shifts)
             {
+                _userNames.TryGetValue(shift.User_ID, out string employeeName);
+                _userPositions.TryGetValue(shift.User_ID, out string position);
+
+                var startTime = GetShiftStartTime(shift.Shift_type, shift.Shift_date);
+                var endTime = GetShiftEndTime(shift.Shift_type, shift.Shift_date);
+
+                
+               
+
+                var backgroundColor = position == "Manager" ? Colors.LightCoral : Colors.LightGreen;
+
                 var label = new Label
                 {
-                    Text = $"Shift: {shift.Clocked_in:HH:mm}-{shift.Clocked_out:HH:mm} ({shift.Hours}h)",
-                    FontSize = 10,
+                    Text = $"{employeeName}: {startTime:hh:mm tt} - {endTime:hh:mm tt}",
+                    FontSize = 6,
                     TextColor = Colors.DarkGreen,
-                    LineBreakMode = LineBreakMode.TailTruncation
+                    LineBreakMode = LineBreakMode.TailTruncation,
+                    BackgroundColor = backgroundColor,
                 };
                 eventStack.Children.Add(label);
             }
 
 
 
-            var tapGesture = new TapGestureRecognizer();
-            tapGesture.Tapped += async (s, e) =>
-            {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new Pages.EventModalPage(cellDate));
-            };
+            
 
             var dayContent = new Grid();
             dayContent.Children.Add(dayLabel);
@@ -225,7 +271,7 @@ public class CalendarView : ContentView
                 dayContent.Children.Add(eventStack);
             }
 
-            dayContent.GestureRecognizers.Add(tapGesture);
+            
 
             var dayFrame = new Frame
             {
@@ -241,6 +287,28 @@ public class CalendarView : ContentView
             _calendarGrid.SetColumn((IView)dayFrame, col);
             _calendarGrid.SetRow((IView)dayFrame, row);
         }
+    }
+
+
+    private DateTime GetShiftStartTime(string shiftType, DateTime shiftDate)
+    {
+        return shiftType switch
+        {
+            "First Shift" => shiftDate.Date.AddHours(9),
+            "Second Shift" => shiftDate.Date.AddHours(17),
+            "Third Shift" => shiftDate.Date.AddHours(22),
+            _ => throw new ArgumentException("Invalid shift type")
+        };
+    }
+    private DateTime GetShiftEndTime(string shiftType, DateTime shiftDate)
+    {
+        return shiftType switch
+        {
+            "First Shift" => shiftDate.Date.AddHours(17),           // 5:00 PM
+            "Second Shift" => shiftDate.Date.AddHours(22),          // 10:00 PM
+            "Third Shift" => shiftDate.Date.AddDays(1).AddHours(3), // 3:00 AM next day
+            _ => throw new ArgumentException("Invalid shift type")
+        };
     }
 
     public void Rebuild()
