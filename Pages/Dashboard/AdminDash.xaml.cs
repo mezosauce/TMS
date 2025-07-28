@@ -2,7 +2,7 @@ using System.ComponentModel;
 using Time_Management_System.Pages;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
-
+using Time_Managmeent_System.Pages.Dashboard.DashboardServices;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
@@ -150,5 +150,10 @@ public partial class AdminDash : ContentPage, INotifyPropertyChanged
     {
         // Navigate to the home page (replace with your actual home page)
         await Navigation.PushAsync(new AdminDash(_dataService));
+    }
+    private async void OnBellTapped(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new NotificationLog(_dataService));
     }
 }

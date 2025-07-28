@@ -5,6 +5,7 @@ using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Pages.Dashboard.DashboardServices;
 using System.Collections.ObjectModel;
 
+
 namespace Time_Managmeent_System.Pages.Dashboard;
 
 public partial class ManagerDash : ContentPage, INotifyPropertyChanged
@@ -367,5 +368,10 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
     private async void EditScheduling(object sender, EventArgs e)
     {
         await Navigation.PushAsync(new AssignShiftPage(_dataService));
+    }
+    private async void OnBellTapped(object sender, EventArgs e)
+    {
+
+        await Navigation.PushAsync(new NotificationLog(_dataService));
     }
 }

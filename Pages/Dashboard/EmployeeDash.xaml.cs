@@ -8,6 +8,7 @@ using System.ComponentModel;
 using Time_Managmeent_System.Services;
 using Time_Management_System.Pages;
 using Time_Managmeent_System.Models;
+using Time_Managmeent_System.Pages.Dashboard.DashboardServices;
 
 namespace Time_Managmeent_System.Pages.Dashboard;
 
@@ -308,6 +309,7 @@ public partial class EmployeeDash : ContentPage, INotifyPropertyChanged
         }
     }
 
+   
     private string GetShiftType(TimeSpan now)
     {
         if (now >= new TimeSpan(9, 0, 0) && now < new TimeSpan(17, 0, 0))
@@ -387,8 +389,8 @@ public partial class EmployeeDash : ContentPage, INotifyPropertyChanged
         await Navigation.PushAsync(new CalendarPage(_dataService));
     }
 
-    private void TimeOffClicked(object sender, EventArgs e)
+     private async void OnBellTapped(object sender, EventArgs e)
     {
-
+        await Navigation.PushAsync(new NotificationLog(_dataService));
     }
 }
