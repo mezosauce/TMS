@@ -4,8 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
-using Time_Management_System.Models;
-using Time_Management_System.Services;
+using Time_Managmeent_System.Models;
+using Time_Managmeent_System.Services;
 
 namespace Time_Management_System.Pages
 {
@@ -14,21 +14,68 @@ namespace Time_Management_System.Pages
         private DateTime _selectedDate;
         private Label _dateLabel; // Renamed to avoid ambiguity
 
-        public EventModalPage(DateTime selectedDate)
-        {
-            InitializeComponent(); // Ensure this method is generated in the corresponding XAML file
-            _selectedDate = selectedDate;
+        private readonly DataService _dataService;
 
-            // Ensure _dateLabel is defined in the XAML file and properly linked
-            _dateLabel = new Label(); // Temporary fix if DateLabel is missing
-            _dateLabel.Text = selectedDate.ToString("D");
+        public EventModalPage(DateTime selectedDate, DataService dataService)
+        {
+            InitializeComponent();
+            _selectedDate = selectedDate;
+            _dataService = dataService;
+
+            DateLabel.Text = selectedDate.ToString("D");
+
             LoadEvents();
         }
-
-        private void LoadEvents()
+        public class ShiftDisplay
         {
-            EventList.ItemsSource = EventStorage.GetEvents(_selectedDate);
+            public string Title { get; set; }
+            public string Description { get; set; }
         }
+        private async void LoadEvents()
+        {
+            try
+            {
+                var user = _dataService.SupabaseClient.Auth.CurrentUser;
+
+                // Pull all shifts on the selected date
+                var response = await _dataService.SupabaseClient
+                    .From<Time>()
+                    .Where(t => t.Shift_date == _selectedDate.Date)
+                    .Get();
+
+                var shifts = response.Models;
+
+                // Optional: load user profiles (names)
+                var userIds = shifts.Select(s => s.User_ID).Distinct().ToList();
+                var usersResponse = await _dataService.SupabaseClient
+                    .From<UserProfile>()
+                    .Get();
+
+                var userProfiles = usersResponse.Models
+                    .Where(u => userIds.Contains(u.Id))
+                    .ToDictionary(u => u.Id, u => $"{u.First} {u.Last}");
+
+                var shiftDisplays = shifts.Select(s =>
+                {
+                    var start = GetShiftStartTime(s.Shift_type, s.Shift_date);
+                    var end = GetShiftEndTime(s.Shift_type, s.Shift_date);
+                    userProfiles.TryGetValue(s.User_ID, out var name);
+
+                    return new ShiftDisplay
+                    {
+                        Title = $"{name ?? "Unknown"} - {s.Shift_type}",
+                        Description = $"{start:hh:mm tt} to {end:hh:mm tt}"
+                    };
+                }).ToList();
+
+                EventList.ItemsSource = shiftDisplays;
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to load shifts: {ex.Message}", "OK");
+            }
+        }
+
 
         private async void OnAddEventClicked(object sender, EventArgs e)
         {
@@ -46,6 +93,27 @@ namespace Time_Management_System.Pages
             }
         }
 
+        private DateTime GetShiftStartTime(string shiftType, DateTime shiftDate)
+        {
+            return shiftType switch
+            {
+                "First Shift" => shiftDate.Date.AddHours(9),
+                "Second Shift" => shiftDate.Date.AddHours(17),
+                "Third Shift" => shiftDate.Date.AddHours(22),
+                _ => throw new ArgumentException("Invalid shift type")
+            };
+        }
+
+        private DateTime GetShiftEndTime(string shiftType, DateTime shiftDate)
+        {
+            return shiftType switch
+            {
+                "First Shift" => shiftDate.Date.AddHours(17),
+                "Second Shift" => shiftDate.Date.AddHours(22),
+                "Third Shift" => shiftDate.Date.AddDays(1).AddHours(3),
+                _ => throw new ArgumentException("Invalid shift type")
+            };
+        }
 
         private async void OnBackClicked(object sender, EventArgs e)
         {

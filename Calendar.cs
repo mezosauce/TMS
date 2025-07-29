@@ -282,8 +282,10 @@ public class CalendarView : ContentView
             var tapGesture = new TapGestureRecognizer();
             tapGesture.Tapped += async (s, e) =>
             {
-                await Application.Current.MainPage.Navigation.PushModalAsync(new Pages.EventModalPage(cellDate));
+                await Application.Current.MainPage.Navigation.PushModalAsync(
+                    new Pages.EventModalPage(cellDate, _dataService));
             };
+            dayFrame.GestureRecognizers.Add(tapGesture);
 
             _calendarGrid.Children.Add(dayFrame);
             _calendarGrid.SetColumn((IView)dayFrame, col);
