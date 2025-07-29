@@ -24,7 +24,7 @@ public class Notifications : BaseModel
     
     [Column("s_time")]
     public DateTime Send_Time { get; set; } // Consider using  if you need timezone support
-    [Column("r_Time")]
+    [Column("r_time")]
     public DateTime Receive_Time { get; set; } // Nullable if the notification can be unread
 }
 
