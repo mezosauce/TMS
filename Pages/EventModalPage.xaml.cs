@@ -30,7 +30,12 @@ namespace Time_Management_System.Pages
         {
             public string Title { get; set; }
             public string Description { get; set; }
+            public string UserId { get; set; }
+            public Time ShiftModel { get; set; }
+
+            public bool IsOwnedByCurrentUser { get; set; }  // New property
         }
+
         private async void LoadEvents()
         {
             try
@@ -64,9 +69,13 @@ namespace Time_Management_System.Pages
                     return new ShiftDisplay
                     {
                         Title = $"{name ?? "Unknown"} - {s.Shift_type}",
-                        Description = $"{start:hh:mm tt} to {end:hh:mm tt}"
+                        Description = $"{start:hh:mm tt} to {end:hh:mm tt}",
+                        UserId = s.User_ID,
+                        ShiftModel = s,
+                        IsOwnedByCurrentUser = s.User_ID == user.Id  // << 👈 here
                     };
                 }).ToList();
+
 
                 EventList.ItemsSource = shiftDisplays;
             }
@@ -76,22 +85,37 @@ namespace Time_Management_System.Pages
             }
         }
 
-
-        private async void OnAddEventClicked(object sender, EventArgs e)
+        private async void OnCancelShiftClicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(TitleEntry.Text))
+            if (sender is Button button && button.CommandParameter is Time shift)
             {
-                EventStorage.AddEvent(new CalendarEvent
+                try
                 {
-                    Date = _selectedDate,
-                    Title = TitleEntry.Text,
-                    Description = DescriptionEditor.Text,
-                    Time = TimePicker.Time
-                });
+                    await _dataService.SupabaseClient
+                        .From<Time>()
+                        .Where(t => t.User_ID == shift.User_ID)
+                        .Delete();
 
-                await Navigation.PopModalAsync(); // Close modal and trigger calendar refresh
+                    await DisplayAlert("Success", "Shift canceled successfully.", "OK");
+                    LoadEvents(); // Refresh list
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Error", $"Failed to cancel shift: {ex.Message}", "OK");
+                }
             }
         }
+
+        private async void OnTradeShiftClicked(object sender, EventArgs e)
+        {
+            if (sender is Button button && button.CommandParameter is Time shift)
+            {
+                // TODO: implement trade logic or open a trade request modal
+                await DisplayAlert("Trade Shift", $"Request to trade shift {shift.Shift_type} on {shift.Shift_date:d}.", "OK");
+            }
+        }
+
+
 
         private DateTime GetShiftStartTime(string shiftType, DateTime shiftDate)
         {

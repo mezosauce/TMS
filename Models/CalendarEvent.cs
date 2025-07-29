@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Time_Management_System.Models
+namespace Time_Managmeent_System.Models
 {
     public class CalendarEvent
     {
