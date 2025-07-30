@@ -14,9 +14,24 @@
                             <VerticalStackLayout>
                                 <Label Text="{Binding message}" FontSize="16" />
                                 <Label Text="{Binding Send_Time}" FontSize="12" TextColor="Gray" />
+
+                                <!-- Buttons only visible for SHIFT TRADE REQUEST -->
+                                <StackLayout Orientation="Horizontal"
+                         IsVisible="{Binding IsTradeRequest}">
+                                    <Button Text="Confirm"
+                        Clicked="OnConfirmClicked"
+                        CommandParameter="{Binding}" />
+                                    <Button Text="Cancel"
+                        Clicked="OnCancelClicked"
+                        CommandParameter="{Binding}"
+                        BackgroundColor="LightPink"
+                        TextColor="Black"
+                        Margin="10,0,0,0"/>
+                                </StackLayout>
                             </VerticalStackLayout>
                         </Frame>
                     </DataTemplate>
+
                 </CollectionView.ItemTemplate>
             </CollectionView>
 

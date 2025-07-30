@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.Json.Serialization;  // or Newtonsoft.Json
 
 namespace Time_Managmeent_System.Models;
 
@@ -26,5 +27,8 @@ public class Notifications : BaseModel
     public DateTime Send_Time { get; set; } // Consider using  if you need timezone support
     [Column("r_time")]
     public DateTime Receive_Time { get; set; } // Nullable if the notification can be unread
+
+   
+
 }
 
