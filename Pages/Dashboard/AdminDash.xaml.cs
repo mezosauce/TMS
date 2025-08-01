@@ -146,6 +146,11 @@ public partial class AdminDash : ContentPage, INotifyPropertyChanged
         await Navigation.PushAsync(new EditAccount(_dataService));
     }
 
+    private async void OnAssignShiftClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new AdminAssignShiftPage(_dataService));
+    }
+
     private async void HomeClicked(object sender, EventArgs e)
     {
         // Navigate to the home page (replace with your actual home page)

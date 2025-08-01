@@ -8,6 +8,7 @@ namespace Time_Managmeent_System.Models;
 public class UserProfile : BaseModel
 {
     [PrimaryKey("id", false)]
+    [Column("id")]
     public string Id { get; set; } // Ensure this matches your database schema
     [Column("First")]
     public string First { get; set; }

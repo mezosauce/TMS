@@ -84,14 +84,15 @@ public partial class EmployeeDash : ContentPage, INotifyPropertyChanged
 
             var cutoffDate = DateTime.UtcNow.AddDays(-30);
 
-            // Fetch user's time logs
-            var timeResponse = await _dataService.SupabaseClient
+            var allTimeLogs = await _dataService.SupabaseClient
                 .From<Time>()
-                .Where(t => t.User_ID == user.Id && t.Clocked_in >= cutoffDate)
+                .Where(t => t.User_ID == user.Id)
                 .Order(t => t.Clocked_in, Supabase.Postgrest.Constants.Ordering.Descending)
                 .Get();
 
-            _userTimeLogs = timeResponse.Models; // Can be used later
+            _userTimeLogs = allTimeLogs.Models
+                .Where(t => t.Clocked_in.HasValue && t.Clocked_in.Value >= cutoffDate)
+                .ToList();
 
             // Fetch single geolocation (assuming always 1 active)
             var geoResponse = await _dataService.SupabaseClient
@@ -292,7 +293,10 @@ public partial class EmployeeDash : ContentPage, INotifyPropertyChanged
             if (existingShift != null)
             {
                 existingShift.Clocked_out = now;
-                existingShift.Hours = (now - existingShift.Clocked_in).TotalHours;
+                if (existingShift.Clocked_in.HasValue)
+                {
+                    existingShift.Hours = (now - existingShift.Clocked_in.Value).TotalHours;
+                }
                 existingShift.Status = true;
 
                 await _dataService.SupabaseClient
@@ -381,7 +385,7 @@ public partial class EmployeeDash : ContentPage, INotifyPropertyChanged
 
     private async void ReportsClicked(object sender, EventArgs e)
     {
-        await Navigation.PushAsync(new CalendarPage(_dataService));
+        await Navigation.PushAsync(new ReportPage(_dataService));
 
     }
     private async void ScheduleClicked(object sender, EventArgs e)

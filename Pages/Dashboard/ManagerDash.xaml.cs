@@ -76,14 +76,17 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
             var cutoffDate = DateTime.UtcNow.AddDays(-30);
 
             // ✅ Fetch logs for this user
-            var timeResponse = await _dataService.SupabaseClient
+             var allTimeLogs = await _dataService.SupabaseClient
                 .From<Time>()
-                .Where(t => t.User_ID == user.Id && t.Clocked_in >= cutoffDate)
+                .Where(t => t.User_ID == user.Id)
                 .Order(t => t.Clocked_in, Supabase.Postgrest.Constants.Ordering.Descending)
                 .Get();
 
-            // ✅ Assign to your field (ensure this exists in your class)
-            _userTimeLogs = timeResponse.Models;
+            _userTimeLogs = allTimeLogs.Models
+                .Where(t => t.Clocked_in.HasValue && t.Clocked_in.Value >= cutoffDate)
+                .ToList();
+
+           
 
             // 🔁 Debug logging
             System.Diagnostics.Debug.WriteLine($"✅ Loaded {_userTimeLogs.Count} shifts for user {user.Email}");
@@ -287,7 +290,10 @@ public partial class ManagerDash : ContentPage, INotifyPropertyChanged
             if (existingShift != null)
             {
                 existingShift.Clocked_out = now;
-                existingShift.Hours = (now - existingShift.Clocked_in).TotalHours;
+                if (existingShift.Clocked_in.HasValue)
+                {
+                    existingShift.Hours = (now - existingShift.Clocked_in.Value).TotalHours;
+                }
                 existingShift.Status = true;
 
                 await _dataService.SupabaseClient

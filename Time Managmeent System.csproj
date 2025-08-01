@@ -107,6 +107,9 @@
 	  <MauiXaml Update="Pages\Dashboard\AdminDash.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\Dashboard\DashboardServices\AdminAssignShiftPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\Dashboard\DashboardServices\AssignShiftPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

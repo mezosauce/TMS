@@ -9,6 +9,7 @@ using Time_Managmeent_System.Services;
 using Time_Management_System.Pages;
 using System.Collections.ObjectModel;
 using Time_Managmeent_System.Models;
+using Time_Managmeent_System.ViewModels;
 
 namespace Time_Managmeent_System.Pages.Dashboard.DashboardServices;
 
@@ -16,7 +17,7 @@ public partial class NotificationLog : ContentPage
 {
     private readonly DataService _dataService;
 
-    public ObservableCollection<Notifications> NotificationMessages { get; set; } = new();
+    public ObservableCollection<NotificationViewModel> NotificationMessages { get; set; } = new();
 
     public NotificationLog(DataService dataService)
     {
@@ -39,9 +40,10 @@ public partial class NotificationLog : ContentPage
 
             if (allNotifications != null && allNotifications.Models.Count > 0)
             {
+                NotificationMessages.Clear();
                 foreach (var notification in allNotifications.Models)
                 {
-                    NotificationMessages.Add(notification);
+                    NotificationMessages.Add(new NotificationViewModel(notification));
                 }
 
                 NotificationList.ItemsSource = NotificationMessages;
@@ -128,7 +130,7 @@ public partial class NotificationLog : ContentPage
                 // 7. Show confirmation and refresh list
                 await DisplayAlert("Confirmed", "You accepted the shift trade request.", "OK");
 
-                NotificationMessages.Remove(notification);
+                NotificationMessages.Remove(new NotificationViewModel(notification));
                 LoadNotificationsAsync(); // optional refresh
             }
             catch (Exception ex)
@@ -179,6 +181,31 @@ public partial class NotificationLog : ContentPage
             }
         }
     }
+
+    private async void OnDismissClicked(object sender, EventArgs e)
+    {
+        if (sender is Button button && button.CommandParameter is Notifications notification)
+        {
+            try
+            {
+                await _dataService.SupabaseClient
+                    .From<Notifications>()
+                    .Where(n => n.Notification_ID == notification.Notification_ID)
+                    .Delete();
+
+                NotificationMessages.Remove(
+                        NotificationMessages.FirstOrDefault(n => n.Notification.Notification_ID == notification.Notification_ID)
+                    );
+
+                await DisplayAlert("Dismissed", "Notification was dismissed.", "OK");
+            }
+            catch (Exception ex)
+            {
+                await DisplayAlert("Error", $"Failed to dismiss notification: {ex.Message}", "OK");
+            }
+        }
+    }
+
 
 
 

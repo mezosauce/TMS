@@ -18,9 +18,9 @@ public class Time: BaseModel
     public string User_ID { get; set; }
     
     [Column("clock_in")]
-    public DateTimeOffset Clocked_in { get; set; } // Consider using  if you need timezone support
+    public DateTimeOffset? Clocked_in { get; set; } // Consider using  if you need timezone support
     [Column("clock_out")]
-    public DateTimeOffset Clocked_out { get; set; } // Nullable if the notification can be unread
+    public DateTimeOffset? Clocked_out { get; set; } // Nullable if the notification can be unread
     [Column("hours")]
     public double Hours { get; set; } // Total hours worked in this shift
     [Column("status")]
