@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Time_Managmeent_System.Pages.EditProfile"
              Title="Edit Profile">
+    <ScrollView>
     <VerticalStackLayout Padding="20" Spacing="16">
         <Label Text="Edit Profile" FontSize="24" HorizontalOptions="Center" />
         <Entry x:Name="FirstNameEntry" Placeholder="First Name" />
@@ -13,5 +14,6 @@
         <Image x:Name="AvatarPreview" HeightRequest="100" WidthRequest="100" />
 
         <Button Text="Save" Clicked="OnSaveClicked" />
-    </VerticalStackLayout>  
+    </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
