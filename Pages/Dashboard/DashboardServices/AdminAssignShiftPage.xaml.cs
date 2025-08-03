@@ -2,6 +2,7 @@ using System.Collections.ObjectModel;
 using Time_Managmeent_System.Models;
 using Time_Managmeent_System.Services;
 using Supabase.Postgrest.Attributes;
+using System.Diagnostics;
 namespace Time_Managmeent_System.Pages.Dashboard.DashboardServices;
 
 public partial class AdminAssignShiftPage : ContentPage
@@ -34,7 +35,7 @@ public partial class AdminAssignShiftPage : ContentPage
     private void GenerateWeekdayDates()
     {
         var today = DateTime.Today;
-        int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
+        int daysUntilMonday = ((int)DayOfWeek.Sunday - (int)today.DayOfWeek + 7) % 7;
         var startDate = today.AddDays(daysUntilMonday);
 
         WeekdayDates.Clear();
@@ -84,6 +85,7 @@ public partial class AdminAssignShiftPage : ContentPage
         var selectedShiftName = ShiftPicker.SelectedItem as string;
         var selectedRole = RolePicker.SelectedItem as string;
 
+        Debug.WriteLine($"Selected Employee: {selectedEmployeeName}, Shift: {selectedShiftName}, Role: {selectedRole}");
         if (string.IsNullOrEmpty(selectedEmployeeName) ||
             string.IsNullOrEmpty(selectedShiftName) ||
             string.IsNullOrEmpty(selectedRole))
@@ -103,12 +105,14 @@ public partial class AdminAssignShiftPage : ContentPage
         var last = nameParts[1];
 
 
-        var employee = await _dataService.SupabaseClient
+                var response = await _dataService.SupabaseClient
             .From<UserProfile>()
-            .Where(x => x.First == first && x.Last == last)
-            .Single();
+              .Where(x => x.First == first)
+            .Where(x => x.Last == last)
+            .Where(x => x.Position == selectedRole)
+            .Get();
 
-        
+        var employee = response.Models.FirstOrDefault();
         if (employee == null)
         {
             await DisplayAlert("Error", "Employee not found.", "OK");
@@ -118,7 +122,7 @@ public partial class AdminAssignShiftPage : ContentPage
         var selectedShift = ShiftOptionsList.First(s => s.Name == selectedShiftName);
         var today = DateTime.Today;
         int daysUntilMonday = ((int)DayOfWeek.Monday - (int)today.DayOfWeek + 7) % 7;
-        var monday = today.AddDays(daysUntilMonday);
+        var monday = today;
 
         var timeEntries = new List<Time>();
 
