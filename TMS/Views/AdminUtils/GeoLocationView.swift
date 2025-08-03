@@ -129,10 +129,10 @@ struct GeoLocationView: View {
                     .execute()
                 
                 
-                print("✅ Supabase delete response: \(response)")
+                print("Supabase delete response: \(response)")
                 await fetchLocations()
             } catch {
-                print("❌ Error deleting location: \(error.localizedDescription)")
+                print("Error deleting location: \(error.localizedDescription)")
             }
         }
     }

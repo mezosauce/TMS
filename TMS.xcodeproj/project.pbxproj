@@ -19,6 +19,7 @@
 		E4132E692DFB9CBD0034398B /* Realtime in Frameworks */ = {isa = PBXBuildFile; productRef = E4132E682DFB9CBD0034398B /* Realtime */; };
 		E4132E6B2DFB9CBD0034398B /* Storage in Frameworks */ = {isa = PBXBuildFile; productRef = E4132E6A2DFB9CBD0034398B /* Storage */; };
 		E4132E6D2DFB9CBD0034398B /* Supabase in Frameworks */ = {isa = PBXBuildFile; productRef = E4132E6C2DFB9CBD0034398B /* Supabase */; };
+		E4D27CD72E35DF6E009D5A3E /* Locations.gpx in Resources */ = {isa = PBXBuildFile; fileRef = E4D27CD62E35DF6E009D5A3E /* Locations.gpx */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,11 +43,25 @@
 		E47D81962DECCD2E0055FB87 /* TMS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TMS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47D81A62DECCD2E0055FB87 /* TMSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47D81B02DECCD2E0055FB87 /* TMSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TMSUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4D27CD62E35DF6E009D5A3E /* Locations.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Locations.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		E4D27CD52E35D6E8009D5A3E /* Exceptions for "TMS" folder in "TMS" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = E47D81952DECCD2E0055FB87 /* TMS */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E47D81982DECCD2E0055FB87 /* TMS */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E4D27CD52E35D6E8009D5A3E /* Exceptions for "TMS" folder in "TMS" target */,
+			);
 			path = TMS;
 			sourceTree = "<group>";
 		};
@@ -102,6 +117,7 @@
 		E47D818D2DECCD2E0055FB87 = {
 			isa = PBXGroup;
 			children = (
+				E4D27CD62E35DF6E009D5A3E /* Locations.gpx */,
 				E47D81982DECCD2E0055FB87 /* TMS */,
 				E47D81A92DECCD2E0055FB87 /* TMSTests */,
 				E47D81B32DECCD2E0055FB87 /* TMSUITests */,
@@ -254,6 +270,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4D27CD72E35DF6E009D5A3E /* Locations.gpx in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +452,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TMS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -472,6 +494,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TMS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

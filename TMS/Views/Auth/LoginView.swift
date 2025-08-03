@@ -15,30 +15,50 @@ struct LoginView: View {
     @State private var password = ""
     
     var body: some View {
-        VStack {
-            Text("Login").font(.largeTitle)
-                .bold()
+        ZStack {
+            LinearGradient(
+                gradient: Gradient(colors: [Color.black, Color.purple]),
+                startPoint: .bottom,
+                endPoint: .top
+            )
+            .ignoresSafeArea()
             
-            TextField("Email", text: $email)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-            
-            SecureField("Password", text: $password)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .autocapitalization(.none)
-            
-            Button("Login") {
-                Task {
-                    await authViewModel.login(email: email, password: password)}
+            VStack {
+                Text("Login")
+                    .font(.largeTitle)
+                    .bold()
+                    .foregroundColor(.white)  // Make text visible on dark bg
+                
+                TextField("Email", text: $email)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .padding(.vertical, 8)
+                
+                SecureField("Password", text: $password)
+                    .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .autocapitalization(.none)
+                    .padding(.vertical, 8)
+                
+                Button("Login") {
+                    Task {
+                        await authViewModel.login(email: email, password: password)
+                    }
+                }
+                .buttonStyle(.borderedProminent)
+                .padding(.vertical)
+                
+                NavigationLink("Don't have an account? Sign Up", destination: SignupView())
+                    .foregroundColor(.white) // visible link
+                
+                if let error = authViewModel.errorMessage {
+                    Text(error)
+                        .foregroundColor(.red)
+                        .padding(.top)
+                }
             }
-            .buttonStyle(.borderedProminent)
-            
-            NavigationLink("Dont have an account? Sign Up", destination: SignupView())
-            
-            if let error = authViewModel.errorMessage {
-                Text(error).foregroundColor(.red)
-            }
+            .padding(.horizontal, 40)
         }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
 }
 

@@ -1,20 +1,20 @@
 //
-//  EditAccountsView.swift
+//  ManagerEditAccountsView.swift
 //  TMS
 //
-//  Created by Evan Heidenreich on 7/9/25.
+//  Created by Evan Heidenreich on 7/30/25.
 //
 import SwiftUI
 import Foundation
 import Supabase
 
-struct EditAccountsView: View {
+struct ManagerEditAccountsView: View {
     @Binding var selectedPage: String
     @State private var position: String = ""
     @State private var positions = ["Employee", "Manager", "Admin"]
     @State private var selectedPosition: String = ""
     @State private var selectedUserId: String = ""
-    @State private var users: [BasicUser] = []
+    @State private var users: [editBasicUser] = []
     @State private var firstName: String = ""
     @State private var lastName: String = ""
     
@@ -122,7 +122,7 @@ struct EditAccountsView: View {
     func fetchUsersByPosition() async {
         do {
             print("Fetching Position: \(selectedPosition)")
-            let result: [BasicUser] = try await supabase
+            let result: [editBasicUser] = try await supabase
                 .from("user_data")
                 .select("id, First, Last, Position")
                 .eq("Position", value:selectedPosition)
@@ -200,12 +200,12 @@ struct EditAccountsView: View {
     }
 }
 
-struct DeleteResponse: Decodable {
+struct DeleteResponses: Decodable {
     let success: Bool
     //let response: String
 }
 
-struct BasicUser: Identifiable, Codable {
+struct editBasicUser: Identifiable, Codable {
     var id: String
     var First: String
     var Last: String

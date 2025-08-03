@@ -110,7 +110,6 @@ struct AdminSideMenuView: View {
             }
                 .buttonStyle(.bordered)
                 .tint(.purple)
-            Spacer()
             
             Button("Logout") {
                 withAnimation {
@@ -120,6 +119,8 @@ struct AdminSideMenuView: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(.red)
+            
+            Spacer()
             
         }
         .padding(.top, 100)

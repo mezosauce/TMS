@@ -1,15 +1,14 @@
 //
-//  ReportsView.swift
+//  ManagerReportsView.swift
 //  TMS
 //
-//  Created by Evan Heidenreich on 7/9/25.
+//  Created by Evan Heidenreich on 7/31/25.
 //
-
 import SwiftUI
 import Foundation
 import Supabase
 
-struct ReportsView: View {
+struct ManagerReportsView: View {
     @Binding var selectedPage: String
     @State private var selectedDate = Date()
     @State private var shifts: [ShiftReport] = []
@@ -139,52 +138,3 @@ struct ReportsView: View {
     }
 }
 
-struct TimeLogRow: Decodable {
-    let userId: UUID
-    let shiftDate: String
-    let shiftType: String
-    let clockIn: Date?
-    let clockOut: Date?
-    let hours: Double
-    
-    enum CodingKeys: String, CodingKey {
-        case userId = "id"
-        case shiftDate = "shift_date"
-        case shiftType = "shift_type"
-        case clockIn = "clock_in"
-        case clockOut = "clock_out"
-        case hours
-    }
-}
-
-struct UserData: Decodable {
-    let id: UUID
-    let First: String
-    let Last: String
-}
-
-struct ShiftReport: Identifiable {
-    var id: String { "\(userId)-\(shiftDate)-\(shiftType)" }
-    
-    let userId: UUID
-    let shiftDate: String
-    let shiftType: String
-    let employeeName: String
-    let clockIn: Date?
-    let clockOut: Date?
-    let hours: Double
-    
-    var clockInFormatted: String? {
-        guard let clockIn else { return nil }
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: clockIn)
-    }
-    
-    var clockOutFormatted: String? {
-        guard let clockOut else { return nil }
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        return formatter.string(from: clockOut)
-    }
-}

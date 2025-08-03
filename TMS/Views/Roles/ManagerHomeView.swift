@@ -23,11 +23,10 @@ struct ManagerHomeView: View {
                             .font(.title)
                     } else if selectedPage == "schedules" {
                         ManagerScheduleView(selectedPage: $selectedPage)
-                        
                     } else if selectedPage == "reports" {
-                        
+                        ManagerReportsView(selectedPage: $selectedPage)
                     } else if selectedPage == "editEmployees" {
-                        
+                        ManagerEditAccountsView(selectedPage: $selectedPage)
                     }
                     Spacer()
                 }
@@ -49,7 +48,7 @@ struct ManagerHomeView: View {
                             showMenu = false
                         }
                     }
-                    .zIndex(1)  // Behind the SideMenuView but in front of the main content
+                    .zIndex(1)
             }
             
             if showMenu {
@@ -73,6 +72,7 @@ struct ManagerHomeView: View {
 }
 
 struct ManagerSideMenuView: View {
+    @EnvironmentObject var authViewModel: AuthViewModels
     @Binding var selectedPage: String
     @Binding var showMenu: Bool
     
@@ -103,6 +103,15 @@ struct ManagerSideMenuView: View {
             .buttonStyle(.bordered)
             .tint(.purple)
             Spacer()
+            
+            Button("Logout") {
+                withAnimation {
+                    showMenu = false
+                }
+                authViewModel.signOut()
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(.red)
             
         }
         .padding(.top, 100)
